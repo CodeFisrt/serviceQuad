@@ -13,8 +13,13 @@ import { DepartmentComponent } from './Pages/department/department.component';
 import { ReportsComponent } from './Pages/reports/reports.component';
 import { LeavesComponent } from './Pages/leaves/leaves.component';
 import { LeaveForApprovalComponent } from './Pages/leave-for-approval/leave-for-approval.component';
-import { HomeComponent } from './Pages/home/home.component';
 import { LoginComponent } from './Pages/login/login.component';
+import { AdminLayoutComponent } from './Pages/admin-layout/admin-layout.component';
+import { EmployeeLayoutComponent } from './Pages/employee-layout/employee-layout.component';
+import { AdminDptLayoutComponent } from './Pages/admin-dpt-layout/admin-dpt-layout.component';
+import { AdminDptDashboardComponent } from './Pages/admin-dpt-dashboard/admin-dpt-dashboard.component';
+import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.component';
+import { LoginGuard } from './Core/Gaurds/login/login.guard';
 
 @NgModule({
   declarations: [
@@ -27,8 +32,12 @@ import { LoginComponent } from './Pages/login/login.component';
     ReportsComponent,
     LeavesComponent,
     LeaveForApprovalComponent,
-    HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AdminLayoutComponent,
+    EmployeeLayoutComponent,
+    AdminDptLayoutComponent,
+    AdminDptDashboardComponent,
+    EmpDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,7 @@ import { LoginComponent } from './Pages/login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

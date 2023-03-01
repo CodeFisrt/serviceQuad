@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-sm custom-nav">
+    <div class="container-fluid">
+        <ul class="navbar-nav mt-2 ">
+            <li class="nav-item mt-1 text-white me-2">
+                <div class="logo d-flex">
+                    <h4><b>Service Squad</b></h4>
+                </div>
+            </li>
+            <li class="nav-item me-1">
+                <a class="nav-link text-white" routerLink="empDashboard"><strong><i class="bi bi-speedometer2"></i> Emp Dashboard</strong></a>
+            </li>
+            <li class="nav-item  me-1">
+                <a class="nav-link text-white" routerLink="createRequest"><strong><i class="bi bi-cart-dash-fill"></i> Create Request</strong></a>
+            </li>
+            <li class="nav-item  me-1">
+                <a class="nav-link text-white" routerLink="requestList"><strong><i class="bi bi-cart4"></i> Request List</strong></a>
+            </li>
+            <li class="nav-item me-1">
+                <a class="nav-link text-white" routerLink="leaves"><strong><i class="bi bi-person-dash"></i> Leaves</strong></a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <ul class="navbar-nav">
+            <a class="text-uppercase text-white"><li class="nav-item"><i class="bi bi-person fs-3 text-white"></i>
+            <h5>{{loginService.logUserInfo().UserName}}</h5>
+            </li></a>
+        </ul>
+    </div>
+    <div class="button">
+        <button class="btn btn-sm btn-danger m-2" (click)="loginService.onLogout()">Logout</button>
+    </div>
+</nav>
+<router-outlet></router-outlet>
