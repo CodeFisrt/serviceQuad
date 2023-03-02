@@ -1,1 +1,123 @@
-<p>employee works!</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Employee List</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Add Emp.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr class="bg-secondary text-white text-center">
+                                        <th>Sr.No</th>
+                                        <th>Employee Name</th>
+                                        <th>Contact No.</th>
+                                        <th>Email Id</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr *ngFor="let data of empArray; let sr = index;">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{data.EmployeeName | titlecase}}</td>
+                                        <td>{{data.ContactNo}}</td>
+                                        <td>{{data.EmailId}}</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm m-2" (click)="onEdit(data.EmployeeId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                            <button class="btn btn-danger btn-sm" (click)="onDelete(data.EmployeeId)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Form</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="text">Employee Name</label>
+                                        <input type="text" placeholder="Employee Name" class="form-control"
+                                            name="empName" [(ngModel)]="empObj.EmployeeName">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="text">Contact No.</label>
+                                        <input type="text" placeholder="Contact No." class="form-control"
+                                            name="cantactNo" [(ngModel)]="empObj.ContactNo">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="text">Email Id</label>
+                                        <input type="text" placeholder="Email Id" class="form-control" name="emailId"
+                                            [(ngModel)]="empObj.EmailId">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="text">User Name</label>
+                                        <input type="text" placeholder="user Name" class="form-control" name="userName"
+                                            [(ngModel)]="empObj.UserName">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="text">Reports To</label>
+                                        <select name="reportsTo" id="" [(ngModel)]="empObj.ReportsTo" class="form-control" (change)="getDpdlReport(empObj.DeptId)">
+                                            <option *ngFor="let role of roleArray">{{role}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="text">Role</label>
+                                        <select name="role" id="" [(ngModel)]="empObj.Role" class="form-control">
+                                            <option *ngFor="let role of roleArray">{{role}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Department</label>
+                                        <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control">
+                                            <option *ngFor="let role of deptArray" [value]="role.DeptId">{{getDepName(role.DeptId)}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">   
+                            <button type="button" class="btn btn-primary" (click)="onSave()" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId == 0">Save</button>
+                            <button type="button" class="btn btn-primary" (click)="onUpdate(empObj.EmployeeId)" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId != 0">Update</button>
+
+                            <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
