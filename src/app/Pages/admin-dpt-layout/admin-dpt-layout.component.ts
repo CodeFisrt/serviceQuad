@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
 })
 export class AdminDptLayoutComponent implements OnInit {
 
-  constructor(public loginService:LoginService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
   }

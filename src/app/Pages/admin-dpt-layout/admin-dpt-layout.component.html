@@ -1,37 +1,43 @@
 <nav class="navbar navbar-expand-sm custom-nav">
     <div class="container-fluid">
         <ul class="navbar-nav mt-2 ">
-            <li class="nav-item mt-1 text-white me-2">
+            <li>
+                <img src="../../../assets/img/Green Modern Fashion Store Logo.png" alt=""
+                    style="width:75px;height:75px">
+            </li>
+            <li class="nav-item mt-2 text-white me-4">
                 <div class="logo d-flex">
-                    <h4><b>Service Squad</b></h4>
+                    <h4><b>Service <br> Squad</b></h4>
                 </div>
             </li>
-            <li class="nav-item mx-2">
-                <a class="nav-link text-white" routerLink="adminDptDashboard"><strong><i class="bi bi-speedometer2"></i> Admin Dept Dashboard</strong></a>
+            <li class="nav-item me-4 mt-3">
+                <a class="nav-link text-white" routerLink="adminDptDashboard"><strong><i class="bi bi-speedometer2"></i>
+                        Admin Dept Dashboard</strong></a>
             </li>
-            <li class="nav-item  me-2">
-                <a class="nav-link text-white" routerLink="employee"><strong><i class="bi bi-people-fill"></i> Employee</strong></a>
+            <li class="nav-item  me-4 mt-3">
+                <a class="nav-link text-white" routerLink="dapartment"><strong><i class="bi bi-building-fill"></i>
+                        Department</strong></a>
             </li>
-            <li class="nav-item  me-2">
-                <a class="nav-link text-white" routerLink="createRequest"><strong><i class="bi bi-cart-dash-fill"></i> Create Request</strong></a>
+            <li class="nav-item  me-4 mt-3">
+                <a class="nav-link text-white" routerLink="employee"><strong><i class="bi bi-people-fill"></i>
+                        Employee</strong></a>
             </li>
-            <li class="nav-item  me-2">
-                <a class="nav-link text-white" routerLink="requestList"><strong><i class="bi bi-cart4"></i> Request List</strong></a>
-            </li>
-            <li class="nav-item  me-2">
-                <a class="nav-link text-white" routerLink="dapartment"><strong><i class="bi bi-building-fill"></i> Department</strong></a>
+            <li class="nav-item  me-4 mt-3">
+                <a class="nav-link text-white" routerLink="requestList"><strong><i class="bi bi-cart4"></i> Request
+                        List</strong></a>
             </li>
         </ul>
     </div>
     <div>
         <ul class="navbar-nav">
-            <a class="text-uppercase text-white"><li class="nav-item"><i class="bi bi-person fs-3 text-white"></i>
-            <h5>{{loginService.logUserInfo().UserName}}</h5>
-            </li></a>
+            <li class="nav-item text-center me-3"><i class="bi bi-person fs-3 text-warning"></i>
+                <h6 class="text-warning">{{loginService.logUserInfo().UserName}}</h6>
+            </li>
         </ul>
     </div>
     <div class="button">
-        <button class="btn btn-sm btn-danger m-2" (click)="loginService.onLogout()">Logout</button>
+        <button class="btn btn-info m-2" (click)="loginService.onLogout()"><i
+                class="bi bi-box-arrow-right"></i>Logout</button>
     </div>
 </nav>
 <router-outlet></router-outlet>

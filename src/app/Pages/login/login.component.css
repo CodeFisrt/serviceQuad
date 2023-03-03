@@ -20,6 +20,12 @@ body {
 
 }
 
+.iconPassword{
+	position: relative;
+	width: 250px;
+	font-size: 25px;
+	color: rgb(200, 204, 171);
+}
 .bg-img {
 	background-image: url(https://cdn.dribbble.com/users/2407430/screenshots/7419535/media/cc10db04e1a90fb9fc7ac8fe2ad058d9.png?compress=1&resize=1600x1200&vertical=top);
 	background-position: center;
@@ -31,7 +37,8 @@ body {
 .screen {
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);
 	position: relative;
-	transform: translate(335px, 29px);
+	margin-top: 27px;
+	margin-left: 10px;
 	height: 591px;
 	width: 351px;
 	box-shadow: 0px 0px 24px #5C5696;

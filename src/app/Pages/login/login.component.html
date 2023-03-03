@@ -1,33 +1,50 @@
-<div class="bg-img">
-    <div class="container">
-
-        <div class="screen">
-            <div class="screen__content">
-                <form class="login">
-                    <div class="login__field">
-                        <label><b>Email Address</b></label>
-                        <i class="login__icon fas fa-user"></i>
-                        <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
-                            placeholder="Email Address">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="bg-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-11"></div>
+                    <div class="col-sm-1">
+                        <div class="screen">
+                            <div class="screen__content">
+                                <form class="login">
+                                    <div class="login__field">
+                                        <label><b>User Id <span class="text-danger">*</span></b></label><br>
+                                        <i class="login__icon fas fa-user"></i>
+                                        <input type="text" name="userName" class="login__input"
+                                            [(ngModel)]="loginObj.UserName" placeholder="Email Address" required
+                                            #userName="ngModel">
+                                        <div class="text-danger" *ngIf="userName.touched">
+                                            <span *ngIf="userName.errors?.['required']">UserName is required</span>
+                                        </div>
+                                    </div>
+                                    <div class="login__field">
+                                        <label><b>Password <span class="text-danger">*</span></b></label>
+                                        <i class="login__icon fas fa-lock"></i>
+                                        <input [type]="changetype?'password':'text'" name="password"
+                                            class="login__input" [(ngModel)]="loginObj.Password" placeholder="Password"
+                                            required #password="ngModel">
+                                        <span class="iconPassword" (click)="viewpass()"><i
+                                                [ngClass]="visible?'bi bi-eye-fill':'bi bi-eye-slash-fill'"></i></span>
+                                        <div class="text-danger" *ngIf="password.touched">
+                                            <span *ngIf="password.errors?.['required']">Password is required</span>
+                                        </div>
+                                    </div>
+                                    <button class="button login__submit text-white" (click)="onLogin()">
+                                        <h5><b>Login</b></h5>
+                                    </button>
+                                    <p-toast></p-toast>
+                                </form>
+                            </div>
+                            <div class="screen__background">
+                                <span class="screen__background__shape screen__background__shape4"></span>
+                                <span class="screen__background__shape screen__background__shape3"></span>
+                                <span class="screen__background__shape screen__background__shape2"></span>
+                                <span class="screen__background__shape screen__background__shape1"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="login__field">
-                        <label><b>Password</b></label>
-                        <i class="login__icon fas fa-lock"></i>
-                        <input type="password" name="userName" class="login__input" [(ngModel)]="loginObj.Password"
-                            placeholder="Password">
-                    </div>
-                    <button class="button login__submit text-white" (click)="onLogin()">
-                        <h5><b>Login</b></h5>
-                    </button>
-                    <p-toast></p-toast>
-                </form>
-
-            </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape4"></span>
-                <span class="screen__background__shape screen__background__shape3"></span>
-                <span class="screen__background__shape screen__background__shape2"></span>
-                <span class="screen__background__shape screen__background__shape1"></span>
+                </div>
             </div>
         </div>
     </div>
