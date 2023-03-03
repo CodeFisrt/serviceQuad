@@ -20,6 +20,8 @@ import { AdminDptLayoutComponent } from './Pages/admin-dpt-layout/admin-dpt-layo
 import { AdminDptDashboardComponent } from './Pages/admin-dpt-dashboard/admin-dpt-dashboard.component';
 import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.component';
 import { LoginGuard } from './Core/Gaurds/login/login.guard';
+import {ToastModule} from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,12 @@ import { LoginGuard } from './Core/Gaurds/login/login.guard';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]
