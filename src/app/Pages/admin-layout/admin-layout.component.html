@@ -7,37 +7,43 @@
                 </div>
             </li>
             <li class="nav-item me-1">
-                <a class="nav-link text-white" routerLink="dashboard"><strong><i class="bi bi-speedometer2"></i> Dashboard</strong></a>
+                <a class="nav-link text-white" routerLink="dashboard"><strong><i class="bi bi-speedometer2"></i>
+                        Dashboard</strong></a>
             </li>
             <li class="nav-item  me-1">
-                <a class="nav-link text-white" routerLink="employee"><strong><i class="bi bi-people-fill"></i> Employee</strong></a>
+                <a class="nav-link text-white" routerLink="employee"><strong><i class="bi bi-people-fill"></i>
+                        Employee</strong></a>
             </li>
             <li class="nav-item  me-1">
-                <a class="nav-link text-white" routerLink="createRequest"><strong><i class="bi bi-cart-dash-fill"></i> Create Request</strong></a>
+                <a class="nav-link text-white" routerLink="requestList"><strong><i class="bi bi-cart4"></i> Request
+                        List</strong></a>
             </li>
             <li class="nav-item  me-1">
-                <a class="nav-link text-white" routerLink="requestList"><strong><i class="bi bi-cart4"></i> Request List</strong></a>
+                <a class="nav-link text-white" routerLink="department"><strong><i class="bi bi-building-fill"></i>
+                        Department</strong></a>
             </li>
             <li class="nav-item  me-1">
-                <a class="nav-link text-white" routerLink="department"><strong><i class="bi bi-building-fill"></i> Department</strong></a>
-            </li>
-            <li class="nav-item  me-1">
-                <a class="nav-link text-white" routerLink="reports"><strong><i class="bi bi-card-checklist"></i> Reports</strong></a>
+                <a class="nav-link text-white" routerLink="reports"><strong><i class="bi bi-card-checklist"></i>
+                        Reports</strong></a>
             </li>
             <li class="nav-item me-1">
-                <a class="nav-link text-white" routerLink="leaves"><strong><i class="bi bi-person-dash"></i> Leaves</strong></a>
+                <a class="nav-link text-white" routerLink="leaves"><strong><i class="bi bi-person-dash"></i>
+                        Leaves</strong></a>
             </li>
             <li class="nav-item me-1">
-                <a class="nav-link text-white" routerLink="leaveForApproval"><strong><i class="bi bi-person-check"></i> Leave For Approval</strong></a>
+                <a class="nav-link text-white" routerLink="leaveForApproval"><strong><i class="bi bi-person-check"></i>
+                        Leave For Approval</strong></a>
             </li>
         </ul>
     </div>
 
     <div>
         <ul class="navbar-nav">
-            <p class="text-uppercase text-white"><li class="nav-item"><i class="bi bi-person fs-3 text-white"></i>
-            <h5>{{loginService.logUserInfo().UserName}}</h5>
-            </li></p>
+            <p class="text-uppercase text-white">
+                <li class="nav-item"><i class="bi bi-person fs-3 text-white"></i>
+                    <h5>{{loginService.logUserInfo().UserName}}</h5>
+                </li>
+            </p>
         </ul>
     </div>
     <div class="button">
