@@ -29,8 +29,14 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+<<<<<<< HEAD
 
     this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
+=======
+    
+      this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+>>>>>>> 0b34993632a8614c2877a334be9bbe780bcac172
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
       if (res.Role == 'Admin') {
         this.route.navigateByUrl('dashboard');
@@ -42,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
       }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
 

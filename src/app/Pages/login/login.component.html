@@ -44,8 +44,29 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
+=======
+                    <div class="login__field">
+                        <label><b>Password</b></label>
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" name="userName" class="login__input" [(ngModel)]="loginObj.Password"
+                            placeholder="Password">
+                    </div>
+                    <button class="button login__submit text-white" (click)="onLogin()">
+                        <h5><b>Login</b></h5>
+                    </button>
+                </form>
+
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+>>>>>>> 0b34993632a8614c2877a334be9bbe780bcac172
             </div>
         </div>
     </div>
 </div>
+<p-toast></p-toast>
