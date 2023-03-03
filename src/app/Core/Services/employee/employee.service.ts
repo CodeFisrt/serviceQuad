@@ -26,6 +26,9 @@ export class EmployeeService {
   };
   deleteEmp(id:number,obj:any):Observable<any>{
     return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/DeleteEmployee?id='+id,obj)
+  };
+  dpdlDept():Observable<any>{
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetDepartments')
   }
 
   

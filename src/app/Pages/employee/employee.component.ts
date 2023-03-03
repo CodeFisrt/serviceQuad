@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { employeeClass } from 'src/app/Core/Classes/employee';
 import { DeptService } from 'src/app/Core/Services/dept.service/dept.service';
@@ -7,19 +8,23 @@ import { EmployeeService } from 'src/app/Core/Services/employee/employee.service
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
+  providers: [MessageService]
 })
 export class EmployeeComponent implements OnInit {
   empArray : employeeClass[]  = [];
   empObj : employeeClass = new employeeClass();
   roleArray:string[] =['Employee','Admin Dept.']
   deptArray : deptClass[] = [];
+  isSave : boolean = true;
+  deptobj:deptClass = new deptClass();
 
-  constructor(private service : EmployeeService, private deptService : DeptService) { }
+  constructor(private service : EmployeeService, private deptService : DeptService,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getAllEmpReco();
     this.getAlldeptRec();
+    this.getDpdlReport();
   };
 
   getAllEmpReco() {
@@ -42,9 +47,7 @@ export class EmployeeComponent implements OnInit {
      this.service.createEmp(this.empObj).subscribe((res:any)=>{
       if(res){
         this.getAllEmpReco();
-        alert(res.message);
-      }else{
-        alert(res.message)
+      }else {  
       };
      })
   };
@@ -54,23 +57,20 @@ export class EmployeeComponent implements OnInit {
   };
 
   onEdit(id: number) {
+    this.isSave = false;
     this.service.editEmp(id).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
-      }else{
-        alert(res.message)
       };
     })
   };
 
   onUpdate(id:number) {
+    this.isSave = true;
     this.service.updateEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
         this.getAllEmpReco();
-        alert(res.message)
-      }else{
-        alert(res.message)
       };
     })
   };
@@ -79,10 +79,7 @@ export class EmployeeComponent implements OnInit {
     this.service.deleteEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
         this.getAllEmpReco();
-        alert(res.message)
-      }else{
-        alert(res.message)
-      }
+      };
     })
   };
 
@@ -91,10 +88,18 @@ export class EmployeeComponent implements OnInit {
     return deptName ?.DeptName;
   };
 
-  getDpdlReport(id:number){
-    this.service.dpdlReport(id).subscribe((res:any)=>{
+  getDpdlReport(){
+    this.service.dpdlReport(this.deptobj.DeptId).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
+      };
+    })
+  };
+
+  getDpdlDept(){
+    this.service.dpdlDept().subscribe((res:any)=>{
+      if(res){
+        this.deptArray = res;
       };
     })
   };

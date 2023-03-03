@@ -8,7 +8,7 @@
                             <h4>Employee List</h4>
                         </div>
                         <div class="col-6 text-end">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add Emp.
                             </button>
@@ -35,8 +35,17 @@
                                         <td>{{data.ContactNo}}</td>
                                         <td>{{data.EmailId}}</td>
                                         <td>
-                                            <button class="btn btn-success btn-sm m-2" (click)="onEdit(data.EmployeeId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                                            <button class="btn btn-danger btn-sm" (click)="onDelete(data.EmployeeId)">Delete</button>
+                                            <div class="row">
+                                                <div class="col-6 text-end">
+                                                    <p (click)="onEdit(data.EmployeeId)"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p (click)="onDelete(data.EmployeeId)"><i
+                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -55,76 +64,83 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-warning">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Employee Form</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form #form="ngForm">
                                 <div class="row">
                                     <div class="col-6">
                                         <label for="text">Employee Name<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Employee Name" class="form-control"
-                                            name="empName" [(ngModel)]="empObj.EmployeeName" required #empName="ngModel">
-                                            <div class="text-danger" *ngIf="empName.touched">
-                                                <span *ngIf="empName.errors?.['required']">Employee Name is Required</span>
-                                            </div>
+                                            name="empName" [(ngModel)]="empObj.EmployeeName" required
+                                            #empName="ngModel">
+                                        <div class="text-danger" *ngIf="empName.touched">
+                                            <span *ngIf="empName.errors?.['required']">Employee Name is Required</span>
+                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="text">Contact No.<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Contact No." class="form-control"
-                                            name="cantactNo" [(ngModel)]="empObj.ContactNo" required #cantactNo="ngModel">
-                                            <div class="text-danger" *ngIf="cantactNo.touched" minlength="10">
-                                                <span *ngIf="cantactNo.errors?.['required']">Contact Number is Required</span>
-                                                <span *ngIf="cantactNo.errors?.['minlength']">Min 10 No. Required</span>
-                                            </div>
+                                            name="cantactNo" [(ngModel)]="empObj.ContactNo" required
+                                            #cantactNo="ngModel">
+                                        <div class="text-danger" *ngIf="cantactNo.touched" minlength="10">
+                                            <span *ngIf="cantactNo.errors?.['required']">Contact Number is
+                                                Required</span>
+                                            <span *ngIf="cantactNo.errors?.['minlength']">Min 10 No. Required</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="text">Email Id<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Email Id" class="form-control" name="emailId"
                                             [(ngModel)]="empObj.EmailId" required #emailId="ngModel">
-                                            <div class="text-danger" *ngIf="emailId.touched">
-                                                <span *ngIf="emailId.errors?.['required']">Email Id is Required</span>
-                                            </div>
+                                        <div class="text-danger" *ngIf="emailId.touched">
+                                            <span *ngIf="emailId.errors?.['required']">Email Id is Required</span>
+                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="text">User Name<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="user Name" class="form-control" name="userName"
                                             [(ngModel)]="empObj.UserName" required #userName="ngModel">
-                                            <div class="text-danger" *ngIf="userName.touched">
-                                                <span *ngIf="userName.errors?.['required']">User Name is Required</span>
-                                            </div>
+                                        <div class="text-danger" *ngIf="userName.touched">
+                                            <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="text">Reports To</label>
-                                        <select name="reportsTo" id="" [(ngModel)]="empObj.ReportsTo" class="form-control" (change)="getDpdlReport(empObj.DeptId)">
-                                            <option *ngFor="let role of roleArray">{{role}}</option>
+                                        <label for="text">Reports To<span class="text-danger">*</span></label>
+                                        <select name="reportsTo" id="" [(ngModel)]="empObj.EmployeeName"
+                                            class="form-control" >
+                                            <option *ngFor="let role of empArray" [value]="role.EmployeeName">{{role.EmployeeName}}</option>
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <label for="text">Role</label>
-                                        <select name="role" id="" [(ngModel)]="empObj.Role" class="form-control">
+                                        <label for="text">Role<span class="text-danger">*</span></label>
+                                        <select name="role" id="" [(ngModel)]="empObj.EmployeeId" class="form-control">
                                             <option *ngFor="let role of roleArray">{{role}}</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class="col-6">
-                                        <label>Department</label>
+                                        <label>Department<span class="text-danger">*</span></label>
                                         <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control">
-                                            <option *ngFor="let role of deptArray" [value]="role.DeptId">{{getDepName(role.DeptId)}}</option>
+                                            <option *ngFor="let role of deptArray" [value]="role.DeptId">
+                                                {{getDepName(role.DeptId)}}</option>
                                         </select>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">   
-                            <button type="button" class="btn btn-primary" (click)="onSave()" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId == 0">Save</button>
-                            <button type="button" class="btn btn-primary" (click)="onUpdate(empObj.EmployeeId)" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId != 0">Update</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
+                                 [disabled]="!form.form.valid" *ngIf="isSave">Save</button>
+                            <button type="button" class="btn btn-success" (click)="onUpdate(empObj.EmployeeId)"
+                                data-bs-dismiss="modal" *ngIf="!isSave">Update</button>
                             <button class="btn btn-danger" (click)="onReset()">Reset</button>
                         </div>
                     </div>
@@ -133,3 +149,4 @@
         </div>
     </div>
 </div>
+<p-toast></p-toast>
