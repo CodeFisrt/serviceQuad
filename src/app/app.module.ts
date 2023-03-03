@@ -22,6 +22,7 @@ import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.compo
 import { LoginGuard } from './Core/Gaurds/login/login.guard';
 import {ToastModule} from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,

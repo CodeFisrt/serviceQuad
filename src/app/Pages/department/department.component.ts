@@ -1,23 +1,25 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { DeptService } from 'src/app/Core/Services/dept.service/dept.service';
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
-  styleUrls: ['./department.component.css']
+  styleUrls: ['./department.component.css'],
+  providers: [MessageService]
 })
 export class DepartmentComponent implements OnInit {
   deptArray : deptClass[] =[];
   dpetObj : deptClass = new deptClass();
   isEditHide : boolean = false;
-
-  constructor(private service: DeptService) { }
+  checked: boolean = false;
+  constructor(private service: DeptService,private messageService: MessageService,
+    private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
     this.getAlldeptRec();
-  };
+  }
 
   getAlldeptRec() {
     this.service.getDept().subscribe((res:any)=>{
@@ -25,7 +27,7 @@ export class DepartmentComponent implements OnInit {
         this.deptArray = res;
       };
     })
-  };
+  }
 
   onReset() {
      this.dpetObj = new deptClass();
@@ -33,18 +35,19 @@ export class DepartmentComponent implements OnInit {
 
   onAdd(){
     this.onReset();
-  };
+  }
 
   onSave() {
     this.service.createDept(this.dpetObj).subscribe((res:any)=>{
       if(res){
         this.getAlldeptRec();
-        alert(res.message);
       }else{
         alert(res.message)
       };
      })
-  };
+     };
+      
+  
 
   onEdit(id:number) {
     this.service.editDept(id).subscribe((res:any)=>{

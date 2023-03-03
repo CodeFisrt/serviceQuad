@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 * {
@@ -19,7 +20,12 @@ body {
 	justify-content: center;
 
 }
-
+.iconPassword{
+	position: relative;
+	width: 250px;
+	font-size: 25px;
+	color: rgb(200, 204, 171);
+}
 .bg-img {
 	background-image: url(https://cdn.dribbble.com/users/2407430/screenshots/7419535/media/cc10db04e1a90fb9fc7ac8fe2ad058d9.png?compress=1&resize=1600x1200&vertical=top);
 	background-position: center;
@@ -29,11 +35,12 @@ body {
 }
 
 .screen {
+	margin-top: 29px;
+	margin-right: 60px;
 	background: linear-gradient(90deg, #5D54A4, #7C78B8);
 	position: relative;
-	transform: translate(335px, 29px);
-	height: 591px;
-	width: 351px;
+	height: 590px;
+	width: 330px;
 	box-shadow: 0px 0px 24px #5C5696;
 }
 
@@ -57,6 +64,10 @@ body {
 .screen__background__shape {
 	transform: rotate(45deg);
 	position: absolute;
+}
+
+button:hover{
+	background-color: skyblue;
 }
 
 .screen__background__shape1 {
@@ -131,7 +142,7 @@ body {
 }
 
 .login__submit {
-	background-color: gray;
+	background: #fff;
 	font-size: 14px;
 	margin-top: 30px;
 	padding: 16px 20px;
@@ -148,8 +159,6 @@ body {
 	transition: .2s;
 	transform: translate(90px, 0px);
 }
-
-
 
 .login__submit:active,
 .login__submit:focus,
@@ -189,7 +198,4 @@ body {
 
 .social-login__icon:hover {
 	transform: scale(1.5);
-}
-button:hover{
-	background-color: skyblue;
 }

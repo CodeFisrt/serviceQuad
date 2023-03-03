@@ -25,7 +25,6 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'employee', component: EmployeeComponent },
-      { path: 'createRequest', component: CreateRequestComponent },
       { path: 'requestList', component: RequestListComponent },
       { path: 'department', component: DepartmentComponent },
       { path: 'reports', component: ReportsComponent },
@@ -40,7 +39,6 @@ const routes: Routes = [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
       { path: 'employee', component: EmployeeComponent },
       { path: 'department', component: DepartmentComponent },
-      { path: 'createRequest', component: CreateRequestComponent },
       { path: 'requestList', component: RequestListComponent }
     ]
   },
