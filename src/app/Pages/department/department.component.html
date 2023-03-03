@@ -61,19 +61,20 @@
                      <form>
                         <div class="row">
                             <div class="col-12">
-                                <label for="text">Department Name</label>
-                                <input type="text" placeholder="Department Name" class="form-control" name="deptName" [(ngModel)]="dpetObj.DeptName">
+                                <label for="text">Department Name<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="Department Name" class="form-control" name="deptName" [(ngModel)]="dpetObj.DeptName" required #deptName="ngModel">
+                                <div class="text-danger" *ngIf="deptName.touched">
+                                    <span *ngIf="deptName.errors?.['required']">Department Name is Required</span>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="text">Department Head</label>
-                                <input type="text" placeholder="Department Head" class="form-control" name="deptHead" [(ngModel)]="dpetObj.DeptHead">
-                            </div>
-                        </div><div class="row">
-                            <div class="col-12">
-                                <label for="text">Created Date</label>
-                                <input type="date" placeholder="Created Date" class="form-control" name="CreatedDate" [(ngModel)]="dpetObj.CreatedDate">
+                                <label for="text">Department Head<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="Department Head" class="form-control" name="deptHead" [(ngModel)]="dpetObj.DeptHead" required #deptHead="ngModel">
+                                <div class="text-danger" *ngIf="deptHead.touched">
+                                    <span *ngIf="deptHead.errors?.['required']">Department Head is Required</span>
+                                </div>
                             </div>
                         </div>
                      </form>

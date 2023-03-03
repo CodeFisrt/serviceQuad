@@ -63,26 +63,39 @@
                             <form>
                                 <div class="row">
                                     <div class="col-6">
-                                        <label for="text">Employee Name</label>
+                                        <label for="text">Employee Name<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Employee Name" class="form-control"
-                                            name="empName" [(ngModel)]="empObj.EmployeeName">
+                                            name="empName" [(ngModel)]="empObj.EmployeeName" required #empName="ngModel">
+                                            <div class="text-danger" *ngIf="empName.touched">
+                                                <span *ngIf="empName.errors?.['required']">Employee Name is Required</span>
+                                            </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="text">Contact No.</label>
+                                        <label for="text">Contact No.<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Contact No." class="form-control"
-                                            name="cantactNo" [(ngModel)]="empObj.ContactNo">
+                                            name="cantactNo" [(ngModel)]="empObj.ContactNo" required #cantactNo="ngModel">
+                                            <div class="text-danger" *ngIf="cantactNo.touched" minlength="10">
+                                                <span *ngIf="cantactNo.errors?.['required']">Contact Number is Required</span>
+                                                <span *ngIf="cantactNo.errors?.['minlength']">Min 10 No. Required</span>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <label for="text">Email Id</label>
+                                        <label for="text">Email Id<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="Email Id" class="form-control" name="emailId"
-                                            [(ngModel)]="empObj.EmailId">
+                                            [(ngModel)]="empObj.EmailId" required #emailId="ngModel">
+                                            <div class="text-danger" *ngIf="emailId.touched">
+                                                <span *ngIf="emailId.errors?.['required']">Email Id is Required</span>
+                                            </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="text">User Name</label>
+                                        <label for="text">User Name<span class="text-danger">*</span></label>
                                         <input type="text" placeholder="user Name" class="form-control" name="userName"
-                                            [(ngModel)]="empObj.UserName">
+                                            [(ngModel)]="empObj.UserName" required #userName="ngModel">
+                                            <div class="text-danger" *ngIf="userName.touched">
+                                                <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -112,7 +125,6 @@
                         <div class="modal-footer">   
                             <button type="button" class="btn btn-primary" (click)="onSave()" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId == 0">Save</button>
                             <button type="button" class="btn btn-primary" (click)="onUpdate(empObj.EmployeeId)" data-bs-dismiss="modal" *ngIf="empObj.EmployeeId != 0">Update</button>
-
                             <button class="btn btn-danger" (click)="onReset()">Reset</button>
                         </div>
                     </div>

@@ -20,21 +20,24 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEmpReco();
     this.getAlldeptRec();
-  }
+  };
+
   getAllEmpReco() {
     this.service.getAllEmp().subscribe((res:any)=>{
       if(res){
         this.empArray = res;
-      }
+      };
     })
   };
+
   getAlldeptRec() {
     this.deptService.getDept().subscribe((res:any)=>{
       if(res){
         this.deptArray = res;
-      }
+      };
     })
   };
+
   onSave() {
      this.service.createEmp(this.empObj).subscribe((res:any)=>{
       if(res){
@@ -42,22 +45,24 @@ export class EmployeeComponent implements OnInit {
         alert(res.message);
       }else{
         alert(res.message)
-      }
+      };
      })
   };
+
   onReset() {
     this.empObj = new employeeClass();
-
   };
+
   onEdit(id: number) {
     this.service.editEmp(id).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
       }else{
         alert(res.message)
-      }
+      };
     })
   };
+
   onUpdate(id:number) {
     this.service.updateEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
@@ -69,6 +74,7 @@ export class EmployeeComponent implements OnInit {
       };
     })
   };
+
   onDelete(id:number){
     this.service.deleteEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
@@ -78,17 +84,19 @@ export class EmployeeComponent implements OnInit {
         alert(res.message)
       }
     })
-  }
+  };
+
   getDepName(id: number) {
     const deptName = this.deptArray.find(m => m.DeptId == id);
     return deptName ?.DeptName;
-  }
+  };
+
   getDpdlReport(id:number){
     this.service.dpdlReport(id).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
-      }
+      };
     })
-  }
+  };
 
 }

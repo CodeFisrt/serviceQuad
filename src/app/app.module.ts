@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmployeeLayoutComponent,
     AdminDptLayoutComponent,
     AdminDptDashboardComponent,
-    EmpDashboardComponent
+    EmpDashboardComponent,
   ],
   imports: [
     BrowserModule,
