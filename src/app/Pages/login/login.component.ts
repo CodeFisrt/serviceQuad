@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
 
 
   onLogin() {
-
-    this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
+    
+      this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
       if (res.Role == 'Admin') {
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       //   alert('Wrong Credentials')
       // }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
 }
