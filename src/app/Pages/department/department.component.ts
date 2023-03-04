@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
-import { DeptService } from 'src/app/Core/Services/dept.service/dept.service';
+import { DeptService } from 'src/app/Core/Services/dept/dept.service';
+
 
 @Component({
   selector: 'app-department',
@@ -54,22 +55,26 @@ export class DepartmentComponent implements OnInit {
     this.service.editDept(id).subscribe((res:any)=>{
       if(res){
         this.dpetObj = res;
-        alert(res.message)
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        alert(res.message)
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-    })
+     }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   };
 
   onDelete(id:number){
     this.service.deleteDept(id,this.dpetObj).subscribe((res:any)=>{
       if(res){
         this.getAlldeptRec();
-        alert(res.message)
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        alert(res.message)
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-    })
+     }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   };
 
   onUpdate(id:number) {
@@ -77,12 +82,12 @@ export class DepartmentComponent implements OnInit {
       if(res){
         this.dpetObj = res;
         this.getAlldeptRec();
-        alert(res.message)
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        alert(res.message)
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-      
-     })
+     }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   }
-
 }

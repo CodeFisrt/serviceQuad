@@ -3,16 +3,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-warning">
-                   <div class="row">
-                    <div class="col-6">
-                        <h4>Create Request</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Create Request</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="onAdd()">
+                                Add request
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-6 text-end">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onAdd()">
-                            Add request
-                          </button>
-                    </div>
-                   </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -33,19 +34,28 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    <tr *ngFor="let data of createRequestArray; let sr = index;" >
+                                    <tr *ngFor="let data of createRequestArray; let sr = index;">
                                         <td>{{sr+1}}</td>
                                         <td>{{data.RequestNo}}</td>
                                         <td>{{data.State | titlecase}}</td>
-                                        <td>{{data.CreatedDate | titlecase}}</td>
+                                        <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
                                         <td>{{data.ExpectedEndDate | date:'dd-MMM-yy'}}</td>
-                                        <td>{{data.Severity}}</td>
-                                        <td>{{data.AssignedUserName}}</td>
-                                        <td>{{data.EmployeeName}}</td>
-                                        <td>{{data.DeptName}}</td>
+                                        <td>{{data.Severity | titlecase}}</td>
+                                        <td>{{data.AssignedUserName | titlecase}}</td>
+                                        <td>{{data.EmployeeName | titlecase}}</td>
+                                        <td>{{data.DeptName | titlecase}}</td>
                                         <td>
-                                           <button class="btn btn-success btn-sm m-2" (click)="onEdit()" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                                           <button class="btn btn-danger btn-sm" (click)="onDelete()">Delete</button>
+                                            <div class="row">
+                                                <div class="col-6 text-end">
+                                                    <p (click)="onEdit(createRequestObj.RequestId)"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p (click)="onDelete(createRequestObj.RequestId,createRequestObj)"><i
+                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -57,3 +67,66 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Request Form</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="text">Select Department</label>
+                                        <select name="dept" class="form-control"
+                                            [(ngModel)]="createRequestObj.DeptId">
+                                            <option *ngFor="let dept of deptArray" [value]="dept.DeptId">
+                                                {{dept.DeptName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <label for="">Select Priority</label>
+                                        <select name="Select Priority" id="" class="form-control"
+                                            [(ngModel)]="createRequestObj.Severity">
+                                            <option value="">Select Priority</option>
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <label for="text">Your Request</label>
+                                        <textarea name="" id="" rows="4" class="form-control"
+                                            [(ngModel)]="createRequestObj.RequestDetails"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer ">
+                            <div class="row ">
+                                <div class="col">
+                                    <button type="button" class="btn btn-success m-2" (click)="onSave()"
+                                        data-bs-dismiss="modal" *ngIf="isSave">Save</button>
+                                    <button type="button" class="btn btn-success m-2"
+                                        (click)="onUpdate(createRequestObj.RequestId)" data-bs-dismiss="modal"
+                                        *ngIf="!isSave">Update</button>
+                                    <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

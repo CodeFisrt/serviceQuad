@@ -1,6 +1,6 @@
-export class createRequestClass {
+export class requestListClass {
     RequestId: number;
-    RequestNo: string;
+    RequestNo:string;
     EmployeeId: number;
     State: string;
     CreatedDate: Date;
@@ -11,26 +11,19 @@ export class createRequestClass {
     EmployeeName: string;
     DeptId: number;
     DeptName: string;
-    AssignedTo : number;
-    RequestDetails : string ;
-
+     
     constructor(){
         this.RequestId = 0,
         this.RequestNo = '',
         this.EmployeeId = 0,
-        this.State ='',
-        this.CreatedDate =new Date();
-        this.ExpectedEndDate = new Date();
+        this.State = '',
+        this.CreatedDate = new Date(),
+        this.ExpectedEndDate = new Date(),
         this.Severity = '',
-        this.CompletedDate =new Date();
-        this.AssignedUserName ='',
+        this.CompletedDate = new Date(),
+        this.AssignedUserName = '',
         this.EmployeeName = '',
         this.DeptId = 0,
-        this.DeptName = '',
-        this.AssignedTo = 0,
-        this.RequestDetails = ''
+        this.DeptName = ''
     }
 }
-
-
-
