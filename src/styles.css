@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+label {
+    font-size: 15px;
+  }
+  .form-control {
+    font-weight: 350;
+    padding: 0.3rem 0.55rem;
+  }
+  .text-danger {
+    font-size: 14px;
+  }
+  
