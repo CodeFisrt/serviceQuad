@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 * {
@@ -20,12 +19,14 @@ body {
 	justify-content: center;
 
 }
-.iconPassword{
+
+.iconPassword {
 	position: relative;
 	width: 250px;
 	font-size: 25px;
 	color: rgb(200, 204, 171);
 }
+
 .bg-img {
 	background-image: url(https://cdn.dribbble.com/users/2407430/screenshots/7419535/media/cc10db04e1a90fb9fc7ac8fe2ad058d9.png?compress=1&resize=1600x1200&vertical=top);
 	background-position: center;
@@ -66,7 +67,7 @@ body {
 	position: absolute;
 }
 
-button:hover{
+button:hover {
 	background-color: skyblue;
 }
 
@@ -198,4 +199,67 @@ button:hover{
 
 .social-login__icon:hover {
 	transform: scale(1.5);
+}
+
+/* // X-Small devices (portrait phones, less than 576px) */
+/* // No media query for `xs` since this is the default in Bootstrap */
+/* // Small devices (landscape phones, 320px and up) */
+@media (min-width: 320px) {}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 375px) {}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 425px) {}
+
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 768px) {}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1024px) {
+	.bg-img {
+		background-size: 90%;
+		height: 650px;
+		width: 100%;
+	}
+
+	.screen {
+		margin-top: 29px;
+		margin-right: 60px;
+		height: 590px;
+		width: 330px;
+	}
+
+	.screen__background__shape1 {
+		height: 520px;
+		width: 520px;
+		top: -50px;
+		right: 120px;
+	}
+}
+
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1440px) {
+	.bg-img {
+		background-size: 100%;
+		height: 860px;
+		width: 100%;
+	}
+
+	.screen {
+		height: 772px;
+		width: 442px;
+		margin-top: 42px;
+		margin-right: 112px;
+	}
+
+	.screen__background__shape1 {
+		height: 549px;
+		width: 1215px;
+		top: -165px;
+		right: 110px;
+	}
 }

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl('dashboard');
       } else if (res.Role == 'AdminDept') {
         this.route.navigateByUrl('adminDptDashboard');
-      } else if (res.Role == 'Employee') {
+      } else if (res.Role == 'Empoyee') {
         this.route.navigateByUrl('empDashboard');
       } else {
         this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });

@@ -129,6 +129,7 @@
                                     <div class="col-6">
                                         <label>Department<span class="text-danger">*</span></label>
                                         <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control">
+                                            <option value="" disabled>Select department</option>
                                             <option *ngFor="let role of deptArray" [value]="role.DeptId">
                                                 {{getDepName(role.DeptId)}}</option>
                                         </select>

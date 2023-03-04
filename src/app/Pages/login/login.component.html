@@ -7,19 +7,19 @@
                     <div class="screen__content">
                         <form class="login">
                             <div class="login__field">
-                                <label><b>User Id <span class="text-danger">*</span></b></label><br>
+                                <label><b>User Name <span class="text-danger">*</span></b></label><br>
                                 <i class="login__icon fas fa-user"></i>
                                 <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
-                                    placeholder="User Id" required #userName="ngModel">
+                                    placeholder="User Name" required #userName="ngModel">
                                 <div class="text-danger" *ngIf="userName.touched">
-                                    <span *ngIf="userName.errors?.['required']">UserName is required</span>
+                                    <span *ngIf="userName.errors?.['required']">User Name is Required</span>
                                 </div>
                             </div>
                             <div class="login__field">
                                 <label><b>Password <span class="text-danger">*</span></b></label>
                                 <i class="login__icon fas fa-lock"></i>
-                                <input [type]="changetype?'password':'text'" name="userName" class="login__input"
-                                    [(ngModel)]="loginObj.Password" required #password="ngModel">
+                                <input [type]="changetype?'password':'text'" name="Password" class="login__input"
+                                    [(ngModel)]="loginObj.Password" placeholder="Password" required #password="ngModel">
                                 <span class="iconPassword" (click)="viewpass()"><i
                                         [ngClass]="visible?'bi bi-eye-fill':'bi bi-eye-slash-fill'"></i></span>
                                 <div class="text-danger" *ngIf="password.touched">
