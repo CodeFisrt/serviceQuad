@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationService, Message, } from 'primeng/api';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  public msgs: Message[] = [];
 
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
   getAllUser(): Observable<any> {
     return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetUsers')
   }
@@ -17,17 +19,17 @@ export class LoginService {
     return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/Login', obj)
   }
 
-  logUserInfo():any{
+  logUserInfo(): any {
     let localData = localStorage.getItem('adminLoginDetails');
-    if(localData != null){
+    if (localData != null) {
       localData = JSON.parse(localData)
       return localData;
-    }else{
-      return { }
+    } else {
+      return {}
     }
   }
 
-  onLogout(){
+  onLogout() {
     localStorage.clear()
     this.router.navigateByUrl('login')
   }

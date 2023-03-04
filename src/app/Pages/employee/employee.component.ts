@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
+
 import { deptClass } from 'src/app/Core/Classes/department';
 import { employeeClass } from 'src/app/Core/Classes/employee';
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
@@ -16,6 +17,8 @@ export class EmployeeComponent implements OnInit {
   empObj : employeeClass = new employeeClass();
   roleArray:string[] =['Employee','Admin Dept.']
   deptArray : deptClass[] = [];
+  isSave : boolean = true;
+  deptobj:deptClass = new deptClass();
 
   constructor(private service : EmployeeService, private deptService : DeptService, private messageService: MessageService,
     private primengConfig: PrimeNGConfig) { }
@@ -23,21 +26,25 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEmpReco();
     this.getAlldeptRec();
-  }
+    this.getDpdlReport();
+  };
+
   getAllEmpReco() {
     this.service.getAllEmp().subscribe((res:any)=>{
       if(res){
         this.empArray = res;
-      }
+      };
     })
   };
+
   getAlldeptRec() {
     this.deptService.getDept().subscribe((res:any)=>{
       if(res){
         this.deptArray = res;
-      }
+      };
     })
   };
+
   onSave() {
      this.service.createEmp(this.empObj).subscribe((res:any)=>{
       if(res){
@@ -50,11 +57,13 @@ export class EmployeeComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
+
   onReset() {
     this.empObj = new employeeClass();
-
   };
+
   onEdit(id: number) {
+    this.isSave = false;
     this.service.editEmp(id).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
@@ -68,6 +77,7 @@ export class EmployeeComponent implements OnInit {
   };
 
   onUpdate(id:number) {
+    this.isSave = true;
     this.service.updateEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
@@ -97,13 +107,21 @@ export class EmployeeComponent implements OnInit {
   getDepName(id: number) {
     const deptName = this.deptArray.find(m => m.DeptId == id);
     return deptName ?.DeptName;
-  }
-  getDpdlReport(id:number){
-    this.service.dpdlReport(id).subscribe((res:any)=>{
+  };
+
+  getDpdlReport(){
+    this.service.dpdlReport(this.deptobj.DeptId).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
-      }
+      };
     })
-  }
+  };
 
+  getDpdlDept(){
+    this.service.dpdlDept().subscribe((res:any)=>{
+      if(res){
+        this.deptArray = res;
+      };
+    })
+  };
 }

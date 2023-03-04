@@ -26,7 +26,7 @@ export class DepartmentComponent implements OnInit {
     this.service.getDept().subscribe((res:any)=>{
       if(res){
         this.deptArray = res;
-      }
+      };
     })
   }
 
@@ -42,14 +42,13 @@ export class DepartmentComponent implements OnInit {
     this.service.createDept(this.dpetObj).subscribe((res:any)=>{
       if(res){
         this.getAlldeptRec();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
-      }
-     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
-    });
-  };
+        alert(res.message)
+      };
+     })
+     };
+      
+  
 
   onEdit(id:number) {
     this.service.editDept(id).subscribe((res:any)=>{

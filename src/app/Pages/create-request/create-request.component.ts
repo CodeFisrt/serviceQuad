@@ -68,7 +68,7 @@ export class CreateRequestComponent implements OnInit {
     this.isSave = true;
   };
 
-  onEdit(id: number) {
+  onEdit(id:number) {
     this.isSave = false;
     this.onReset();
     this.service.editCreateRequest(id).subscribe((res: any) => {

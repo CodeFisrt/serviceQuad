@@ -22,6 +22,11 @@ import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.compo
 import { LoginGuard } from './Core/Gaurds/login/login.guard';
 import {ToastModule} from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllpipePipe } from './shared/pipes/allpipe.pipe';
+import { LoaderComponent } from './shared/Reusable Componant/loader/loader.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmployeeLayoutComponent,
     AdminDptLayoutComponent,
     AdminDptDashboardComponent,
-    EmpDashboardComponent
+    EmpDashboardComponent,
+    AllpipePipe,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule,
+    ButtonModule,
+    MessagesModule,
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]
