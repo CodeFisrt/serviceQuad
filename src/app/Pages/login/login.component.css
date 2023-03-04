@@ -226,10 +226,10 @@ button:hover {
 	}
 
 	.screen {
-		margin-top: 29px;
-		margin-right: 60px;
-		height: 590px;
-		width: 330px;
+		margin-top: 30px;
+		margin-right: 51px;
+		height: 588px;
+		width: 329px;
 	}
 
 	.screen__background__shape1 {
@@ -262,4 +262,40 @@ button:hover {
 		top: -165px;
 		right: 110px;
 	}
+}
+
+/* // XX-Large devices (larger, 2560px and up) */
+@media (min-width: 2560px) {
+	.bg-img {
+		background-size: 95%;
+		height: 1553px;
+		width: 90%;
+	}
+
+	.screen {
+		height: 1176px;
+		width: 673px;
+		margin-top: 186px;
+		margin-right: 1130px;
+	}
+
+	.screen__background__shape1 {
+		height: 694px;
+		width: 1209px;
+		top: 138px;
+		right: 72px;
+	}
+
+	.usarname {
+		font-size: 28px;
+	}
+
+	.login__field {
+		font-size: 24px;
+	}
+
+	.text-danger {
+		font-size: 17px;
+	}
+
 }

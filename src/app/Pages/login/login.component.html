@@ -5,31 +5,33 @@
             <div class="col-sm-1">
                 <div class="screen">
                     <div class="screen__content">
-                        <form class="login">
-                            <div class="login__field">
-                                <label><b>User Name <span class="text-danger">*</span></b></label><br>
-                                <i class="login__icon fas fa-user"></i>
-                                <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
-                                    placeholder="User Name" required #userName="ngModel">
-                                <div class="text-danger" *ngIf="userName.touched">
-                                    <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                        <div class="formtag">
+                            <form class="login">
+                                <div class="login__field">
+                                    <label ><b class="usarname">User Name <span class="text-danger usarname">*</span></b></label><br>
+                                    <i class="login__icon fas fa-user"></i>
+                                    <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
+                                        placeholder="User Name" required #userName="ngModel">
+                                    <div class="text-danger" *ngIf="userName.touched">
+                                        <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="login__field">
-                                <label><b>Password <span class="text-danger">*</span></b></label>
-                                <i class="login__icon fas fa-lock"></i>
-                                <input [type]="changetype?'password':'text'" name="Password" class="login__input"
-                                    [(ngModel)]="loginObj.Password" placeholder="Password" required #password="ngModel">
-                                <span class="iconPassword" (click)="viewpass()"><i
-                                        [ngClass]="visible?'bi bi-eye-fill':'bi bi-eye-slash-fill'"></i></span>
-                                <div class="text-danger" *ngIf="password.touched">
-                                    <span *ngIf="password.errors?.['required']">Password is required</span>
+                                <div class="login__field">
+                                    <label><b class="usarname">Password <span class="text-danger usarname">*</span></b></label>
+                                    <i class="login__icon fas fa-lock"></i>
+                                    <input [type]="changetype?'password':'text'" name="Password" class="login__input"
+                                        [(ngModel)]="loginObj.Password" placeholder="Password" required #password="ngModel">
+                                    <span class="iconPassword" (click)="viewpass()"><i
+                                            [ngClass]="visible?'bi bi-eye-fill':'bi bi-eye-slash-fill'"></i></span>
+                                    <div class="text-danger" *ngIf="password.touched">
+                                        <span *ngIf="password.errors?.['required']">Password is required</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="button login__submit " (click)="onLogin()">
-                                <h5><b>Login</b></h5>
-                            </button>
-                        </form>
+                                <button class="button login__submit " (click)="onLogin()">
+                                    <h5><b>Login</b></h5>
+                                </button>
+                            </form>
+                        </div>
 
                     </div>
                     <div class="screen__background">
