@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { employeeClass } from 'src/app/Core/Classes/employee';
-import { requestListClass } from 'src/app/Core/Classes/requestList';
+import { requestListClass, searchList } from 'src/app/Core/Classes/requestList';
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
 import { EmployeeService } from 'src/app/Core/Services/employee/employee.service';
 import { RequestListService } from 'src/app/Core/Services/requestList/request-list.service';
@@ -13,9 +13,10 @@ import { RequestListService } from 'src/app/Core/Services/requestList/request-li
 })
 export class RequestListComponent implements OnInit {
   requestListArray: requestListClass[] = [];
-  requestListObj: requestListClass = new requestListClass();
+  requestListObj: searchList = new searchList();
   deptArray : deptClass[] = [];
   empArray: employeeClass[]=[];
+  isSeverity: boolean = false;
 
   constructor(private service: RequestListService, private deptService : DeptService , private empService : EmployeeService) { }
 
@@ -54,7 +55,7 @@ export class RequestListComponent implements OnInit {
   };
 
   onReset(){
-    this.requestListObj = new requestListClass();
+    this.requestListObj = new searchList();
     this.onBlurRequest();
   }
 

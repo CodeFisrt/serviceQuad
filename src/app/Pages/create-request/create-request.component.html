@@ -36,23 +36,23 @@
                                 <tbody class="text-center">
                                     <tr *ngFor="let data of createRequestArray; let sr = index;">
                                         <td>{{sr+1}}</td>
-                                        <td>{{data.RequestNo}}</td>
-                                        <td>{{data.State | titlecase}}</td>
-                                        <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
-                                        <td>{{data.ExpectedEndDate | date:'dd-MMM-yy'}}</td>
-                                        <td>{{data.Severity | titlecase}}</td>
-                                        <td>{{data.AssignedUserName | titlecase}}</td>
-                                        <td>{{data.EmployeeName | titlecase}}</td>
-                                        <td>{{data.DeptName | titlecase}}</td>
+                                        <td>{{data.RequestNo | allpipe}}</td>
+                                        <td>{{data.State | titlecase| allpipe }}</td>
+                                        <td>{{data.CreatedDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{data.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{data.Severity | titlecase | allpipe}}</td>
+                                        <td>{{data.AssignedUserName | titlecase | allpipe}}</td>
+                                        <td>{{data.EmployeeName | titlecase | allpipe}}</td>
+                                        <td>{{data.DeptName | titlecase | allpipe}}</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col-6 text-end">
-                                                    <p (click)="onEdit(createRequestObj.EmployeeId)"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                    <p (click)="onEdit(data.RequestId)" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal"><i
                                                             class="bi bi-pencil-square text-warning fs-5"></i></p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <p (click)="onDelete(createRequestObj.RequestId,createRequestObj)"><i
+                                                    <p (click)="onDelete(data.RequestId)"><i
                                                             class="bi bi-trash-fill text-danger fs-5"></i></p>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                 <div class="row">
                                     <div class="col-12 mt-2">
                                         <label for="">Select Priority</label>
-                                        <select name="Select Priority" id="" class="form-control"
+                                        <select name="SelectPriority" id="" class="form-control"
                                             [(ngModel)]="createRequestObj.Severity">
                                             <option value="">Select Priority</option>
                                             <option value="Low">Low</option>
@@ -105,7 +105,7 @@
                                 <div class="row">
                                     <div class="col-12 mt-2">
                                         <label for="text">Your Request</label>
-                                        <textarea name="" id="" rows="4" class="form-control"
+                                        <textarea name="request" id="" rows="4" class="form-control"
                                             [(ngModel)]="createRequestObj.RequestDetails"></textarea>
                                     </div>
                                 </div>
@@ -117,8 +117,8 @@
                                     <button type="button" class="btn btn-success m-2" (click)="onSave()"
                                         data-bs-dismiss="modal" *ngIf="isSave">Save</button>
                                     <button type="button" class="btn btn-success m-2"
-                                        (click)="onUpdate(createRequestObj.RequestId)" data-bs-dismiss="modal"
-                                        *ngIf="!isSave">Update</button>
+                                        (click)="onUpdate(createRequestObj.EmployeeId,createRequestObj)"
+                                        data-bs-dismiss="modal" *ngIf="!isSave">Update</button>
                                     <button class="btn btn-danger" (click)="onReset()">Reset</button>
                                 </div>
                             </div>

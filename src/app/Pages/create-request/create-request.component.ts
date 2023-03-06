@@ -83,10 +83,9 @@ export class CreateRequestComponent implements OnInit {
     });
   };
 
-  onUpdate(id: number) {
-    this.service.updateCreateRequest(id, this.createRequestObj).subscribe((res: any) => {
+  onUpdate(id: number,obj:any) {
+    this.service.updateCreateRequest(id,obj).subscribe((res: any) => {
       if (res) {
-        this.createRequestObj = res;
         this.getAllCreateEmployee();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
@@ -98,8 +97,8 @@ export class CreateRequestComponent implements OnInit {
     this.onReset();
   };
 
-  onDelete(id: number,obj:any) {
-    this.service.deleteCreateRequest(id,obj).subscribe((res: any) => {
+  onDelete(id: number) {
+    this.service.deleteCreateRequest(id,this.createRequestObj).subscribe((res: any) => {
       if (res) {
         this.getAllCreateEmployee();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
