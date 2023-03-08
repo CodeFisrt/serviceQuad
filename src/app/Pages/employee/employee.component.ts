@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
-=======
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-
->>>>>>> 092c9fae42ab47c004f4af7594627567d3c45ad4
 import { deptClass } from 'src/app/Core/Classes/department';
 import { employeeClass } from 'src/app/Core/Classes/employee';
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
@@ -18,21 +13,16 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
   providers: [ConfirmationService, MessageService]
 })
 export class EmployeeComponent implements OnInit {
-  empArray : employeeClass[]  = [];
-  empObj : employeeClass = new employeeClass();
-  roleArray:string[] =['Employee','Admin Dept.']
-  deptArray : deptClass[] = [];
-  isSave : boolean = true;
-  deptobj:deptClass = new deptClass();
+  empArray: employeeClass[] = [];
+  empObj: employeeClass = new employeeClass();
+  roleArray: string[] = ['Employee', 'Admin Dept.']
+  deptArray: deptClass[] = [];
+  isSave: boolean = true;
+  deptobj: deptClass = new deptClass();
   msgs: Message[] = [];
 
-<<<<<<< HEAD
-  constructor(private service : EmployeeService, private deptService : DeptService,
-    private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig,public loginService: LoginService) { }
-=======
-  constructor(private service : EmployeeService, private deptService : DeptService, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) { }
->>>>>>> 092c9fae42ab47c004f4af7594627567d3c45ad4
+  constructor(private service: EmployeeService, private deptService: DeptService,
+    private confirmationService: ConfirmationService, private messageService: MessageService, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.getAllEmpReco();
@@ -41,24 +31,24 @@ export class EmployeeComponent implements OnInit {
   };
 
   getAllEmpReco() {
-    this.service.getAllEmp().subscribe((res:any)=>{
-      if(res){
+    this.service.getAllEmp().subscribe((res: any) => {
+      if (res) {
         this.empArray = res;
       };
     })
   };
 
   getAlldeptRec() {
-    this.deptService.getDept().subscribe((res:any)=>{
-      if(res){
+    this.deptService.getDept().subscribe((res: any) => {
+      if (res) {
         this.deptArray = res;
       };
     })
   };
 
   onSave() {
-     this.service.createEmp(this.empObj).subscribe((res:any)=>{
-      if(res){
+    this.service.createEmp(this.empObj).subscribe((res: any) => {
+      if (res) {
         this.getAllEmpReco();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
@@ -75,8 +65,8 @@ export class EmployeeComponent implements OnInit {
 
   onEdit(id: number) {
     this.isSave = false;
-    this.service.editEmp(id).subscribe((res:any)=>{
-      if(res){
+    this.service.editEmp(id).subscribe((res: any) => {
+      if (res) {
         this.empObj = res;
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
@@ -87,13 +77,13 @@ export class EmployeeComponent implements OnInit {
     });
   };
 
-  onUpdate(id:number) {
+  onUpdate(id: number) {
     this.isSave = true;
-    this.service.updateEmp(id,this.empObj).subscribe((res:any)=>{
-      if(res){
+    this.service.updateEmp(id, this.empObj).subscribe((res: any) => {
+      if (res) {
         this.empObj = res;
         this.getAllEmpReco();
-         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
@@ -101,7 +91,8 @@ export class EmployeeComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
-  confirm1(id:number) {
+
+  onDeleteConfirm(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to proceed?',
       header: 'Confirmation',
@@ -115,11 +106,12 @@ export class EmployeeComponent implements OnInit {
       }
     });
   }
-  onDelete(id:number){
-    this.service.deleteEmp(id,this.empObj).subscribe((res:any)=>{
-      if(res){
+
+  onDelete(id: number) {
+    this.service.deleteEmp(id, this.empObj).subscribe((res: any) => {
+      if (res) {
         this.getAllEmpReco();
-         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
@@ -130,20 +122,20 @@ export class EmployeeComponent implements OnInit {
 
   getDepName(id: number) {
     const deptName = this.deptArray.find(m => m.DeptId == id);
-    return deptName ?.DeptName;
+    return deptName?.DeptName;
   };
 
-  getDpdlReport(){
-    this.service.dpdlReport(this.deptobj.DeptId).subscribe((res:any)=>{
-      if(res){
+  getDpdlReport() {
+    this.service.dpdlReport(this.deptobj.DeptId).subscribe((res: any) => {
+      if (res) {
         this.empObj = res;
       };
     })
   };
 
-  getDpdlDept(){
-    this.service.dpdlDept().subscribe((res:any)=>{
-      if(res){
+  getDpdlDept() {
+    this.service.dpdlDept().subscribe((res: any) => {
+      if (res) {
         this.deptArray = res;
       };
     })
