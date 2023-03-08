@@ -226,10 +226,10 @@ button:hover {
 	}
 
 	.screen {
-		margin-top: 29px;
-		margin-right: 60px;
-		height: 590px;
-		width: 330px;
+		margin-top: 30px;
+		margin-right: 51px;
+		height: 588px;
+		width: 329px;
 	}
 
 	.screen_background_shape1 {
@@ -250,10 +250,10 @@ button:hover {
 	}
 
 	.screen {
-		height: 772px;
-		width: 442px;
-		margin-top: 42px;
-		margin-right: 112px;
+		height: 817px;
+		width: 466px;
+		margin-top: 20px;
+		margin-right: 201px;
 	}
 
 	.screen_background_shape1 {
@@ -263,5 +263,44 @@ button:hover {
 		right: 110px;
 	}
 }
+<<<<<<< HEAD
 /* // XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1440px) {}
+=======
+
+/* // XX-Large devices (larger, 2560px and up) */
+@media (min-width: 2560px) {
+	.bg-img {
+		background-size: 95%;
+		height: 1553px;
+		width: 90%;
+	}
+
+	.screen {
+		height: 1176px;
+		width: 673px;
+		margin-top: 186px;
+		margin-right: 1130px;
+	}
+
+	.screen__background__shape1 {
+		height: 694px;
+		width: 1209px;
+		top: 138px;
+		right: 72px;
+	}
+
+	.usarname {
+		font-size: 28px;
+	}
+
+	.login__field {
+		font-size: 24px;
+	}
+
+	.text-danger {
+		font-size: 17px;
+	}
+
+}
+>>>>>>> 6ad36ef16dfc4ce8e7e0d8b5d5779cc066206f56
