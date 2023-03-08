@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'employee', component: EmployeeComponent },
       { path: 'requestList', component: RequestListComponent },
-      { path: 'department', component: DepartmentComponent },
+      { path: 'dapartment', component: DepartmentComponent },
       { path: 'reports', component: ReportsComponent },
       { path: 'leaves', component: LeavesComponent },
       { path: 'leaveForApproval', component: LeaveForApprovalComponent }
@@ -38,7 +38,7 @@ const routes: Routes = [
     children: [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
       { path: 'employee', component: EmployeeComponent },
-      { path: 'department', component: DepartmentComponent },
+      { path: 'dapartment', component: DepartmentComponent },
       { path: 'requestList', component: RequestListComponent }
     ]
   },

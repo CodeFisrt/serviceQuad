@@ -10,7 +10,7 @@
                                 <div class="login__field">
                                     <label ><b class="usarname">User Name <span class="text-danger usarname">*</span></b></label><br>
                                     <i class="login__icon fas fa-user"></i>
-                                    <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
+                                    <input type="text" name="userName" class="login__input form-control" [(ngModel)]="loginObj.UserName"
                                         placeholder="User Name" required #userName="ngModel">
                                     <div class="text-danger" *ngIf="userName.touched">
                                         <span *ngIf="userName.errors?.['required']">User Name is Required</span>

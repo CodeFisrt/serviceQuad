@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, Message,  MessageService,  PrimeNGConfig } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { DeptService } from 'src/app/Core/Services/dept.service/dept.service';
+import { LoginService } from 'src/app/Core/Services/Login/login.service';
 
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css'],
-  providers: [MessageService]
+  providers: [ConfirmationService, MessageService],
+  
 })
 export class DepartmentComponent implements OnInit {
   deptArray : deptClass[] =[];
   dpetObj : deptClass = new deptClass();
   isEditHide : boolean = false;
   checked: boolean = false;
-  constructor(private service: DeptService,private messageService: MessageService,
+  msgs: Message[] = [];
+  constructor(private service: DeptService,public loginService: LoginService, private confirmationService: ConfirmationService,
     private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
@@ -35,6 +38,21 @@ export class DepartmentComponent implements OnInit {
 
   onAdd(){
     this.onReset();
+  }
+
+  confirm1(id:number) {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+        this.onDelete(id);
+      },
+      reject: () => {
+        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+      }
+    });
   }
 
   onSave() {
