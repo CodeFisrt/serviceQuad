@@ -62,7 +62,7 @@ body {
 	clip-path: inset(0 0 0 0);
 }
 
-.screen__background__shape {
+.screen_background_shape {
 	transform: rotate(45deg);
 	position: absolute;
 }
@@ -71,7 +71,7 @@ button:hover {
 	background-color: skyblue;
 }
 
-.screen__background__shape1 {
+.screen_background_shape1 {
 	height: 520px;
 	width: 520px;
 	background: #FFF;
@@ -80,7 +80,7 @@ button:hover {
 	border-radius: 0 72px 0 0;
 }
 
-.screen__background__shape2 {
+.screen_background_shape2 {
 	height: 220px;
 	width: 220px;
 	background: #6C63AC;
@@ -89,7 +89,7 @@ button:hover {
 	border-radius: 32px;
 }
 
-.screen__background__shape3 {
+.screen_background_shape3 {
 	height: 540px;
 	width: 190px;
 	background: linear-gradient(270deg, #5D54A4, #6A679E);
@@ -98,7 +98,7 @@ button:hover {
 	border-radius: 32px;
 }
 
-.screen__background__shape4 {
+.screen_background_shape4 {
 	height: 400px;
 	width: 200px;
 	background: #7E7BB9;
@@ -232,7 +232,7 @@ button:hover {
 		width: 329px;
 	}
 
-	.screen__background__shape1 {
+	.screen_background_shape1 {
 		height: 520px;
 		width: 520px;
 		top: -50px;
@@ -256,13 +256,17 @@ button:hover {
 		margin-right: 201px;
 	}
 
-	.screen__background__shape1 {
+	.screen_background_shape1 {
 		height: 549px;
 		width: 1215px;
 		top: -165px;
 		right: 110px;
 	}
 }
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1440px) {}
+
 
 /* // XX-Large devices (larger, 2560px and up) */
 @media (min-width: 2560px) {
@@ -299,3 +303,4 @@ button:hover {
 	}
 
 }
+

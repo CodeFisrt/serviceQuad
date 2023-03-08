@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'requestList', component: RequestListComponent },
       { path: 'dapartment', component: DepartmentComponent },
       { path: 'reports', component: ReportsComponent },
-      { path: 'leaves', component: LeavesComponent },
+      { path: 'adminleaves', component: LeavesComponent },
       { path: 'leaveForApproval', component: LeaveForApprovalComponent }
     ]
   },
@@ -49,7 +49,7 @@ const routes: Routes = [
       { path: 'empDashboard', component: EmpDashboardComponent },
       { path: 'createRequest', component: CreateRequestComponent },
       { path: 'requestList', component: RequestListComponent },
-      { path: 'leaves', component: LeavesComponent }
+      { path: 'empleaves', component: LeavesComponent }
     ]
   }
 ];

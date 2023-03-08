@@ -1,1 +1,132 @@
-<p>create-request works!</p>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Create Request</h4>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="onAdd()">
+                                Add request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr class="bg-secondary text-white text-center">
+                                        <th>Sr.No</th>
+                                        <th>RequestNo</th>
+                                        <th>State</th>
+                                        <th>Created Date</th>
+                                        <th>Expected End Date</th>
+                                        <th>Severity</th>
+                                        <th>Assigned User Name</th>
+                                        <th>Employee Name</th>
+                                        <th>Dept Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr *ngFor="let data of createRequestArray; let sr = index;">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{data.RequestNo | allpipe}}</td>
+                                        <td>{{data.State | titlecase| allpipe }}</td>
+                                        <td>{{data.CreatedDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{data.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{data.Severity | titlecase | allpipe}}</td>
+                                        <td>{{data.AssignedUserName | titlecase | allpipe}}</td>
+                                        <td>{{data.EmployeeName | titlecase | allpipe}}</td>
+                                        <td>{{data.DeptName | titlecase | allpipe}}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-6 text-end">
+                                                    <p (click)="onEdit(data.RequestId)" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal"><i
+                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p (click)="onDelete(data.RequestId)"><i
+                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Request Form</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="text">Select Department</label>
+                                        <select name="dept" class="form-control"
+                                            [(ngModel)]="createRequestObj.DeptId">
+                                            <option *ngFor="let dept of deptArray" [value]="dept.DeptId">
+                                                {{dept.DeptName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <label for="">Select Priority</label>
+                                        <select name="SelectPriority" id="" class="form-control"
+                                            [(ngModel)]="createRequestObj.Severity">
+                                            <option value="">Select Priority</option>
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <label for="text">Your Request</label>
+                                        <textarea name="request" id="" rows="4" class="form-control"
+                                            [(ngModel)]="createRequestObj.RequestDetails"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer ">
+                            <div class="row ">
+                                <div class="col">
+                                    <button type="button" class="btn btn-success m-2" (click)="onSave()"
+                                        data-bs-dismiss="modal" *ngIf="isSave">Save</button>
+                                    <button type="button" class="btn btn-success m-2"
+                                        (click)="onUpdate(createRequestObj.EmployeeId,createRequestObj)"
+                                        data-bs-dismiss="modal" *ngIf="!isSave">Update</button>
+                                    <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

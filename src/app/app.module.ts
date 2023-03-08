@@ -22,11 +22,13 @@ import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.compo
 import { LoginGuard } from './Core/Gaurds/login/login.guard';
 import {ToastModule} from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AllpipePipe } from './shared/pipes/allpipe.pipe';
-import { LoaderComponent } from './shared/Reusable Componant/loader/loader.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ConfirmationService , MessageService} from 'primeng/api';
+import { AllpipePipe } from './Shared/Pipes/allpipe.pipe';
+import { LoaderComponent } from './Shared/Reusable Componant/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { MessagesModule } from 'primeng/messages';
     AdminDptDashboardComponent,
     EmpDashboardComponent,
     AllpipePipe,
-    LoaderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +61,9 @@ import { MessagesModule } from 'primeng/messages';
     ConfirmDialogModule,
     ButtonModule,
     MessagesModule,
+    ConfirmPopupModule
   ],
-  providers: [LoginGuard],
+  providers: [LoginGuard,ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
