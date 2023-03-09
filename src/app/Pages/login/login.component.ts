@@ -31,36 +31,21 @@ export class LoginComponent implements OnInit {
   };
 
   onLogin() {
-  //   this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
-  //     localStorage.setItem('adminLoginDetails', JSON.stringify(res));
-  //     if (res.Role == 'Admin') {
-  //       this.route.navigateByUrl('dashboard');
-  //     } else if (res.Role == 'AdminDept') {
-  //       this.route.navigateByUrl('adminDptDashboard');
-  //     } else if (res.Role == 'Empoyee') {
-  //       this.route.navigateByUrl('empDashboard');
-  //     } else {
-  //       this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
-  //     }
-  //   }, (error: any) => {
-  //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
-  //   });
+    this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
+      localStorage.setItem('adminLoginDetails', JSON.stringify(res));
+      if (res.Role == 'Admin') {
+        this.route.navigateByUrl('dashboard');
+      } else if (res.Role == 'AdminDept') {
+        this.route.navigateByUrl('adminDptDashboard');
+      } else if (res.Role == 'Employee') {
+        this.route.navigateByUrl('empDashboard');
+      } else {
+        this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
+      }
+    }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+    });
 
-  // };
-  this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
-    localStorage.setItem('adminLoginDetails', JSON.stringify(res));
-    if (res.Role == 'Admin') {
-      this.route.navigateByUrl('dashboard');
-    } else if (res.Role == 'AdminDept') {
-      this.route.navigateByUrl('adminDptDashboard');
-    } else if (res.Role == 'Employee') {
-      this.route.navigateByUrl('empDashboard');
-    } else {
-      this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
-    }
-  }, (error: any) => {
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
-    });
-  }
+  };
 
 }

@@ -9,7 +9,7 @@ export class AdminDeptDashboardService {
 
   constructor(public http:HttpClient) { }
 
-  GetAdminDeptDashboard():Observable<any> {
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAdminDeptDashboardById?id=')
+  GetAdminDeptDashboard(id:number):Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAdminDeptDashboardById?id='+id)
   }
 }
