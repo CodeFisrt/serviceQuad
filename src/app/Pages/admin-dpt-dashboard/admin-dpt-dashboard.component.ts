@@ -12,19 +12,31 @@ export class AdminDptDashboardComponent implements OnInit {
   
   AdminDptDashboard:adminDeptDashboardClass[]=[];
   AdminDptDashboardObj:adminDeptDashboardClass= new adminDeptDashboardClass();
+  adminUserData:any;
+  employeeId:number=0
 
 
-  constructor(public http:HttpClient, public service:AdminDeptDashboardService) { }
+  constructor(public http:HttpClient, public service:AdminDeptDashboardService) { 
+    const adminData= localStorage.getItem('adminLoginDetails');
+    if(adminData!= null) {
+      this.adminUserData=JSON.parse(adminData);
+      this.employeeId = this.adminUserData.EmployeeId;
+    }
+  };
+
 
   ngOnInit(): void {
     this.GetAdminDeptDashboardRecords();
   };
 
+  
   GetAdminDeptDashboardRecords() {
-    this.service.GetAdminDeptDashboard().subscribe((res:any)=>{
+    this.service.GetAdminDeptDashboard(this.employeeId).subscribe((res:any)=>{
       this.AdminDptDashboardObj=res[0]
     })
-  }
+  };
+
+
 
 
 
