@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
-=======
-import { MessageService, PrimeNGConfig } from 'primeng/api';
-
->>>>>>> 092c9fae42ab47c004f4af7594627567d3c45ad4
 import { deptClass } from 'src/app/Core/Classes/department';
 import { employeeClass } from 'src/app/Core/Classes/employee';
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
@@ -25,14 +20,10 @@ export class EmployeeComponent implements OnInit {
   isSave : boolean = true;
   deptobj:deptClass = new deptClass();
   msgs: Message[] = [];
+  ConfirmationService: any;
 
-<<<<<<< HEAD
   constructor(private service : EmployeeService, private deptService : DeptService,
     private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig,public loginService: LoginService) { }
-=======
-  constructor(private service : EmployeeService, private deptService : DeptService, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) { }
->>>>>>> 092c9fae42ab47c004f4af7594627567d3c45ad4
 
   ngOnInit(): void {
     this.getAllEmpReco();
@@ -60,12 +51,12 @@ export class EmployeeComponent implements OnInit {
      this.service.createEmp(this.empObj).subscribe((res:any)=>{
       if(res){
         this.getAllEmpReco();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
 
@@ -78,12 +69,12 @@ export class EmployeeComponent implements OnInit {
     this.service.editEmp(id).subscribe((res:any)=>{
       if(res){
         this.empObj = res;
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
 
@@ -93,12 +84,12 @@ export class EmployeeComponent implements OnInit {
       if(res){
         this.empObj = res;
         this.getAllEmpReco();
-         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
   confirm1(id:number) {
@@ -119,12 +110,12 @@ export class EmployeeComponent implements OnInit {
     this.service.deleteEmp(id,this.empObj).subscribe((res:any)=>{
       if(res){
         this.getAllEmpReco();
-         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
 

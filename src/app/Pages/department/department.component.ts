@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, Message,  MessageService,  PrimeNGConfig } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
-<<<<<<< HEAD
-import { DeptService } from 'src/app/Core/Services/dept.service/dept.service';
-import { LoginService } from 'src/app/Core/Services/Login/login.service';
-=======
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
-
->>>>>>> 092c9fae42ab47c004f4af7594627567d3c45ad4
+import { LoginService } from 'src/app/Core/Services/Login/login.service';
 
 @Component({
   selector: 'app-department',
@@ -76,25 +71,28 @@ export class DepartmentComponent implements OnInit {
     this.service.editDept(id).subscribe((res:any)=>{
       if(res){
         this.dpetObj = res;
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
      }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
-  };
+  }ConfirmationService(arg0: { severity: string; summary: string; detail: any; }) {
+    throw new Error('Method not implemented.');
+  }
+;
 
   onDelete(id:number){
     this.service.deleteDept(id,this.dpetObj).subscribe((res:any)=>{
       if(res){
         this.getAlldeptRec();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
      }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
 
@@ -103,12 +101,12 @@ export class DepartmentComponent implements OnInit {
       if(res){
         this.dpetObj = res;
         this.getAlldeptRec();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
      }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
 }
