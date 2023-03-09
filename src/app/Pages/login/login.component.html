@@ -10,7 +10,7 @@
                                 <div class="login__field">
                                     <label ><b class="usarname">User Name <span class="text-danger usarname">*</span></b></label><br>
                                     <i class="login__icon fas fa-user"></i>
-                                    <input type="text" name="userName" class="login__input" [(ngModel)]="loginObj.UserName"
+                                    <input type="text" name="userName" class="login__input form-control" [(ngModel)]="loginObj.UserName"
                                         placeholder="User Name" required #userName="ngModel">
                                     <div class="text-danger" *ngIf="userName.touched">
                                         <span *ngIf="userName.errors?.['required']">User Name is Required</span>
@@ -34,10 +34,10 @@
                         </div>
                     </div>
                     <div class="screen__background">
-                        <span class="screen__background__shape screen__background__shape4"></span>
-                        <span class="screen__background__shape screen__background__shape3"></span>
-                        <span class="screen__background__shape screen__background__shape2"></span>
-                        <span class="screen__background__shape screen__background__shape1"></span>
+                        <span class="screen_backgroundshape screenbackground_shape4"></span>
+                        <span class="screen_backgroundshape screenbackground_shape3"></span>
+                        <span class="screen_backgroundshape screenbackground_shape2"></span>
+                        <span class="screen_backgroundshape screenbackground_shape1"></span>
                     </div>
                 </div>
             </div>
