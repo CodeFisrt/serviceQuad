@@ -39,10 +39,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role','Admin')
       } else if (res.Role == 'AdminDept') {
         this.route.navigateByUrl('adminDptDashboard');
-<<<<<<< HEAD
         localStorage.setItem('role','AdminDept')
-=======
->>>>>>> 5842f3b586ad3749f6496b210b7969b34e7fb90a
       } else if (res.Role == 'Employee') {
         this.route.navigateByUrl('empDashboard');
         localStorage.setItem('role','Employee')  

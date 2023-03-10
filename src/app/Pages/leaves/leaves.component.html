@@ -165,9 +165,9 @@
                                         <label for="">Details <span class="text-danger">*</span></label>
                                         <textarea name="Details" id="" cols="15" rows="4" [(ngModel)]="LeaveObj.Details"
                                             class="form-control" #Details="ngModel" required></textarea>
-                                        <div class="text-danger" *ngIf="Details.touched">
-                                            <span class="Details.errors?.['required']">This is required</span>
-                                        </div>
+                                            <div class="text-danger" *ngIf="Details.touched">
+                                                <span *ngIf="Details.errors?.['required']">This is required</span>
+                                            </div>
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label class="form-check-label" for="exampleCheck1">Is Half Day : <span

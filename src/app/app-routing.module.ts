@@ -37,16 +37,9 @@ const routes: Routes = [
     canActivate:[LoginGuard],
     children: [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
-<<<<<<< HEAD
-      { path: 'employee', component: EmployeeComponent },
-      { path: 'department', component: DepartmentComponent },
-      { path: 'requestList', component: RequestListComponent },
-      {path:'admimdeptLeaves',component:LeavesComponent}
-=======
       { path: 'adminDept', component: DepartmentComponent },
       { path: 'deptEmployee', component: EmployeeComponent },
       { path: 'deptRequestList', component: RequestListComponent }
->>>>>>> 5842f3b586ad3749f6496b210b7969b34e7fb90a
     ]
   },
   {
