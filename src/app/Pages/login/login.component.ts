@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl('dashboard');
       } else if (res.Role == 'AdminDept') {
         this.route.navigateByUrl('adminDptDashboard');
-      } else if (res.Role == 'Empoyee') {
+      } else if (res.Role == 'Employee') {
         this.route.navigateByUrl('empDashboard');
       } else {
         this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
@@ -45,8 +45,7 @@ export class LoginComponent implements OnInit {
     }, (error: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
     });
+
   };
 
-  
 }
-
