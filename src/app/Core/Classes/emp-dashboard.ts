@@ -7,7 +7,6 @@ export class empDashboardClass {
     totOpenToday:number;
     totLeavesTaken:number;
     totLeavesToApprove:number;
-    UserId:number;
 
     constructor() {
         this.totReq=0,
@@ -17,7 +16,6 @@ export class empDashboardClass {
         this.totCompletedToday=0,
         this.totOpenToday=0,
         this.totLeavesToApprove=0,
-        this.totLeavesTaken=0,
-        this.UserId=0
+        this.totLeavesTaken=0
     }
 }
