@@ -33,12 +33,16 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
+      
       if (res.Role == 'Admin') {
         this.route.navigateByUrl('dashboard');
+        localStorage.setItem('role','Admin')
       } else if (res.Role == 'AdminDept') {
         this.route.navigateByUrl('adminDptDashboard');
+        localStorage.setItem('role','AdminDept')
       } else if (res.Role == 'Employee') {
         this.route.navigateByUrl('empDashboard');
+        localStorage.setItem('role','Employee')  
       } else {
         this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
       }

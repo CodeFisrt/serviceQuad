@@ -1,1 +1,191 @@
-<p>leaves works!</p>
+<div class="container">
+    <div class="row mt-3" *ngIf="loggedInRole =='Admin' ">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Leave List</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr class="bg-secondary text-white text-center">
+                                        <th>Sr.No.</th>
+                                        <th>Employee Name</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Is Half Day</th>
+                                        <th>No Of Days</th>
+                                        <th>Leave Type</th>
+                                        <th>Details</th>
+                                        <th>Approved Date</th>
+                                        <th>Is Approved</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{leave.EmployeeName}}</td>
+                                        <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
+                                        <td>{{leave.NoOfDays}}</td>
+                                        <td>{{leave.LeaveType}}</td>
+                                        <td>{{leave.Details}}</td>
+                                        <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
+                                        <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-3" *ngIf="loggedInRole=='AdminDept' || loggedInRole=='Employee' || loggedInRole !='Admin' ">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>All Leaves</h4>
+                        </div>
+                        <div class="col-6">
+                            <div class="button text-end">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                   Create Leave
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-bordered table-stripped">
+                                <thead>
+                                    <tr class="bg-secondary text-white text-center">
+                                        <th>Sr.No.</th>
+                                        <th>Employee Name</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Is Half Day</th>
+                                        <th>No Of Days</th>
+                                        <th>Leave Type</th>
+                                        <th>Details</th>
+                                        <th>Is Approved</th>
+                                        <th>Approved Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of empLeaveArray;let sr=index" class="text-center">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{data.EmployeeName}}</td>
+                                        <td>{{data.FromDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{data.ToDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{data.IsHalfDay ? 'Yes' : 'No'}}</td>
+                                        <td>{{data.NoOfDays}}</td>
+                                        <td>{{data.LeaveType}}</td>
+                                        <td>{{data.Details}}</td>
+                                        <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                        <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" >
+    <div class="row">
+        <div class="col-12">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Leaves</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form #form="ngForm">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="">From Date <span class="text-danger">*</span></label>
+                                        <input type="date" name="FromDate" id="" class="form-control"
+                                            [(ngModel)]="LeaveObj.FromDate" #FromDate="ngModel" required>
+                                        <div class="text-danger" *ngIf="FromDate.touched">
+                                            <span *ngIf="FromDate.errors?.['required']">This is required</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="">To Date <span class="text-danger">*</span></label>
+                                        <input type="date" name="ToDate" id="" class="form-control"
+                                            [(ngModel)]="LeaveObj.ToDate" #ToDate="ngModel" required (blur)="onBlur()">
+                                        <div class="text-danger" *ngIf="ToDate.touched">
+                                            <span *ngIf="ToDate.errors?.['required']">This is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="">No.of days</label>
+                                        <input type="number" name="NoOfDays" id="" [(ngModel)]="LeaveObj.NoOfDays"
+                                            disabled class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="">Leave Type <span class="text-danger">*</span></label>
+                                        <select name="LeaveType" id="" class="form-control"
+                                            [(ngModel)]="LeaveObj.LeaveType">
+                                            <option value="" disabled>Select Leave Type</option>
+                                            <option value="PrivilegeLeave">Privilege Leave</option>
+                                            <option value="CasualLeave">Casual Leave</option>
+                                            <option value="SickLeave">Sick Leave</option>
+                                            <option value="MaternityLeave">Maternity Leave</option>
+                                            <option value="MarriageLeave">Marriage Leave</option>
+                                            <option value="PaternityLeave">Paternity Leave</option>
+                                            <option value="BereavementLeave">Bereavement Leave</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="">Details <span class="text-danger">*</span></label>
+                                        <textarea name="Details" id="" cols="15" rows="4" [(ngModel)]="LeaveObj.Details"
+                                            class="form-control" #Details="ngModel" required></textarea>
+                                            <div class="text-danger" *ngIf="Details.touched">
+                                                <span *ngIf="Details.errors?.['required']">This is required</span>
+                                            </div>
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <label class="form-check-label" for="exampleCheck1">Is Half Day : <span
+                                                class="text-danger">*</span></label><br>
+                                        <input type="checkbox" name="IsHalfDay" class="form-check-input"
+                                            id="exampleCheck1" [(ngModel)]="LeaveObj.IsHalfDay">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
+                                [disabled]="form.form.invalid">Add Leave</button>
+                            <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
