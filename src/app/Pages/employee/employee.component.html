@@ -28,28 +28,35 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center">
-                                    <tr *ngFor="let data of empArray; let sr = index;">
-                                        <td>{{sr+1}}</td>
-                                        <td>{{data.EmployeeName | titlecase}}</td>
-                                        <td>{{data.ContactNo}}</td>
-                                        <td>{{data.EmailId}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-6 text-end">
-                                                    <p (click)="onEdit(data.EmployeeId)"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-                                                    <p (click)="onDeleteConfirm(data.EmployeeId)" icon="pi pi-check"><i
-                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
-                                                </div>
-                                            </div>
-                                        </td>
+                                <ng-container *ngIf="empArray.length == 0">
+                                    <tr>
+                                        <td colspan="5" class="text-center">No Record Found</td>
                                     </tr>
-                                </tbody>
+                                </ng-container>
+                                <ng-container *ngIf="empArray.length != 0">
+                                    <tbody class="text-center">
+                                        <tr *ngFor="let data of empArray; let sr = index;">
+                                            <td>{{sr+1}}</td>
+                                            <td>{{data.EmployeeName | titlecase}}</td>
+                                            <td>{{data.ContactNo}}</td>
+                                            <td>{{data.EmailId}}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 text-end">
+                                                        <p (click)="onEdit(data.EmployeeId)"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                                class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                                                        <p (click)="onDeleteConfirm(data.EmployeeId)" icon="pi pi-check"><i
+                                                                class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </ng-container>
                             </table>
                         </div>
                     </div>
