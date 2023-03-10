@@ -39,7 +39,8 @@ const routes: Routes = [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
       { path: 'employee', component: EmployeeComponent },
       { path: 'department', component: DepartmentComponent },
-      { path: 'requestList', component: RequestListComponent }
+      { path: 'requestList', component: RequestListComponent },
+      {path:'admimdeptLeaves',component:LeavesComponent}
     ]
   },
   {
