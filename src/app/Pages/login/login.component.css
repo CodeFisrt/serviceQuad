@@ -9,7 +9,6 @@
 
 body {
 	background: linear-gradient(90deg, #C7C5F4, #776BCC);
-
 }
 
 .container {
@@ -239,7 +238,6 @@ button:hover {
 		right: 120px;
 	}
 }
-
 
 /* // XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1440px) {

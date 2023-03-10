@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService, Message,  MessageService,  PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { DeptService } from 'src/app/Core/Services/dept/dept.service';
 import { LoginService } from 'src/app/Core/Services/Login/login.service';
@@ -9,38 +9,39 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css'],
   providers: [ConfirmationService, MessageService],
-  
+
 })
 export class DepartmentComponent implements OnInit {
-  deptArray : deptClass[] =[];
-  dpetObj : deptClass = new deptClass();
-  isEditHide : boolean = false;
+  deptArray: deptClass[] = [];
+  dpetObj: deptClass = new deptClass();
+  isEditHide: boolean = false;
   checked: boolean = false;
   msgs: Message[] = [];
-  constructor(private service: DeptService,public loginService: LoginService, private confirmationService: ConfirmationService,
-    private primengConfig: PrimeNGConfig) { }
+  MessageService: any;
+  constructor(private service: DeptService, public loginService: LoginService, private confirmationService: ConfirmationService,
+    private primengConfig: PrimeNGConfig, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getAlldeptRec();
   }
 
   getAlldeptRec() {
-    this.service.getDept().subscribe((res:any)=>{
-      if(res){
+    this.service.getDept().subscribe((res: any) => {
+      if (res) {
         this.deptArray = res;
       };
     })
   }
 
   onReset() {
-     this.dpetObj = new deptClass();
+    this.dpetObj = new deptClass();
   };
 
-  onAdd(){
+  onAdd() {
     this.onReset();
   }
 
-  confirm1(id:number) {
+  onConfirmDelte(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to proceed?',
       header: 'Confirmation',
@@ -56,20 +57,20 @@ export class DepartmentComponent implements OnInit {
   }
 
   onSave() {
-    this.service.createDept(this.dpetObj).subscribe((res:any)=>{
-      if(res){
+    this.service.createDept(this.dpetObj).subscribe((res: any) => {
+      if (res) {
         this.getAlldeptRec();
-      }else{
+      } else {
         alert(res.message)
       };
-     })
-     };
-      
-  
+    })
+  };
 
-  onEdit(id:number) {
-    this.service.editDept(id).subscribe((res:any)=>{
-      if(res){
+
+
+  onEdit(id: number) {
+    this.service.editDept(id).subscribe((res: any) => {
+      if (res) {
         this.dpetObj = res;
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
@@ -83,9 +84,9 @@ export class DepartmentComponent implements OnInit {
   }
 ;
 
-  onDelete(id:number){
-    this.service.deleteDept(id,this.dpetObj).subscribe((res:any)=>{
-      if(res){
+  onDelete(id: number) {
+    this.service.deleteDept(id, this.dpetObj).subscribe((res: any) => {
+      if (res) {
         this.getAlldeptRec();
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       }else{
@@ -96,9 +97,9 @@ export class DepartmentComponent implements OnInit {
     });
   };
 
-  onUpdate(id:number) {
-     this.service.updateDept(id,this.dpetObj).subscribe((res:any)=>{
-      if(res){
+  onUpdate(id: number) {
+    this.service.updateDept(id, this.dpetObj).subscribe((res: any) => {
+      if (res) {
         this.dpetObj = res;
         this.getAlldeptRec();
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });

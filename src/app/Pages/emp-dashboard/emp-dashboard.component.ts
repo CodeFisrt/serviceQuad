@@ -13,6 +13,8 @@ export class EmpDashboardComponent implements OnInit {
   empDashboard:empDashboardClass[]=[];
   empDashboardObj:empDashboardClass= new empDashboardClass();
   empUserData:any;
+  employeeId: number = 0;
+  
   
 
   constructor(public http:HttpClient,public service:EmpDashboardService) {
@@ -20,7 +22,7 @@ export class EmpDashboardComponent implements OnInit {
     const empData=localStorage.getItem('adminLoginDetails');
     if(empData!=null){
       this.empUserData=JSON.parse(empData);
-      this.empDashboardObj.UserId=this.empUserData.UserId
+      this.employeeId = this.empUserData.EmployeeId;
     }
    }
 
@@ -29,7 +31,7 @@ export class EmpDashboardComponent implements OnInit {
   }
 
   GetEmpDashboardRecords() {
-    this.service.GetEmpDashboard(this.empDashboardObj.UserId).subscribe((res:any)=>{
+    this.service.GetEmpDashboard(this.employeeId).subscribe((res:any)=>{
       this.empDashboardObj=res[0];
     })
   }

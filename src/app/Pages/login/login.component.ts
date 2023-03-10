@@ -13,23 +13,24 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
 export class LoginComponent implements OnInit {
 
   public loginObj: loginClasses = new loginClasses();
+
   public visible: boolean = true;
+
   public changetype: boolean = true;
 
   constructor(private service: LoginService, private route: Router, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig) { };
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-  }
+  };
 
   viewpass() {
     this.visible = !this.visible;
     this.changetype = !this.changetype;
-  }
+  };
 
   onLogin() {
-
     this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
       if (res.Role == 'Admin') {
@@ -44,6 +45,8 @@ export class LoginComponent implements OnInit {
     }, (error: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
     });
-  }
+  };
 
+  
 }
+

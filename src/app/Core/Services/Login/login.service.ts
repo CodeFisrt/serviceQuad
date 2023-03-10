@@ -8,29 +8,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
+
   public msgs: Message[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { };
+
   getAllUser(): Observable<any> {
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetUsers')
-  }
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetUsers');
+  };
 
   getAllLogin(obj: any): Observable<any> {
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/Login', obj)
-  }
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/Login', obj);
+  };
 
   logUserInfo(): any {
     let localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
-      localData = JSON.parse(localData)
+      localData = JSON.parse(localData);
       return localData;
     } else {
       return {}
-    }
-  }
+    };
+  };
 
   onLogout() {
-    localStorage.clear()
-    this.router.navigateByUrl('login')
-  }
+    localStorage.clear();
+    this.router.navigateByUrl('login');
+  };
 }

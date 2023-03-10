@@ -9,16 +9,18 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
   providers: [ConfirmationService]
 })
 export class AdminDptLayoutComponent implements OnInit {
+
   public isLoading: boolean = true;
   
     msgs: Message[] = [];
 
   constructor(public loginService: LoginService, private confirmationService: ConfirmationService,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig) { };
 
   ngOnInit(): void {
     this.isLoading = false;
-  }
+  };
+
   confirm1() {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to proceed?',
@@ -32,5 +34,5 @@ export class AdminDptLayoutComponent implements OnInit {
         this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
       }
     });
-  }
+  };
 }
