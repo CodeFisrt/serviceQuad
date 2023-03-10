@@ -13,37 +13,43 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
 export class LoginComponent implements OnInit {
 
   public loginObj: loginClasses = new loginClasses();
+
   public visible: boolean = true;
+
   public changetype: boolean = true;
 
   constructor(private service: LoginService, private route: Router, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig) { };
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-  }
+  };
 
   viewpass() {
     this.visible = !this.visible;
     this.changetype = !this.changetype;
-  }
+  };
 
   onLogin() {
-
     this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
+      
       if (res.Role == 'Admin') {
         this.route.navigateByUrl('dashboard');
+        localStorage.setItem('role','Admin')
       } else if (res.Role == 'AdminDept') {
         this.route.navigateByUrl('adminDptDashboard');
-      } else if (res.Role == 'Empoyee') {
+        localStorage.setItem('role','AdminDept')
+      } else if (res.Role == 'Employee') {
         this.route.navigateByUrl('empDashboard');
+        localStorage.setItem('role','Employee')  
       } else {
         this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Someting Worng' });
       }
     }, (error: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
     });
-  }
+
+  };
 
 }
