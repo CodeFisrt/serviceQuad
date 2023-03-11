@@ -12,17 +12,14 @@ export class LeaveForApprovalComponent implements OnInit {
 
   leaveArry:empolyLeavePageClass[]=[];
   leaveObj:empolyLeavePageClass= new empolyLeavePageClass();
+ leavesData:any
 
-  leavesData:any
-
-  
-  constructor(public http:HttpClient, public service:EmoplyLeavePageService) { 
+ constructor(public http:HttpClient, public service:EmoplyLeavePageService) { 
     const localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
       this.leavesData = JSON.parse(localData);
       this.leaveObj.EmployeeId = this.leavesData.EmployeeId;
-    }
-    
+    }  
   }
 
   ngOnInit(): void {

@@ -74,7 +74,7 @@ export class LeavesComponent implements OnInit {
   }
   onAdd(){
     this.onReset();
-    this.isSave=false
+    this.isSave=false;
   };
 
 }
