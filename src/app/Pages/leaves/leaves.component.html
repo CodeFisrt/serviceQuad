@@ -5,7 +5,7 @@
                 <div class="card-header bg-warning">
                     <div class="row">
                         <div class="col-6">
-                           <strong>Leave List</strong>
+                            <strong>Leave List</strong>
                         </div>
                     </div>
                 </div>
@@ -50,10 +50,8 @@
                                             <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
                                             <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                             <td>
-                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    class="bi bi-pencil-square text-warning fs-5 me-4"></i>
-                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    class="bi bi-trash-fill text-danger fs-5"> </i>
+                                                <i class="bi bi-pencil-square text-warning fs-5 me-2"></i>
+                                                <i class="bi bi-trash-fill text-danger fs-5"> </i>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -73,7 +71,7 @@
                 <div class="card-header bg-warning">
                     <div class="row">
                         <div class="col-6">
-                         <strong>All Leaves</strong>
+                            <strong>All Leaves</strong>
                         </div>
                         <div class="col-6">
                             <div class="button text-end">
@@ -117,7 +115,9 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-                                       <td> <i data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(data.LeaveId)" class="bi bi-pencil-square text-warning fs-4 fw-bold"  data-bs-toggle="modal" data-bs-target="#exampleModal"></i> </td>
+                                        <td> <i                  (click)="onEdit(data.LeaveId)"
+                                                class="bi bi-pencil-square text-warning fs-4 fw-bold"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"></i> </td>
                                     </tr>
                                 </tbody>
                             </table>

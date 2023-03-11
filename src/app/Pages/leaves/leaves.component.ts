@@ -61,7 +61,7 @@ export class LeavesComponent implements OnInit {
   }
   onReset() {
     this.LeaveObj = new leaveClass();
-  }
+  };
 
   onEdit(id:number){
    const leaveData = this.empLeaveArray.find(m=>(m.LeaveId==id));
@@ -69,7 +69,8 @@ export class LeavesComponent implements OnInit {
     this.LeaveObj=leaveData;
    }
    this.isSave=false;
-  }
+  };
+
   onUpdate(){
     this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
       if (res) {
