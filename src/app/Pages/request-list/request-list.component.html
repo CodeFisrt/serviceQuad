@@ -59,7 +59,7 @@
                                 <ng-container *ngIf="requestListArray.length != 0">
                                     <tbody class="text-center">
                                         <tr *ngFor="let data of requestListArray; let sr = index;"
-                                            [ngClass]="data.Severity == 'High' ? 'bg-danger' : 'bg-light' ">
+                                            [ngClass]="data.Severity == 'High' ? 'bg-danger bg-opacity-50' : 'bg-light' ">
                                             <td>{{sr+1}}</td>
                                             <td>{{data.RequestNo}}</td>
                                             <td>{{data.EmployeeName | titlecase |allpipe}}</td>
