@@ -56,7 +56,15 @@ export class LeavesComponent implements OnInit {
     this.LeaveObj = new leaveClass();
   }
 
-  onBlur(){
-   
+  onEdit(id:number){
+   const leaveData = this.empLeaveArray.find(m=>(m.LeaveId==id));
+   if(leaveData !=undefined){
+    this.LeaveObj=leaveData;
+   }
+  }
+  onUpdate(){
+    // const record = this.empLeaveArray.find(m => m.EmployeeId == this.LeaveObj.EmployeeId);
+    // record.EmployeeName = this.LeaveObj.EmployeeName;
+    // localStorage.setItem('employee', this.empLeaveArray)
   }
 }

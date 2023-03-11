@@ -25,6 +25,7 @@
                                         <th>Details</th>
                                         <th>Approved Date</th>
                                         <th>Is Approved</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <ng-container *ngIf="leaveArray.length == 0">
@@ -94,6 +95,7 @@
                                         <th>Details</th>
                                         <th>Is Approved</th>
                                         <th>Approved Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,6 +111,7 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
+                                        <td><button class="btn btn-success" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -144,7 +147,7 @@
                                     <div class="col-6">
                                         <label for="">To Date <span class="text-danger">*</span></label>
                                         <input type="date" name="ToDate" id="" class="form-control"
-                                            [(ngModel)]="LeaveObj.ToDate" #ToDate="ngModel" required (blur)="onBlur()">
+                                            [(ngModel)]="LeaveObj.ToDate" #ToDate="ngModel" required>
                                         <div class="text-danger" *ngIf="ToDate.touched">
                                             <span *ngIf="ToDate.errors?.['required']">This is required</span>
                                         </div>
@@ -192,6 +195,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
                                 [disabled]="form.form.invalid">Add Leave</button>
+                                <button class="btn btn-warning" (click)="onUpdate()">Update</button>
                             <button class="btn btn-danger" (click)="onReset()">Reset</button>
                         </div>
                     </div>
