@@ -28,6 +28,12 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                <ng-container *ngIf="leaveArray.length == 0">
+                                    <tr>
+                                        <td colspan="10" class="text-center">No Record Found</td>
+                                    </tr>
+                                   </ng-container>
+                               <ng-container *ngIf="leaveArray.length != 0">
                                 <tbody>
                                     <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center" [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
                                         <td>{{sr+1}}</td>
@@ -48,6 +54,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                               </ng-container>
                             </table>
                         </div>
                     </div>

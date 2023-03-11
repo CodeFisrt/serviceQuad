@@ -33,32 +33,39 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center">
-                                    <tr *ngFor="let data of createRequestArray; let sr = index;">
-                                        <td>{{sr+1}}</td>
-                                        <td>{{data.RequestNo | allpipe}}</td>
-                                        <td>{{data.State | titlecase| allpipe }}</td>
-                                        <td>{{data.CreatedDate | date:'dd-MMM-yy' | allpipe}}</td>
-                                        <td>{{data.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
-                                        <td>{{data.Severity | titlecase | allpipe}}</td>
-                                        <td>{{data.AssignedUserName | titlecase | allpipe}}</td>
-                                        <td>{{data.EmployeeName | titlecase | allpipe}}</td>
-                                        <td>{{data.DeptName | titlecase | allpipe}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-6 text-end">
-                                                    <p (click)="onEdit(data.RequestId)" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal"><i
-                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p (click)="onDelete(data.RequestId)"><i
-                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
-                                                </div>
-                                            </div>
-                                        </td>
+                                <ng-container *ngIf="createRequestArray.length == 0">
+                                    <tr>
+                                        <td colspan="10" class="text-center">No Record Found</td>
                                     </tr>
-                                </tbody>
+                                </ng-container>
+                                <ng-container *ngIf="createRequestArray.length != 0">
+                                    <tbody class="text-center">
+                                        <tr *ngFor="let data of createRequestArray; let sr = index;">
+                                            <td>{{sr+1}}</td>
+                                            <td>{{data.RequestNo | allpipe}}</td>
+                                            <td>{{data.State | titlecase| allpipe }}</td>
+                                            <td>{{data.CreatedDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                            <td>{{data.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                            <td>{{data.Severity | titlecase | allpipe}}</td>
+                                            <td>{{data.AssignedUserName | titlecase | allpipe}}</td>
+                                            <td>{{data.EmployeeName | titlecase | allpipe}}</td>
+                                            <td>{{data.DeptName | titlecase | allpipe}}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 text-end">
+                                                        <p (click)="onEdit(data.RequestId)" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal"><i
+                                                                class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p (click)="onDelete(data.RequestId)"><i
+                                                                class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </ng-container>
                             </table>
                         </div>
                     </div>

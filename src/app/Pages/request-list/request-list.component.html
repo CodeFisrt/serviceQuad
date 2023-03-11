@@ -51,20 +51,27 @@
                                         <th>State</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center">
-                                    <tr *ngFor="let data of requestListArray; let sr = index;"
-                                        [ngClass]="data.Severity == 'High' ? 'bg-danger' : 'bg-light' ">
-                                        <td>{{sr+1}}</td>
-                                        <td>{{data.RequestNo}}</td>
-                                        <td>{{data.EmployeeName | titlecase |allpipe}}</td>
-                                        <td>{{data.DeptName | titlecase |allpipe}}</td>
-                                        <td>{{data.ExpectedEndDate | date : 'dd-MMM-yy' |allpipe}}</td>
-                                        <td>{{data.Severity | allpipe}}</td>
-                                        <td>{{data.CompletedDate | date : 'dd-MMM-yy' |allpipe}}</td>
-                                        <td>{{data.AssignedUserName | titlecase |allpipe}}</td>
-                                        <td>{{data.State | titlecase |allpipe}}</td>
+                                <ng-container *ngIf="requestListArray.length == 0">
+                                    <tr>
+                                        <td colspan="9" class="text-center">No Record Found</td>
                                     </tr>
-                                </tbody>
+                                </ng-container>
+                                <ng-container *ngIf="requestListArray.length != 0">
+                                    <tbody class="text-center">
+                                        <tr *ngFor="let data of requestListArray; let sr = index;"
+                                            [ngClass]="data.Severity == 'High' ? 'bg-danger' : 'bg-light' ">
+                                            <td>{{sr+1}}</td>
+                                            <td>{{data.RequestNo}}</td>
+                                            <td>{{data.EmployeeName | titlecase |allpipe}}</td>
+                                            <td>{{data.DeptName | titlecase |allpipe}}</td>
+                                            <td>{{data.ExpectedEndDate | date : 'dd-MMM-yy' |allpipe}}</td>
+                                            <td>{{data.Severity | allpipe}}</td>
+                                            <td>{{data.CompletedDate | date : 'dd-MMM-yy' |allpipe}}</td>
+                                            <td>{{data.AssignedUserName | titlecase |allpipe}}</td>
+                                            <td>{{data.State | titlecase |allpipe}}</td>
+                                        </tr>
+                                    </tbody>
+                                </ng-container>
                             </table>
                         </div>
                     </div>

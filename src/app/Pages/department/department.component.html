@@ -28,28 +28,36 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-center">
-                                    <tr *ngFor="let data of deptArray; let sr = index;">
-                                        <td>{{sr+1}}</td>
-                                        <td>{{data.DeptName | titlecase}}</td>
-                                        <td>{{data.DeptHead | titlecase}}</td>
-                                        <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-6 text-end">
-                                                    <p (click)="onEdit(data.DeptId)"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                            class="bi bi-pencil-square text-warning fs-5"></i></p>
+                               <ng-container *ngIf="deptArray.length == 0">
+                                <tr>
+                                    <td colspan="5" class="text-center">No Record Found</td>
+                                </tr>
+                               </ng-container>
+                                <ng-container *ngIf="deptArray.length != 0">
+                                    <tbody class="text-center">
+                                        <tr *ngFor="let data of deptArray; let sr = index;">
+                                            <td>{{sr+1}}</td>
+                                            <td>{{data.DeptName | titlecase}}</td>
+                                            <td>{{data.DeptHead | titlecase}}</td>
+                                            <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6 text-end">
+                                                        <p (click)="onEdit(data.DeptId)"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                                class="bi bi-pencil-square text-warning fs-5"></i></p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+                                                        <p (click)="onConfirmDelte(data.DeptId)" icon="pi pi-check"><i
+                                                                class="bi bi-trash-fill text-danger fs-5"></i></p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-                                                    <p (click)="onConfirmDelte(data.DeptId)" icon="pi pi-check"><i
-                                                            class="bi bi-trash-fill text-danger fs-5"></i></p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </ng-container>
+                               
                             </table>
                         </div>
                     </div>
