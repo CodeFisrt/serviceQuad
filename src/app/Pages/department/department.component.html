@@ -8,7 +8,7 @@
                             <h4>Department List</h4>
                         </div>
                         <div class="col-6 text-end">
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal" (click)="onAdd()">
                                 Add Dept.
                             </button>
@@ -106,11 +106,11 @@
                         <div class="modal-footer ">
                             <div class="row ">
                                 <div class="col">
-                                    <button type="button" class="btn btn-success m-2" (click)="onSave()"
+                                    <button type="button" class="btn btn-success btn-sm m-2" (click)="onSave()"
                                         *ngIf="dpetObj.DeptId == 0" data-bs-dismiss="modal" [disabled]="!form.form.valid">Save</button>
-                                    <button type="button" class="btn btn-success m-2" (click)="onUpdate(dpetObj.DeptId)"
+                                    <button type="button" class="btn btn-success btn-sm m-2" (click)="onUpdate(dpetObj.DeptId)"
                                         *ngIf="dpetObj.DeptId != 0" data-bs-dismiss="modal">Update</button>
-                                    <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                    <button class="btn btn-danger btn-sm" (click)="onReset()">Reset</button>
                                 </div>
                             </div>
                         </div>

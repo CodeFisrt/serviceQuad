@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-6">
                             <div class="button text-end">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     Create Leave
                                 </button>
@@ -111,7 +111,7 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-                                        <td><button class="btn btn-success" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+                                        <td><button class="btn btn-success btn-sm" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -193,10 +193,10 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-success btn-sm" (click)="onSave()" data-bs-dismiss="modal"
                                 [disabled]="form.form.invalid">Add Leave</button>
-                                <button class="btn btn-warning" (click)="onUpdate()">Update</button>
-                            <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                <button class="btn btn-warning btn-sm" (click)="onUpdate()">Update</button>
+                            <button class="btn btn-danger btn-sm" (click)="onReset()">Reset</button>
                         </div>
                     </div>
                 </div>

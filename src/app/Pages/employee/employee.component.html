@@ -8,7 +8,7 @@
                             <h4>Employee List</h4>
                         </div>
                         <div class="col-6 text-end">
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add Emp.
                             </button>
@@ -146,11 +146,11 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-success btn-sm" (click)="onSave()" data-bs-dismiss="modal"
                                  [disabled]="!form.form.valid" *ngIf="isSave">Save</button>
-                            <button type="button" class="btn btn-success" (click)="onUpdate(empObj.EmployeeId)"
+                            <button type="button" class="btn btn-success btn-sm" (click)="onUpdate(empObj.EmployeeId)"
                                 data-bs-dismiss="modal" *ngIf="!isSave">Update</button>
-                            <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                            <button class="btn btn-danger btn-sm" (click)="onReset()">Reset</button>
                         </div>
                     </div>
                 </div>
