@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-3" *ngIf="loggedInRole =='Admin' ">
         <div class="col-12">
             <div class="card">
@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-stripped">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
                                         <th>Sr.No.</th>
@@ -28,7 +28,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center">
+                                    <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center" [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
                                         <td>{{sr+1}}</td>
                                         <td>{{leave.EmployeeName}}</td>
                                         <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
@@ -36,7 +36,7 @@
                                         <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
                                         <td>{{leave.NoOfDays}}</td>
                                         <td>{{leave.LeaveType}}</td>
-                                        <td>{{leave.Details}}</td>
+                                        <td><p [innerHtml]="leave.Details"></p></td>
                                         <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
                                         <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                     </tr>
@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-3" *ngIf="loggedInRole=='AdminDept' || loggedInRole=='Employee' || loggedInRole !='Admin' ">
         <div class="col-12">
             <div class="card">
@@ -71,7 +71,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-stripped">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
                                         <th>Sr.No.</th>
@@ -87,7 +87,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of empLeaveArray;let sr=index" class="text-center">
+                                    <tr *ngFor="let data of empLeaveArray;let sr=index" class="text-center" [ngClass]="data.IsApproved ? 'text-dark' : 'text-danger'">
                                         <td>{{sr+1}}</td>
                                         <td>{{data.EmployeeName}}</td>
                                         <td>{{data.FromDate |date:'dd-MM-yy'}}</td>
