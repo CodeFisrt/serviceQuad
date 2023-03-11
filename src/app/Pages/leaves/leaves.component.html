@@ -31,23 +31,26 @@
                                     <tr>
                                         <td colspan="10" class="text-center">No Record Found</td>
                                     </tr>
-                                   </ng-container>
-                               <ng-container *ngIf="leaveArray.length != 0">
-                                <tbody>
-                                    <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center" [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
-                                        <td>{{sr+1}}</td>
-                                        <td>{{leave.EmployeeName}}</td>
-                                        <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
-                                        <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
-                                        <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
-                                        <td>{{leave.NoOfDays}}</td>
-                                        <td>{{leave.LeaveType}}</td>
-                                        <td><p [innerHtml]="leave.Details"></p></td>
-                                        <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
-                                        <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
-                                    </tr>
-                                </tbody>
-                               </ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="leaveArray.length != 0">
+                                    <tbody>
+                                        <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center"
+                                            [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
+                                            <td>{{sr+1}}</td>
+                                            <td>{{leave.EmployeeName}}</td>
+                                            <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
+                                            <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
+                                            <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
+                                            <td>{{leave.NoOfDays}}</td>
+                                            <td>{{leave.LeaveType}}</td>
+                                            <td>
+                                                <p [innerHtml]="leave.Details"></p>
+                                            </td>
+                                            <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
+                                            <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </ng-container>
                             </table>
                         </div>
                     </div>
@@ -69,7 +72,7 @@
                             <div class="button text-end">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
-                                   Create Leave
+                                    Create Leave
                                 </button>
                             </div>
                         </div>
@@ -94,7 +97,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of empLeaveArray;let sr=index" class="text-center" [ngClass]="data.IsApproved ? 'text-dark' : 'text-danger'">
+                                    <tr *ngFor="let data of empLeaveArray;let sr=index" class="text-center"
+                                        [ngClass]="data.IsApproved ? 'text-dark' : 'text-danger'">
                                         <td>{{sr+1}}</td>
                                         <td>{{data.EmployeeName}}</td>
                                         <td>{{data.FromDate |date:'dd-MM-yy'}}</td>
@@ -115,7 +119,7 @@
         </div>
     </div>
 </div>
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-12">
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -172,9 +176,9 @@
                                         <label for="">Details <span class="text-danger">*</span></label>
                                         <textarea name="Details" id="" cols="15" rows="4" [(ngModel)]="LeaveObj.Details"
                                             class="form-control" #Details="ngModel" required></textarea>
-                                            <div class="text-danger" *ngIf="Details.touched">
-                                                <span *ngIf="Details.errors?.['required']">This is required</span>
-                                            </div>
+                                        <div class="text-danger" *ngIf="Details.touched">
+                                            <span *ngIf="Details.errors?.['required']">This is required</span>
+                                        </div>
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label class="form-check-label" for="exampleCheck1">Is Half Day : <span

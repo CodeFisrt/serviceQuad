@@ -28,6 +28,7 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ConfirmationService , MessageService} from 'primeng/api';
 import { AllpipePipe } from './Shared/Pipes/allpipe.pipe';
 import { LoaderComponent } from './Shared/Reusable Componant/loader/loader.component';
+import { DepartmentTicketsComponent } from './Pages/department-tickets/department-tickets.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LoaderComponent } from './Shared/Reusable Componant/loader/loader.compo
     AdminDptDashboardComponent,
     EmpDashboardComponent,
     AllpipePipe,
-    LoaderComponent
+    LoaderComponent,
+    DepartmentTicketsComponent
   ],
   imports: [
     BrowserModule,

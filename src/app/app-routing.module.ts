@@ -6,6 +6,7 @@ import { AdminDptLayoutComponent } from './Pages/admin-dpt-layout/admin-dpt-layo
 import { AdminLayoutComponent } from './Pages/admin-layout/admin-layout.component';
 import { CreateRequestComponent } from './Pages/create-request/create-request.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { DepartmentTicketsComponent } from './Pages/department-tickets/department-tickets.component';
 import { DepartmentComponent } from './Pages/department/department.component';
 import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.component';
 import { EmployeeLayoutComponent } from './Pages/employee-layout/employee-layout.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
     canActivate:[LoginGuard],
     children: [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
-      { path: 'adminDept', component: DepartmentComponent },
+      { path: 'adminDeptTickets', component: DepartmentTicketsComponent },
       { path: 'deptRequestList', component: RequestListComponent },
       { path: 'admindeptLeaves', component: LeavesComponent}
     ]
