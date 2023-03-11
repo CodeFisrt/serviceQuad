@@ -18,4 +18,7 @@ export class LeaveService {
   saveLeave(obj:any):Observable<any>{
     return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave',obj);
   }
+  updateLeave(obj:any):Observable<any>{
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave',obj)
+  }
 }

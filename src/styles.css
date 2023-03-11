@@ -9,6 +9,15 @@ label {
   .text-danger {
     font-size: 14px;
   }
+
   .navbar{
     height: 55px;
   }
+  .card-header {
+    padding: 2px 5px !important;
+  }
+
+  .table>:not(caption)>*>* {
+    padding: 0.2rem 0.2rem !important; 
+}
+  

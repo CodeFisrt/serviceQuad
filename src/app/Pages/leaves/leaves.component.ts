@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { leaveClass } from 'src/app/Core/Classes/leave';
 import { LeaveService } from 'src/app/Core/Services/Leave/leave.service';
 
@@ -14,7 +15,9 @@ export class LeavesComponent implements OnInit {
   loggedInRole: string = '';
   loginUserData: any;
   isload:boolean=true;
-  constructor(public service: LeaveService) {
+  isSave:boolean=true;
+  constructor(public service: LeaveService,private messageService: MessageService,
+    private primengConfig: PrimeNGConfig) {
     this.leaveArray = [];
     this.empLeaveArray = []
     const role = localStorage.getItem('role');
@@ -47,10 +50,14 @@ export class LeavesComponent implements OnInit {
   onSave() {
     this.service.saveLeave(this.LeaveObj).subscribe((res: any) => {
       if (res) {
-        this.getAllEmployeeLeaves()
+        this.getAllEmployeeLeaves();
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-      this.onReset();
-    })
+    }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   }
   onReset() {
     this.LeaveObj = new leaveClass();
@@ -61,10 +68,23 @@ export class LeavesComponent implements OnInit {
    if(leaveData !=undefined){
     this.LeaveObj=leaveData;
    }
+   this.isSave=false;
   }
   onUpdate(){
-    // const record = this.empLeaveArray.find(m => m.EmployeeId == this.LeaveObj.EmployeeId);
-    // record.EmployeeName = this.LeaveObj.EmployeeName;
-    // localStorage.setItem('employee', this.empLeaveArray)
+    this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
+      if (res) {
+        this.getAllEmployeeLeaves();
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+      }
+    }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   }
+  onAdd(){
+    this.onReset();
+    this.isSave=false
+  };
+
 }
