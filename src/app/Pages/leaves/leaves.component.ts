@@ -14,6 +14,7 @@ export class LeavesComponent implements OnInit {
   loggedInRole: string = '';
   loginUserData: any;
   isload:boolean=true;
+  isSave:boolean=true;
   constructor(public service: LeaveService) {
     this.leaveArray = [];
     this.empLeaveArray = []
@@ -47,9 +48,9 @@ export class LeavesComponent implements OnInit {
   onSave() {
     this.service.saveLeave(this.LeaveObj).subscribe((res: any) => {
       if (res) {
-        this.getAllEmployeeLeaves()
+        this.getAllEmployeeLeaves();
+        alert('Saved Successfully');
       }
-      this.onReset();
     })
   }
   onReset() {
@@ -63,8 +64,15 @@ export class LeavesComponent implements OnInit {
    }
   }
   onUpdate(){
-    // const record = this.empLeaveArray.find(m => m.EmployeeId == this.LeaveObj.EmployeeId);
-    // record.EmployeeName = this.LeaveObj.EmployeeName;
-    // localStorage.setItem('employee', this.empLeaveArray)
+    this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
+    if(res){
+      this.getAllEmployeeLeaves();
+      alert('Updated Successfully')
+    }
+    })
+  }
+  onAdd(){
+    this.onReset();
+    this.isSave=true;
   }
 }
