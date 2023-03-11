@@ -62,6 +62,7 @@ export class LeavesComponent implements OnInit {
    if(leaveData !=undefined){
     this.LeaveObj=leaveData;
    }
+   this.isSave=false;
   }
   onUpdate(){
     this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
@@ -73,7 +74,7 @@ export class LeavesComponent implements OnInit {
   }
   onAdd(){
     this.onReset();
-    this.isSave=true;
+    this.isSave=false
   };
 
 }
