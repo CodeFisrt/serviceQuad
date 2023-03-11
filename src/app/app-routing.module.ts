@@ -40,7 +40,9 @@ const routes: Routes = [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
       { path: 'adminDeptTickets', component: DepartmentTicketsComponent },
       { path: 'deptRequestList', component: RequestListComponent },
-      { path: 'admindeptLeaves', component: LeavesComponent}
+      { path: 'admindeptLeaves', component: LeavesComponent},
+      { path: 'adminleaveForApproval', component: LeaveForApprovalComponent }
+      
     ]
   },
   {
@@ -49,7 +51,9 @@ const routes: Routes = [
     children: [
       { path: 'empDashboard', component: EmpDashboardComponent },
       { path: 'createRequest', component: CreateRequestComponent },
-      { path: 'empLeaves', component: LeavesComponent }
+      { path: 'empLeaves', component: LeavesComponent },
+      { path: 'empleaveForApproval', component: LeaveForApprovalComponent }
+     
     ]
   }
 ];

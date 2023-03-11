@@ -1,1 +1,56 @@
-<p>leave-for-approval works!</p>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-warning">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Leave For Approval List</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="bg-secondary text-white text-center">
+                                    <th>Sr.No</th>
+                                    <th>Employee Name</th>
+                                    <th>From Date</th>
+                                    <th>To Date</th>
+                                    <th>Is Half Day</th>
+                                    <th>No Of Days</th>
+                                    <th>Leave Type</th>
+                                    <th>Details</th>
+                                    <th>Approved Date</th>
+                                    <th>Is Approved</th>
+                                </tr>
+                            </thead>
+                            <ng-container *ngIf="leaveArry.length == 0">
+                                <tr>
+                                    <td colspan="10" class="text-center">No Record Found</td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngIf="leaveArry.length != 0">
+                                <tbody class="text-center">
+                                    <tr *ngFor="let data of leaveArry; let sr = index;">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{data.EmployeeName | titlecase}}</td>
+                                        <td>{{data.FromDate | date:'dd-MMM-yy'}}</td>
+                                        <td>{{data.ToDate | date:'dd-MMM-yy'}}</td>
+                                        <td>{{data.IsHalfDay | titlecase}}</td>
+                                        <td>{{data.NoOfDays}}</td>
+                                        <td>{{data.LeaveType | titlecase}}</td>
+                                        <td>{{data.Details | titlecase}}</td>
+                                        <td>{{data.ApprovedDate | date:'dd-MMM-yy'}}</td>
+                                        <td>{{data.IsApproved | titlecase}}</td>
+                                    </tr>
+                                </tbody>
+                            </ng-container>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
