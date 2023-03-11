@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
 import { createRequestClass } from 'src/app/Core/Classes/createRequest';
 import { deptClass } from 'src/app/Core/Classes/department';
 import { CreateRequestService } from 'src/app/Core/Services/createRequest/create-request.service';
@@ -17,9 +17,10 @@ export class CreateRequestComponent implements OnInit {
   deptArray: deptClass[] = [];
 
   loggingUserData: any;
+  msgs: Message[] = [];
 
   constructor(private service: CreateRequestService, private deptService: DeptService, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) {
+    private primengConfig: PrimeNGConfig, private confirmationService: ConfirmationService) {
     const localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
       this.loggingUserData = JSON.parse(localData);
@@ -119,4 +120,19 @@ export class CreateRequestComponent implements OnInit {
   onReset() {
     this.createRequestObj = new createRequestClass();
   };
+
+  onConfirmDelte(id: number) {
+    this.confirmationService.confirm({
+      message: 'Do tou want to delete?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+        this.onDelete(id);
+      },
+      reject: () => {
+        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+      }
+    });
+  }
 }
