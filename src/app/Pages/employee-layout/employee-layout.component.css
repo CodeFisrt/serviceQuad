@@ -1,11 +1,15 @@
-.custom-nav{
+.custom-nav {
     background-color: blue;
- };
+}
 
- li a:hover{
- transform: scale(1.1);
- transition: 0.2s;
- background-color: rgb(2, 2, 32);
- border: 1px solid white;
- border-radius: 15px;
- };
+.logoutbtn {
+    display: flex !important;
+}
+
+li a:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+    background-color: rgb(2, 2, 32);
+    border: 1px solid white;
+    border-radius: 15px;
+}
