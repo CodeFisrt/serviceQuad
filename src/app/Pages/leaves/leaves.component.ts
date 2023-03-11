@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { leaveClass } from 'src/app/Core/Classes/leave';
 import { LeaveService } from 'src/app/Core/Services/Leave/leave.service';
 
@@ -15,7 +16,8 @@ export class LeavesComponent implements OnInit {
   loginUserData: any;
   isload:boolean=true;
   isSave:boolean=true;
-  constructor(public service: LeaveService) {
+  constructor(public service: LeaveService,private messageService: MessageService,
+    private primengConfig: PrimeNGConfig) {
     this.leaveArray = [];
     this.empLeaveArray = []
     const role = localStorage.getItem('role');
@@ -49,8 +51,12 @@ export class LeavesComponent implements OnInit {
     this.service.saveLeave(this.LeaveObj).subscribe((res: any) => {
       if (res) {
         this.getAllEmployeeLeaves();
-        alert('Saved Successfully');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
+    }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
   onReset() {
@@ -66,11 +72,15 @@ export class LeavesComponent implements OnInit {
   }
   onUpdate(){
     this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
-    if(res){
-      this.getAllEmployeeLeaves();
-      alert('Updated Successfully')
-    }
-    })
+      if (res) {
+        this.getAllEmployeeLeaves();
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+      }
+    }, (error: any) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+    });
   }
   onAdd(){
     this.onReset();
