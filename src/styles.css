@@ -9,4 +9,6 @@ label {
   .text-danger {
     font-size: 14px;
   }
-  
+  .navbar{
+    height: 55px;
+  }
