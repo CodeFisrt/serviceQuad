@@ -32,32 +32,29 @@
                                     <tr>
                                         <td colspan="10" class="text-center">No Record Found</td>
                                     </tr>
-                                </ng-container>
-                                <ng-container *ngIf="leaveArray.length != 0">
-                                    <tbody>
-                                        <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center"
-                                            [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
-                                            <td>{{sr+1}}</td>
-                                            <td>{{leave.EmployeeName}}</td>
-                                            <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
-                                            <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
-                                            <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
-                                            <td>{{leave.NoOfDays}}</td>
-                                            <td>{{leave.LeaveType}}</td>
-                                            <td>
-                                                <p [innerHtml]="leave.Details"></p>
-                                            </td>
-                                            <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
-                                            <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
-                                            <td>
-                                                <div class="button">
-                                                    <button class="btn btn-success btn-sm m-2">Edit</button>
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ng-container>
+                                   </ng-container>
+                               <ng-container *ngIf="leaveArray.length != 0">
+                                <tbody>
+                                    <tr *ngFor="let leave of leaveArray; let sr=index" class="text-center" [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{leave.EmployeeName}}</td>
+                                        <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
+                                        <td>{{leave.NoOfDays}}</td>
+                                        <td>{{leave.LeaveType}}</td>
+                                        <td><p [innerHtml]="leave.Details"></p></td>
+                                        <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}} </td>
+                                        <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                        <td>
+                                            <div class="button">
+                                                <button class="btn btn-success btn-sm m-2">Edit</button>
+                                                <button class="btn btn-danger btn-sm">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                               </ng-container>
                             </table>
                         </div>
                     </div>
@@ -78,8 +75,8 @@
                         <div class="col-6">
                             <div class="button text-end">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" (click)="onAdd()">
-                                    Create Leave
+                                    data-bs-target="#exampleModal">
+                                   Create Leave
                                 </button>
                             </div>
                         </div>
@@ -117,8 +114,7 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-                                        <td><button class="btn btn-success" (click)="onEdit(data.LeaveId)"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+                                        <td><button class="btn btn-success" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -200,9 +196,9 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" *ngIf="isSave" (click)="onSave()" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
                                 [disabled]="form.form.invalid">Add Leave</button>
-                            <button class="btn btn-warning"  (click)="onUpdate()" *ngIf="!isSave"  data-bs-dismiss="modal">Update</button>
+                                <button class="btn btn-warning" (click)="onUpdate()">Update</button>
                             <button class="btn btn-danger" (click)="onReset()">Reset</button>
                         </div>
                     </div>

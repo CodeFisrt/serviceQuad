@@ -21,15 +21,15 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
-                                        <th>Sr.No</th>
-                                        <th>RequestNo</th>
+                                        <th>Sr.No.</th>
+                                        <th>Request No.</th>
                                         <th>State</th>
                                         <th>Created Date</th>
                                         <th>Expected End Date</th>
                                         <th>Severity</th>
                                         <th>Assigned User Name</th>
                                         <th>Employee Name</th>
-                                        <th>Dept Name</th>
+                                        <th>Dept. Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -121,12 +121,12 @@
                         <div class="modal-footer ">
                             <div class="row ">
                                 <div class="col">
-                                    <button type="button" class="btn btn-success m-2" (click)="onSave()"
+                                    <button type="button" class="btn btn-success btn-sm m-2" (click)="onSave()"
                                         data-bs-dismiss="modal" *ngIf="isSave">Save</button>
-                                    <button type="button" class="btn btn-success m-2"
+                                    <button type="button" class="btn btn-success btn-sm m-2"
                                         (click)="onUpdate(createRequestObj.EmployeeId,createRequestObj)"
                                         data-bs-dismiss="modal" *ngIf="!isSave">Update</button>
-                                    <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                    <button class="btn btn-danger btn-sm" (click)="onReset()">Reset</button>
                                 </div>
                             </div>
                         </div>

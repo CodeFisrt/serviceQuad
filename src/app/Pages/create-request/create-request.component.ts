@@ -30,19 +30,21 @@ export class CreateRequestComponent implements OnInit {
   isSave: boolean = true;
 
   ngOnInit(): void {
-    this.getAllCreateEmployee();
     this.getAllDept();
+    this.getAllCreateEmployee();
   }
 
   // ngOnInit(): void {
-    
+
   //   this.getAllDept();
   //   this.getAllCreateEmployee();
   // };
 
   getAllCreateEmployee() {
     this.service.getAllRequestByEmployeeId(this.createRequestObj.EmployeeId).subscribe((res: any) => {
-      this.createRequestArray = res;
+      if(res){
+        this.createRequestArray = res;
+      }
     })
   };
 
@@ -55,7 +57,7 @@ export class CreateRequestComponent implements OnInit {
   };
 
   onSave() {
-    this.createRequestObj.EmployeeId =  this.loggingUserData.EmployeeId;
+    this.createRequestObj.EmployeeId = this.loggingUserData.EmployeeId;
     this.service.addCreateRequest(this.createRequestObj).subscribe((res: any) => {
       if (res) {
         this.getAllCreateEmployee();
@@ -66,7 +68,6 @@ export class CreateRequestComponent implements OnInit {
     }, (error: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
-    this.onReset();
   };
 
   onAdd() {
@@ -74,7 +75,7 @@ export class CreateRequestComponent implements OnInit {
     this.isSave = true;
   };
 
-  onEdit(id:number) {
+  onEdit(id: number) {
     this.isSave = false;
     this.onReset();
     this.service.editCreateRequest(id).subscribe((res: any) => {
@@ -89,8 +90,8 @@ export class CreateRequestComponent implements OnInit {
     });
   };
 
-  onUpdate(id: number,obj:any) {
-    this.service.updateCreateRequest(id,obj).subscribe((res: any) => {
+  onUpdate(id: number, obj: any) {
+    this.service.updateCreateRequest(id, obj).subscribe((res: any) => {
       if (res) {
         this.getAllCreateEmployee();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
@@ -100,11 +101,10 @@ export class CreateRequestComponent implements OnInit {
     }, (error: any) => {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
-    this.onReset();
   };
 
   onDelete(id: number) {
-    this.service.deleteCreateRequest(id,this.createRequestObj).subscribe((res: any) => {
+    this.service.deleteCreateRequest(id, this.createRequestObj).subscribe((res: any) => {
       if (res) {
         this.getAllCreateEmployee();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
