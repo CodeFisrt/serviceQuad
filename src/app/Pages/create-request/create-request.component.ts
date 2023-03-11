@@ -32,7 +32,13 @@ export class CreateRequestComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCreateEmployee();
     this.getAllDept();
-  };
+  }
+
+  // ngOnInit(): void {
+    
+  //   this.getAllDept();
+  //   this.getAllCreateEmployee();
+  // };
 
   getAllCreateEmployee() {
     this.service.getAllRequestByEmployeeId(this.createRequestObj.EmployeeId).subscribe((res: any) => {
