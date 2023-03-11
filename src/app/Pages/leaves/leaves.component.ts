@@ -51,7 +51,7 @@ export class LeavesComponent implements OnInit {
         this.getAllEmployeeLeaves();
         alert('Saved Successfully');
       }
-    })
+    });
   }
   onReset() {
     this.LeaveObj = new leaveClass();
@@ -74,5 +74,6 @@ export class LeavesComponent implements OnInit {
   onAdd(){
     this.onReset();
     this.isSave=true;
-  }
+  };
+
 }

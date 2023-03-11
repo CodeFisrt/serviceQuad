@@ -196,10 +196,10 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="onSave()" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-success" *ngIf="isSave" (click)="onSave()" data-bs-dismiss="modal"
                                 [disabled]="form.form.invalid">Add Leave</button>
-                                <button class="btn btn-warning" (click)="onUpdate()">Update</button>
-                            <button class="btn btn-danger" (click)="onReset()">Reset</button>
+                                <button class="btn btn-warning" *ngIf="!isSave" (click)="onUpdate()">Update</button>
+                            <button class="btn btn-danger"  (click)="onReset()">Reset</button>
                         </div>
                     </div>
                 </div>
