@@ -51,17 +51,11 @@
                                             <td>{{data.EmployeeName | titlecase | allpipe}}</td>
                                             <td>{{data.DeptName | titlecase | allpipe}}</td>
                                             <td>
-                                                <div class="row">
-                                                    <div class="col-6 text-end">
-                                                        <p (click)="onEdit(data.RequestId)" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal"><i
-                                                                class="bi bi-pencil-square text-warning fs-5 "></i></p>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <p (click)="onConfirmDelte(data.RequestId)"><i
-                                                                class="bi bi-trash-fill text-danger fs-5"></i></p>
-                                                    </div>
-                                                </div>
+                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                    (click)="onEdit(data.RequestId)"
+                                                    class="bi bi-pencil-square text-warning fs-5 me-2"></i>
+                                                <i (click)="onConfirmDelte(data.RequestId)"
+                                                    class="bi bi-trash-fill text-danger fs-5"> </i>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -90,8 +84,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="text">Select Department</label>
-                                        <select name="dept" class="form-control"
-                                            [(ngModel)]="createRequestObj.DeptId">
+                                        <select name="dept" class="form-control" [(ngModel)]="createRequestObj.DeptId">
                                             <option *ngFor="let dept of deptArray" [value]="dept.DeptId">
                                                 {{dept.DeptName}}</option>
                                         </select>

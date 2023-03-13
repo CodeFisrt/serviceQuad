@@ -16,15 +16,14 @@
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
                                         <th>Sr.No</th>
-                                        <th>Details</th>
-                                        <th>State</th>
-                                        <th>Created Date</th>
-                                        <th>Expected End Date</th>
-                                        <th>Severity</th>
-                                        <th>Completed Date</th>
-                                        <th>Assigned User Name</th>
                                         <th>Employee Name</th>
                                         <th>Dept Name</th>
+                                        <th>Assigned User Name</th>
+                                        <th>Severity</th>
+                                        <th>Expected End Date</th>
+                                        <th>Completed Date</th>
+                                        <th>State</th>
+                                        <th>Details</th>
                                     </tr>
                                 </thead>
                                 <ng-container *ngIf="deptTicketArray.length == 0">
@@ -36,17 +35,16 @@
                                     <tbody class="text-center">
                                         <tr *ngFor="let data of deptTicketArray; let sr = index;">
                                             <td>{{sr+1}}</td>
-                                            <td><p [innerHtml]="data.Details"></p></td>
-                                            <td>{{data.State | titlecase}}</td>
-                                            <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
-                                            <td>{{data.ExpectedEndDate | date :'dd-MMM-yy'}}</td>
-                                            <td>{{data.Severity | titlecase}}</td>
-                                            <td>{{data.CompletedDate | date :'dd-MMM-yy'}}</td>
+                                            <td>{{data.EmployeeName | titlecase}}</td>
+                                            <td>{{data.DeptName | titlecase}}</td>
                                             <td>{{data.AssignedUserName | titlecase}}
                                                 <button class="btn btn-sm btn-primary text-center">Assign</button>
                                             </td>
-                                            <td>{{data.EmployeeName | titlecase}}</td>
-                                            <td>{{data.DeptName | titlecase}}</td>
+                                            <td>{{data.Severity | titlecase}}</td>
+                                            <td>{{data.ExpectedEndDate | date :'dd-MMM-yy'}}</td>
+                                            <td>{{data.CompletedDate | date :'dd-MMM-yy'}}</td>
+                                            <td>{{data.State | titlecase}}</td>
+                                            <td><p [innerHtml]="data.Details"></p></td>
                                         </tr>
                                     </tbody>
                                 </ng-container>
