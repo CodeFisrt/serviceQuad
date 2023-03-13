@@ -10,7 +10,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="deptTicketArray" [paginator]="true" [rows]="10"
@@ -103,3 +102,5 @@
         </div>
     </div>
 </div>
+
+<app-loader *ngIf="isLoading"></app-loader>

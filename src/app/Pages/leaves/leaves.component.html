@@ -10,7 +10,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="leaveArray" [paginator]="true" [rows]="10"
@@ -134,7 +133,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="leaveArray" [paginator]="true" [rows]="10"
@@ -216,18 +214,15 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-<<<<<<< HEAD
                                         <td> <i (click)="onEdit(data.LeaveId)"
                                         <td> <i(click)="onEdit(data.LeaveId)"
                                                 class="bi bi-pencil-square text-warning fs-4 fw-bold"
                                                 data-bs-toggle="modal" data-bs-target="#exampleModal"> </td>
-=======
                                         <td>
                                             <i (click)="onEdit(data.LeaveId)" class="bi bi-pencil-square text-warning fs-5 me-2"
                                              data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"></i>
                                         </td>
->>>>>>> f08545730a0c78c80ef18d6f2a3f83cdba44d9ac
                                     </tr>
                                 </tbody>
                             </table> -->
@@ -321,4 +316,5 @@
         </div>
     </div>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>
 <p-toast></p-toast>

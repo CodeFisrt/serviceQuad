@@ -16,7 +16,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="deptArray" [paginator]="true" [rows]="10"
@@ -111,5 +110,6 @@
         </div>
     </div>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>
 <p-toast></p-toast>
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
