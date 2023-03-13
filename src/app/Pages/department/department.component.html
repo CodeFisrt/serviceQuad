@@ -19,39 +19,35 @@
                     <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="bg-secondary text-white text-center">
-                                        <th>Sr.No</th>
-                                        <th>Department Name</th>
-                                        <th>Department Head</th>
-                                        <th>Created Date</th>
+                            <p-table [value]="deptArray" [paginator]="true" [rows]="10"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,150,200]"
+                                styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Sr.No.</th>
+                                        <th pSortableColumn="DeptName">Department Name<p-sortIcon
+                                                field="DeptName"></p-sortIcon></th>
+                                        <th pSortableColumn="DeptHead">Department Head<p-sortIcon
+                                                field="DeptHead"></p-sortIcon></th>
                                         <th>Action</th>
                                     </tr>
-                                </thead>
-                                <ng-container *ngIf="deptArray.length == 0">
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-sr="rowIndex">
                                     <tr>
-                                        <td colspan="5" class="text-center">No Record Found</td>
+                                        <td>{{sr+1}}</td>
+                                        <td>{{item.DeptName | titlecase}}</td>
+                                        <td>{{item.DeptHead | titlecase}}</td>
+                                        <td>
+                                            <i data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                (click)="onEdit(item.DeptId)"
+                                                class="bi bi-pencil-square text-warning fs-5 me-3"></i>
+                                            <i (click)="onConfirmDelte(item.DeptId)"
+                                                class="bi bi-trash-fill text-danger fs-5"> </i>
+                                        </td>
                                     </tr>
-                                </ng-container>
-                                <ng-container *ngIf="deptArray.length != 0">
-                                    <tbody class="text-center">
-                                        <tr *ngFor="let data of deptArray; let sr = index;">
-                                            <td>{{sr+1}}</td>
-                                            <td>{{data.DeptName | titlecase}}</td>
-                                            <td>{{data.DeptHead | titlecase}}</td>
-                                            <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
-                                            <td>
-                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    (click)="onEdit(data.DeptId)"
-                                                    class="bi bi-pencil-square text-warning fs-5 me-4"></i>
-                                                <i (click)="onConfirmDelte(data.DeptId)"
-                                                    class="bi bi-trash-fill text-danger fs-5"> </i>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ng-container>
-                            </table>
+                                </ng-template>
+                            </p-table>
                         </div>
                     </div>
                 </div>

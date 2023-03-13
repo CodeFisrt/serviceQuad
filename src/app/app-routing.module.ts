@@ -17,6 +17,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { ReportsComponent } from './Pages/reports/reports.component';
 import { RequestListComponent } from './Pages/request-list/request-list.component';
 
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },

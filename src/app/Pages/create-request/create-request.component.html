@@ -19,49 +19,50 @@
                     <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="bg-secondary text-white text-center">
+                            <p-table [value]="createRequestArray" [paginator]="true" [rows]="10"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,100,150]"
+                                styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
+                                <ng-template pTemplate="header">
+                                    <tr>
                                         <th>Sr.No.</th>
-                                        <th>Request No.</th>
-                                        <th>State</th>
-                                        <th>Created Date</th>
-                                        <th>Expected End Date</th>
-                                        <th>Severity</th>
-                                        <th>Assigned User Name</th>
-                                        <th>Employee Name</th>
-                                        <th>Dept. Name</th>
+                                        <th pSortableColumn="RequestNo">Request No.<p-sortIcon
+                                                field="RequestNo"></p-sortIcon></th>
+                                        <th pSortableColumn="EmployeeName">Employee Name<p-sortIcon
+                                                field="EmployeeName"></p-sortIcon></th>
+                                        <th pSortableColumn="DeptName">Dept. Name <p-sortIcon field="DeptName"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="AssignedUserName">Assigned User Name<p-sortIcon
+                                                field="AssignedUserName"></p-sortIcon></th>
+                                        <th pSortableColumn="Severity">Severity<p-sortIcon
+                                                field="Severity"></p-sortIcon></th>
+                                        <th pSortableColumn="ExpectedEndDate">Expected End Date <p-sortIcon field="ExpectedEndDate"></p-sortIcon></th>
+                                        <th pSortableColumn="CompletedDate">CompletedDate <p-sortIcon field="CompletedDate"></p-sortIcon></th>
+                                        <th pSortableColumn="State">State <p-sortIcon field="State"></p-sortIcon> </th>
                                         <th>Action</th>
                                     </tr>
-                                </thead>
-                                <ng-container *ngIf="createRequestArray.length == 0">
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-sr="rowIndex">
                                     <tr>
-                                        <td colspan="10" class="text-center">No Record Found</td>
+                                        <td>{{sr+1}}</td>
+                                        <td>{{item.RequestNo | allpipe}}</td>
+                                        <td>{{item.EmployeeName | titlecase | allpipe}}</td>
+                                        <td>{{item.DeptName | titlecase | allpipe}}</td>
+                                        <td>{{item.AssignedUserName | titlecase | allpipe}}</td>
+                                        <td>{{item.Severity | titlecase | allpipe}}</td>
+                                        <td>{{item.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{item.CompletedDate | date:'dd-MMM-yy' | allpipe}}</td>
+                                        <td>{{item.State | titlecase| allpipe}}</td>
+                                        <td>
+                                            <i data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            (click)="onEdit(item.RequestId)"
+                                            class="bi bi-pencil-square text-warning fs-5 me-2"></i>
+                                        <i (click)="onDelete(item.RequestId)"
+                                            class="bi bi-trash-fill text-danger fs-5"> </i>
+                                        </td>
                                     </tr>
-                                </ng-container>
-                                <ng-container *ngIf="createRequestArray.length != 0">
-                                    <tbody class="text-center">
-                                        <tr *ngFor="let data of createRequestArray; let sr = index;">
-                                            <td>{{sr+1}}</td>
-                                            <td>{{data.RequestNo | allpipe}}</td>
-                                            <td>{{data.State | titlecase| allpipe }}</td>
-                                            <td>{{data.CreatedDate | date:'dd-MMM-yy' | allpipe}}</td>
-                                            <td>{{data.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
-                                            <td>{{data.Severity | titlecase | allpipe}}</td>
-                                            <td>{{data.AssignedUserName | titlecase | allpipe}}</td>
-                                            <td>{{data.EmployeeName | titlecase | allpipe}}</td>
-                                            <td>{{data.DeptName | titlecase | allpipe}}</td>
-                                            <td>
-                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    (click)="onEdit(data.RequestId)"
-                                                    class="bi bi-pencil-square text-warning fs-5 me-2"></i>
-                                                <i (click)="onDelete(data.RequestId)"
-                                                    class="bi bi-trash-fill text-danger fs-5"> </i>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ng-container>
-                            </table>
+                                </ng-template>
+                            </p-table>
                         </div>
                     </div>
                 </div>
