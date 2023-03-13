@@ -1,4 +1,4 @@
-<div class="bg-img">
+<!-- <div class="bg-img">
     <div class="container">
         <div class="row">
             <div class="col-sm-11"></div>
@@ -43,5 +43,60 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="brand">
+            <!--   ADD A LOG IN AVATAT HERE                 -->
+            <img src="../../../assets/img/Green Modern Fashion Store Logo.png" class="img" alt=""
+                style="width:100px;height:100px">
+        </div>
+        <form class="form login">
+            <!-- <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button type="submit" id="login-button" (click)="onLogin()">Login</button> -->
+            <div class="login__field">
+                <label><h5 class="usarname">User Name <span class="text-danger usarname">*</span></h5></label><br>
+                <i class="login__icon fas fa-user"></i>
+                <input type="text" name="userName" class="login__input form-control" [(ngModel)]="loginObj.UserName"
+                    placeholder="User Name" required #userName="ngModel">
+                <div class="text-danger" *ngIf="userName.touched">
+                    <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                </div>
+            </div>
+            <div class="login__field">
+                <label><h5 class="usarname">Password <span class="text-danger usarname">*</span></h5></label>
+                <i class="login__icon fas fa-lock"></i>
+                <input [type]="changetype?'password':'text'" name="Password" class="login__input"
+                    [(ngModel)]="loginObj.Password" placeholder="Password" required #password="ngModel">
+                <div  class="iconPassword">
+                    <span (click)="viewpass()"><i
+                        [ngClass]="visible?'bi bi-eye-slash-fill':'bi bi-eye-fill'"></i></span>
+                </div>
+                <div class="text-danger" *ngIf="password.touched">
+                    <span *ngIf="password.errors?.['required']">Password is required</span>
+                </div>
+            </div>
+            <button class="button login__submit " (click)="onLogin()">
+                <h5><b>Login</b></h5>
+            </button>
+        </form>
+    </div>
+
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
+
 <p-toast></p-toast>

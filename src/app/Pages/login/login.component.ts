@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   };
 
   onLogin() {
+    debugger;
     this.service.getAllLogin(this.loginObj).subscribe((res: any) => {
       localStorage.setItem('adminLoginDetails', JSON.stringify(res));
       
