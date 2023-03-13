@@ -29,6 +29,8 @@ import {ConfirmationService , MessageService} from 'primeng/api';
 import { AllpipePipe } from './Shared/Pipes/allpipe.pipe';
 import { LoaderComponent } from './Shared/Reusable Componant/loader/loader.component';
 import { DepartmentTicketsComponent } from './Pages/department-tickets/department-tickets.component';
+import {TableModule} from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { DepartmentTicketsComponent } from './Pages/department-tickets/departmen
     ConfirmDialogModule,
     ButtonModule,
     MessagesModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    TableModule,
+    PaginatorModule
   ],
   providers: [LoginGuard,ConfirmationService, MessageService],
   bootstrap: [AppComponent]

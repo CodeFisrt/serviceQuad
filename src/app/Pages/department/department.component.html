@@ -24,7 +24,6 @@
                                         <th>Sr.No</th>
                                         <th>Department Name</th>
                                         <th>Department Head</th>
-                                        <th>Created Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,7 +38,6 @@
                                             <td>{{sr+1}}</td>
                                             <td>{{data.DeptName | titlecase}}</td>
                                             <td>{{data.DeptHead | titlecase}}</td>
-                                            <td>{{data.CreatedDate | date:'dd-MMM-yy'}}</td>
                                             <td>
                                                 <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                     (click)="onEdit(data.DeptId)"
