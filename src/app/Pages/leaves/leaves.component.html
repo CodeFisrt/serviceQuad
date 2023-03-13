@@ -12,7 +12,56 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-striped">
+                            <p-table [value]="leaveArray" [paginator]="true" [rows]="10"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,100,150]"
+                                styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>SrNo</th>
+                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                                field="EmployeeName"></p-sortIcon></th>
+                                        <th pSortableColumn="FromDate">From Date <p-sortIcon
+                                                field="ContactNo"></p-sortIcon></th>
+                                        <th pSortableColumn="ToDate">To Date <p-sortIcon field="EmailId"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="IsHalfDay">Is Half Day <p-sortIcon
+                                                field="UserName"></p-sortIcon></th>
+                                        <th pSortableColumn="NoOfDays">No Of Days <p-sortIcon
+                                                field="DeptName"></p-sortIcon></th>
+                                        <th pSortableColumn="LeaveType">Leave Type <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Details">Details <p-sortIcon field="Role"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="ApprovedDate">Approved Date <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="IsApproved">Is Approved <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Action">Action <p-sortIcon field="Role"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-leave let-sr="rowIndex">
+                                    <tr [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{leave.EmployeeName}}</td>
+                                        <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{leave.IsHalfDay ? 'Yes': 'No'}}</td>
+                                        <td>{{leave.NoOfDays}}</td>
+                                        <td>{{leave.LeaveType}}</td>
+                                        <td>
+                                            <p [innerHtml]="leave.Details"></p>
+                                        </td>
+                                        <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}}</td>
+                                        <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                        <td>
+                                            <i class="bi bi-pencil-square text-warning fs-5 me-2"></i>
+                                            <i class="bi bi-trash-fill text-danger fs-5"> </i>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                            <!-- <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
                                         <th>Sr.No.</th>
@@ -56,7 +105,7 @@
                                         </tr>
                                     </tbody>
                                 </ng-container>
-                            </table>
+                            </table> -->
                         </div>
                     </div>
                 </div>
@@ -86,7 +135,54 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-striped">
+                            <p-table [value]="leaveArray" [paginator]="true" [rows]="10"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,100,150]"
+                                styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>SrNo</th>
+                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                                field="EmployeeName"></p-sortIcon></th>
+                                        <th pSortableColumn="FromDate">From Date <p-sortIcon
+                                                field="ContactNo"></p-sortIcon></th>
+                                        <th pSortableColumn="ToDate">To Date <p-sortIcon field="EmailId"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="IsHalfDay">Is Half Day <p-sortIcon
+                                                field="UserName"></p-sortIcon></th>
+                                        <th pSortableColumn="NoOfDays">No Of Days <p-sortIcon
+                                                field="DeptName"></p-sortIcon></th>
+                                        <th pSortableColumn="LeaveType">Leave Type <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Details">Details <p-sortIcon field="Role"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="ApprovedDate">Approved Date <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="IsApproved">Is Approved <p-sortIcon
+                                                field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Action">Action <p-sortIcon field="Role"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-data let-sr="rowIndex">
+                                    <tr>
+                                        <td>{{sr+1}}</td>
+                                        <td>{{data.EmployeeName}}</td>
+                                        <td>{{data.FromDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{data.ToDate |date:'dd-MM-yy'}}</td>
+                                        <td>{{data.IsHalfDay ? 'Yes': 'No'}}</td>
+                                        <td>{{data.NoOfDays}}</td>
+                                        <td>{{data.LeaveType}}</td>
+                                        <td> <p [innerHtml]="data.Details"></p></td>
+                                        <td>{{data.ApprovedDate |date:'dd-MMM-yy'}}</td>
+                                        <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
+                                        <td>
+                                            <i class="bi bi-pencil-square text-warning fs-5 me-2" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"></i> 
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                            <!-- <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="bg-secondary text-white text-center">
                                         <th>Sr.No.</th>
@@ -115,12 +211,12 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-                                        <td> <i                  (click)="onEdit(data.LeaveId)"
+                                        <td> <i(click)="onEdit(data.LeaveId)"
                                                 class="bi bi-pencil-square text-warning fs-4 fw-bold"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"></i> </td>
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal"> </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                         </div>
                     </div>
                 </div>
