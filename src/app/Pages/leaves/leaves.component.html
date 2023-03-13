@@ -172,12 +172,15 @@
                                         <td>{{data.IsHalfDay ? 'Yes': 'No'}}</td>
                                         <td>{{data.NoOfDays}}</td>
                                         <td>{{data.LeaveType}}</td>
-                                        <td> <p [innerHtml]="data.Details"></p></td>
+                                        <td>
+                                            <p [innerHtml]="data.Details"></p>
+                                        </td>
                                         <td>{{data.ApprovedDate |date:'dd-MMM-yy'}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>
-                                            <i class="bi bi-pencil-square text-warning fs-5 me-2" (click)="onEdit(data.LeaveId)" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"></i> 
+                                            <i (click)="onEdit(data.LeaveId)" class="bi bi-pencil-square text-warning fs-5 me-2"
+                                            data-bs-toggle="modal"
+                                           data-bs-target="#exampleModal"></i>
                                         </td>
                                     </tr>
                                 </ng-template>
@@ -211,9 +214,11 @@
                                         <td>{{data.Details}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
                                         <td>{{data.ApprovedDate | date:'dd-MM-yy'}}</td>
-                                        <td> <i(click)="onEdit(data.LeaveId)"
-                                                class="bi bi-pencil-square text-warning fs-4 fw-bold"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal"> </td>
+                                        <td>
+                                            <i (click)="onEdit(data.LeaveId)" class="bi bi-pencil-square text-warning fs-5 me-2"
+                                             data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal"></i>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table> -->
