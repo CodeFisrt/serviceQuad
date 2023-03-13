@@ -87,5 +87,11 @@ export class LeavesComponent implements OnInit {
     this.onReset();
     this.isSave=false;
   };
+  onBlur(){
+    const fromDateModified = new Date (this.LeaveObj.FromDate);
+    const toDateModified = new Date (this.LeaveObj.ToDate);
+    const time = (toDateModified.getDay() - fromDateModified.getDay())+1;
+    this.LeaveObj.NoOfDays = time;
 
+  }
 }

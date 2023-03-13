@@ -153,7 +153,7 @@
                                     <div class="col-6">
                                         <label for="">To Date <span class="text-danger">*</span></label>
                                         <input type="date" name="ToDate" id="" class="form-control"
-                                            [(ngModel)]="LeaveObj.ToDate" #ToDate="ngModel" required>
+                                            [(ngModel)]="LeaveObj.ToDate" #ToDate="ngModel" required (blur)="onBlur()">
                                         <div class="text-danger" *ngIf="ToDate.touched">
                                             <span *ngIf="ToDate.errors?.['required']">This is required</span>
                                         </div>
