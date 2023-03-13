@@ -89,6 +89,7 @@ export class LeavesComponent implements OnInit {
   onAdd() {
     this.onReset();
     this.isSave = false;
+    this.isSave=true;
   };
   onBlur(){
     const fromDateModified = new Date (this.LeaveObj.FromDate);
