@@ -18,39 +18,46 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="bg-secondary text-white text-center">
-                                        <th>Sr.No</th>
-                                        <th>Employee Name</th>
-                                        <th>Contact No.</th>
-                                        <th>Email Id</th>
+                            <p-table [value]="empArray" [paginator]="true" [rows]="10"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,100,150]"
+                                styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Sr.No.</th>
+                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                                field="EmployeeName"></p-sortIcon></th>
+                                        <th pSortableColumn="ContactNo"> Contact No. <p-sortIcon
+                                                field="ContactNo"></p-sortIcon></th>
+                                        <th pSortableColumn="EmailId">Email <p-sortIcon field="EmailId"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="UserName">User Name <p-sortIcon
+                                                field="UserName"></p-sortIcon></th>
+                                        <th pSortableColumn="DeptName">Dept. Name <p-sortIcon
+                                                field="DeptName"></p-sortIcon></th>
+                                        <th pSortableColumn="Role">Role <p-sortIcon field="Role"></p-sortIcon></th>
                                         <th>Action</th>
                                     </tr>
-                                </thead>
-                                <ng-container *ngIf="empArray.length == 0">
+                                </ng-template>
+                                <ng-template pTemplate="body" let-item let-sr="rowIndex">
                                     <tr>
-                                        <td colspan="5" class="text-center">No Record Found</td>
+                                        <td>{{sr+1}}</td>
+                                        <td>{{item.EmployeeName | titlecase}}</td>
+                                        <td>{{item.ContactNo}}</td>
+                                        <td>{{item.EmailId}}</td>
+                                        <td>{{item.UserName | titlecase}}</td>
+                                        <td>{{item.DeptName | titlecase}}</td>
+                                        <td>{{item.Role | titlecase}}</td>
+                                        <td >
+                                            <i data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            (click)="onEdit(item.EmployeeId)"
+                                            class="bi bi-pencil-square text-warning fs-5 me-3"></i>
+                                        <i (click)="onDeleteConfirm(item.EmployeeId)"
+                                            class="bi bi-trash-fill text-danger fs-5"> </i>
+                                        </td>
                                     </tr>
-                                </ng-container>
-                                <ng-container *ngIf="empArray.length != 0">
-                                    <tbody class="text-center">
-                                        <tr *ngFor="let data of empArray; let sr = index;">
-                                            <td>{{sr+1}}</td>
-                                            <td>{{data.EmployeeName | titlecase}}</td>
-                                            <td>{{data.ContactNo}}</td>
-                                            <td>{{data.EmailId}}</td>
-                                            <td>
-                                                <i data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                    (click)="onEdit(data.EmployeeId)"
-                                                    class="bi bi-pencil-square text-warning fs-5 me-2"></i>
-                                                <i (click)="onDeleteConfirm(data.EmployeeId)"
-                                                    class="bi bi-trash-fill text-danger fs-5"> </i>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </ng-container>
-                            </table>
+                                </ng-template>
+                            </p-table>   
                         </div>
                     </div>
                 </div>
