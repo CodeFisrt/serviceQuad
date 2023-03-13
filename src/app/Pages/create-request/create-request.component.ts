@@ -121,19 +121,4 @@ export class CreateRequestComponent implements OnInit {
     this.createRequestObj = new createRequestClass();
   };
 
-  onConfirmDelte(id: number) {
-    this.confirmationService.confirm({
-      message: 'Do tou want to delete?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
-        this.onDelete(id);
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
-      }
-    });
-  }
-
 }
