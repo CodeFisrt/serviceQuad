@@ -19,6 +19,8 @@ export class CreateRequestComponent implements OnInit {
   loggingUserData: any;
   msgs: Message[] = [];
 
+  public isLoading: boolean = true;
+
   constructor(private service: CreateRequestService, private deptService: DeptService, private messageService: MessageService,
     private primengConfig: PrimeNGConfig, private confirmationService: ConfirmationService) {
     const localData = localStorage.getItem('adminLoginDetails');
@@ -43,8 +45,9 @@ export class CreateRequestComponent implements OnInit {
 
   getAllCreateEmployee() {
     this.service.getAllRequestByEmployeeId(this.createRequestObj.EmployeeId).subscribe((res: any) => {
-      if(res){
+      if (res) {
         this.createRequestArray = res;
+        this.isLoading = false;
       }
     })
   };
@@ -53,6 +56,7 @@ export class CreateRequestComponent implements OnInit {
     this.deptService.getDept().subscribe((res: any) => {
       if (res) {
         this.deptArray = res;
+        this.isLoading = false;
       }
     })
   };

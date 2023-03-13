@@ -18,6 +18,7 @@ export class DepartmentComponent implements OnInit {
   checked: boolean = false;
   msgs: Message[] = [];
   MessageService: any;
+  public isLoading: boolean = true;
   constructor(private service: DeptService, public loginService: LoginService, private confirmationService: ConfirmationService,
     private primengConfig: PrimeNGConfig, private messageService: MessageService) { }
 
@@ -29,6 +30,7 @@ export class DepartmentComponent implements OnInit {
     this.service.getDept().subscribe((res: any) => {
       if (res) {
         this.deptArray = res;
+        this.isLoading = false;
       };
     })
   }
@@ -73,26 +75,26 @@ export class DepartmentComponent implements OnInit {
       if (res) {
         this.dpetObj = res;
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
-      }else{
+      } else {
         this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-     }, (error: any) => {
+    }, (error: any) => {
       this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
-  }ConfirmationService(arg0: { severity: string; summary: string; detail: any; }) {
+  } ConfirmationService(arg0: { severity: string; summary: string; detail: any; }) {
     throw new Error('Method not implemented.');
   }
-;
+  ;
 
   onDelete(id: number) {
     this.service.deleteDept(id, this.dpetObj).subscribe((res: any) => {
       if (res) {
         this.getAlldeptRec();
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
-      }else{
+      } else {
         this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-     }, (error: any) => {
+    }, (error: any) => {
       this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
@@ -103,10 +105,10 @@ export class DepartmentComponent implements OnInit {
         this.dpetObj = res;
         this.getAlldeptRec();
         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
-      }else{
+      } else {
         this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-     }, (error: any) => {
+    }, (error: any) => {
       this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }

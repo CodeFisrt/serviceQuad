@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '', component: AdminLayoutComponent,
-    canActivate:[LoginGuard],
+    canActivate: [LoginGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'adminEmployee', component: EmployeeComponent },
@@ -35,25 +35,25 @@ const routes: Routes = [
   },
   {
     path: '', component: AdminDptLayoutComponent,
-    canActivate:[LoginGuard],
+    canActivate: [LoginGuard],
     children: [
       { path: 'adminDptDashboard', component: AdminDptDashboardComponent },
       { path: 'adminDeptTickets', component: DepartmentTicketsComponent },
       { path: 'deptRequestList', component: RequestListComponent },
-      { path: 'admindeptLeaves', component: LeavesComponent},
+      { path: 'admindeptLeaves', component: LeavesComponent },
       { path: 'adminleaveForApproval', component: LeaveForApprovalComponent }
-      
+
     ]
   },
   {
     path: '', component: EmployeeLayoutComponent,
-    canActivate:[LoginGuard],
+    canActivate: [LoginGuard],
     children: [
       { path: 'empDashboard', component: EmpDashboardComponent },
       { path: 'createRequest', component: CreateRequestComponent },
       { path: 'empLeaves', component: LeavesComponent },
       { path: 'empleaveForApproval', component: LeaveForApprovalComponent }
-     
+
     ]
   }
 ];

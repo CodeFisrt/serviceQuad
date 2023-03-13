@@ -14,9 +14,10 @@ export class LeavesComponent implements OnInit {
   LeaveObj: leaveClass = new leaveClass();
   loggedInRole: string = '';
   loginUserData: any;
-  isload:boolean=true;
-  isSave:boolean=true;
-  constructor(public service: LeaveService,private messageService: MessageService,
+  isload: boolean = true;
+  isSave: boolean = true;
+  public isLoading = true;
+  constructor(public service: LeaveService, private messageService: MessageService,
     private primengConfig: PrimeNGConfig) {
     this.leaveArray = [];
     this.empLeaveArray = []
@@ -39,12 +40,14 @@ export class LeavesComponent implements OnInit {
   getAllAdminLeaves() {
     this.service.getAllLeaves().subscribe((res: any) => {
       this.leaveArray = res;
+      this.isLoading = false;
     })
   }
 
   getAllEmployeeLeaves() {
     this.service.getAllEmpLeave(this.LeaveObj.EmployeeId).subscribe((res: any) => {
       this.empLeaveArray = res;
+      this.isLoading = false;
     })
   }
   onSave() {
@@ -63,16 +66,16 @@ export class LeavesComponent implements OnInit {
     this.LeaveObj = new leaveClass();
   };
 
-  onEdit(id:number){
-   const leaveData = this.empLeaveArray.find(m=>(m.LeaveId==id));
-   if(leaveData !=undefined){
-    this.LeaveObj=leaveData;
-   }
-   this.isSave=false;
+  onEdit(id: number) {
+    const leaveData = this.empLeaveArray.find(m => (m.LeaveId == id));
+    if (leaveData != undefined) {
+      this.LeaveObj = leaveData;
+    }
+    this.isSave = false;
   };
 
-  onUpdate(){
-    this.service.updateLeave(this.LeaveObj).subscribe((res:any)=>{
+  onUpdate() {
+    this.service.updateLeave(this.LeaveObj).subscribe((res: any) => {
       if (res) {
         this.getAllEmployeeLeaves();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
@@ -83,9 +86,9 @@ export class LeavesComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
-  onAdd(){
+  onAdd() {
     this.onReset();
-    this.isSave=false;
+    this.isSave = false;
   };
 
 }

@@ -19,13 +19,13 @@ import { AdminDptLayoutComponent } from './Pages/admin-dpt-layout/admin-dpt-layo
 import { AdminDptDashboardComponent } from './Pages/admin-dpt-dashboard/admin-dpt-dashboard.component';
 import { EmpDashboardComponent } from './Pages/emp-dashboard/emp-dashboard.component';
 import { LoginGuard } from './Core/Gaurds/login/login.guard';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
-import {ConfirmPopupModule} from 'primeng/confirmpopup';
-import {ConfirmationService , MessageService} from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { AllpipePipe } from './Shared/Pipes/allpipe.pipe';
 import { LoaderComponent } from './Shared/Reusable Componant/loader/loader.component';
 import { DepartmentTicketsComponent } from './Pages/department-tickets/department-tickets.component';
@@ -64,7 +64,7 @@ import { DepartmentTicketsComponent } from './Pages/department-tickets/departmen
     MessagesModule,
     ConfirmPopupModule
   ],
-  providers: [LoginGuard,ConfirmationService, MessageService],
+  providers: [LoginGuard, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

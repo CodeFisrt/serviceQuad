@@ -10,29 +10,29 @@ import { EmpDashboardService } from 'src/app/Core/Services/dashboard/emp-dashboa
 })
 export class EmpDashboardComponent implements OnInit {
 
-  empDashboard:empDashboardClass[]=[];
-  empDashboardObj:empDashboardClass= new empDashboardClass();
-  empUserData:any;
+  empDashboard: empDashboardClass[] = [];
+  empDashboardObj: empDashboardClass = new empDashboardClass();
+  empUserData: any;
   employeeId: number = 0;
-  
-  
 
-  constructor(public http:HttpClient,public service:EmpDashboardService) {
 
-    const empData=localStorage.getItem('adminLoginDetails');
-    if(empData!=null){
-      this.empUserData=JSON.parse(empData);
+
+  constructor(public http: HttpClient, public service: EmpDashboardService) {
+
+    const empData = localStorage.getItem('adminLoginDetails');
+    if (empData != null) {
+      this.empUserData = JSON.parse(empData);
       this.employeeId = this.empUserData.EmployeeId;
     }
-   }
+  }
 
   ngOnInit(): void {
-    this.GetEmpDashboardRecords();  
+    this.GetEmpDashboardRecords();
   }
 
   GetEmpDashboardRecords() {
-    this.service.GetEmpDashboard(this.employeeId).subscribe((res:any)=>{
-      this.empDashboardObj=res[0];
+    this.service.GetEmpDashboard(this.employeeId).subscribe((res: any) => {
+      this.empDashboardObj = res[0];
     })
   }
 

@@ -4,8 +4,11 @@ section {
   width: 100%;
   align-items: center;
   justify-content: center;
+  margin-top: 0px;
 }
-
+.dots{
+  margin: center;
+}
 section .dots span {
   position: absolute;
   height: 10px;

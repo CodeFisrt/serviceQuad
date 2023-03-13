@@ -14,11 +14,12 @@ import { RequestListService } from 'src/app/Core/Services/requestList/request-li
 export class RequestListComponent implements OnInit {
   requestListArray: requestListClass[] = [];
   requestListObj: searchList = new searchList();
-  deptArray : deptClass[] = [];
-  empArray: employeeClass[]=[];
+  deptArray: deptClass[] = [];
+  empArray: employeeClass[] = [];
   isSeverity: boolean = false;
+  public isLoading: boolean = true;
 
-  constructor(private service: RequestListService, private deptService : DeptService , private empService : EmployeeService) { }
+  constructor(private service: RequestListService, private deptService: DeptService, private empService: EmployeeService) { }
 
   ngOnInit(): void {
     this.onBlurRequest();
@@ -26,35 +27,38 @@ export class RequestListComponent implements OnInit {
     this.getAllEmpReco();
   };
 
-  onBlurRequest(){
+  onBlurRequest() {
     this.service.getAllRequestList().subscribe((res: any) => {
       this.requestListArray = res;
+      this.isLoading = false;
     })
   }
 
   getAlldeptRec() {
-    this.deptService.getDept().subscribe((res:any)=>{
-      if(res){
+    this.deptService.getDept().subscribe((res: any) => {
+      if (res) {
         this.deptArray = res;
+        this.isLoading = false;
       }
     })
   };
 
   getAllEmpReco() {
-    this.empService.getAllEmp().subscribe((res:any)=>{
-      if(res){
+    this.empService.getAllEmp().subscribe((res: any) => {
+      if (res) {
         this.empArray = res;
+        this.isLoading = false;
       }
     })
   };
 
-  onSearch(){
-    this.service.getRequestByFilter(this.requestListObj).subscribe((res:any)=>{
-        this.requestListArray = res;     
+  onSearch() {
+    this.service.getRequestByFilter(this.requestListObj).subscribe((res: any) => {
+      this.requestListArray = res;
     })
   };
 
-  onReset(){
+  onReset() {
     this.requestListObj = new searchList();
     this.onBlurRequest();
   }

@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class LeaveService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  getAllLeaves():Observable<any>{
+  getAllLeaves(): Observable<any> {
     return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAllLeaves');
   }
-  getAllEmpLeave(id:number):Observable<any>{
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAllLeavesByEmployeeId?id='+id)
+  getAllEmpLeave(id: number): Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAllLeavesByEmployeeId?id=' + id)
   }
-  saveLeave(obj:any):Observable<any>{
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave',obj);
+  saveLeave(obj: any): Observable<any> {
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave', obj);
   }
-  updateLeave(obj:any):Observable<any>{
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave',obj)
+  updateLeave(obj: any): Observable<any> {
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/AddLeave', obj)
   }
 }

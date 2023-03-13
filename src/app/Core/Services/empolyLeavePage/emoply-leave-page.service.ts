@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class EmoplyLeavePageService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
 
-  GetAllEmpLeaves(id:number):Observable<any> {
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetLeavesForApprovalBySuperwiserId?id='+id)
+  GetAllEmpLeaves(id: number): Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetLeavesForApprovalBySuperwiserId?id=' + id)
   }
 }

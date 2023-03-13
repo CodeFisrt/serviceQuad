@@ -1,13 +1,13 @@
 export class deptClass {
-    DeptId: number;
+  DeptId: number;
   DeptName: string;
   DeptHead: string;
   CreatedDate: Date;
 
   constructor() {
     this.DeptId = 0,
-    this.DeptName = '',
-    this.DeptHead = '',
-    this.CreatedDate = new Date()
+      this.DeptName = '',
+      this.DeptHead = '',
+      this.CreatedDate = new Date()
   }
 }

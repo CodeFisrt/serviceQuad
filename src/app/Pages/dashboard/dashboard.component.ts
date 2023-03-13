@@ -9,18 +9,18 @@ import { AdmindashboardService } from 'src/app/Core/Services/dashboard/admindash
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  dashboard:adminDashboardClass[]=[];
-  dashboardObj:adminDashboardClass= new adminDashboardClass()
+  dashboard: adminDashboardClass[] = [];
+  dashboardObj: adminDashboardClass = new adminDashboardClass()
 
-  constructor(public http:HttpClient, public service:AdmindashboardService ) { }
+  constructor(public http: HttpClient, public service: AdmindashboardService) { }
 
   ngOnInit(): void {
     this.getAdmminDashboardRecords();
   };
 
   getAdmminDashboardRecords() {
-    this.service.getAdmminDashboard().subscribe((res:any)=>{
-      this.dashboardObj=res[0];
+    this.service.getAdmminDashboard().subscribe((res: any) => {
+      this.dashboardObj = res[0];
     })
   };
 

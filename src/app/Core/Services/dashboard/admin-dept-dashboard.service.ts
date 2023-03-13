@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class AdminDeptDashboardService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  GetAdminDeptDashboard(id:number):Observable<any> {
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAdminDeptDashboardById?id='+id)
+  GetAdminDeptDashboard(id: number): Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetAdminDeptDashboardById?id=' + id)
   }
 }

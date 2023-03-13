@@ -5,11 +5,12 @@
                 <div class="card-header bg-warning">
                     <div class="row">
                         <div class="col-6">
-                       <strong>Department Tickets</strong>     
+                            <strong>Department Tickets</strong>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <table class="table table-bordered table-striped">
@@ -44,7 +45,9 @@
                                             <td>{{data.ExpectedEndDate | date :'dd-MMM-yy'}}</td>
                                             <td>{{data.CompletedDate | date :'dd-MMM-yy'}}</td>
                                             <td>{{data.State | titlecase}}</td>
-                                            <td><p [innerHtml]="data.Details"></p></td>
+                                            <td>
+                                                <p [innerHtml]="data.Details"></p>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </ng-container>

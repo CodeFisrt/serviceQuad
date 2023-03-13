@@ -22,9 +22,10 @@ export class EmployeeComponent implements OnInit {
   msgs: Message[] = [];
   ConfirmationService: any;
   MessageService: any;
+  public isLoading: boolean = true;
 
-  constructor(private service : EmployeeService, private deptService : DeptService,
-    private confirmationService: ConfirmationService,private primengConfig: PrimeNGConfig,public loginService: LoginService, private messageService: MessageService) { }
+  constructor(private service: EmployeeService, private deptService: DeptService,
+    private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig, public loginService: LoginService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getAllEmpReco();
@@ -36,6 +37,7 @@ export class EmployeeComponent implements OnInit {
     this.service.getAllEmp().subscribe((res: any) => {
       if (res) {
         this.empArray = res;
+        this.isLoading = false;
       };
     })
   };
@@ -44,6 +46,7 @@ export class EmployeeComponent implements OnInit {
     this.deptService.getDept().subscribe((res: any) => {
       if (res) {
         this.deptArray = res;
+        this.isLoading = false;
       };
     })
   };
@@ -85,7 +88,7 @@ export class EmployeeComponent implements OnInit {
       if (res) {
         this.empObj = res;
         this.getAllEmpReco();
-         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
         this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
@@ -113,7 +116,7 @@ export class EmployeeComponent implements OnInit {
     this.service.deleteEmp(id, this.empObj).subscribe((res: any) => {
       if (res) {
         this.getAllEmpReco();
-         this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
         this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }

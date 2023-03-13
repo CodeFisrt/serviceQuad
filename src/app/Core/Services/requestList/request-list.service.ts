@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class RequestListService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllRequestList():Observable<any>{
+  getAllRequestList(): Observable<any> {
     return this.http.get(" https://akbarapi.funplanetresort.in/api/MyRequest/GetAllRequest")
   };
 
-  getRequestByFilter(obj:any):Observable<any>{
-    return this.http.post("https://akbarapi.funplanetresort.in/api/MyRequest/GetRequestByFilter",obj)
+  getRequestByFilter(obj: any): Observable<any> {
+    return this.http.post("https://akbarapi.funplanetresort.in/api/MyRequest/GetRequestByFilter", obj)
   }
 }

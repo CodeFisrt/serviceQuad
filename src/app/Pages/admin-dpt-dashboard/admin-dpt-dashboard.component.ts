@@ -9,17 +9,18 @@ import { AdminDeptDashboardService } from 'src/app/Core/Services/dashboard/admin
   styleUrls: ['./admin-dpt-dashboard.component.css']
 })
 export class AdminDptDashboardComponent implements OnInit {
-  
-  AdminDptDashboard:adminDeptDashboardClass[]=[];
-  AdminDptDashboardObj:adminDeptDashboardClass= new adminDeptDashboardClass();
-  adminUserData:any;
-  employeeId:number=0
+
+  AdminDptDashboard: adminDeptDashboardClass[] = [];
+  AdminDptDashboardObj: adminDeptDashboardClass = new adminDeptDashboardClass();
+  adminUserData: any;
+  employeeId: number = 0
+  public isLoading: boolean = true;
 
 
-  constructor(public http:HttpClient, public service:AdminDeptDashboardService) { 
-    const adminData= localStorage.getItem('adminLoginDetails');
-    if(adminData!= null) {
-      this.adminUserData=JSON.parse(adminData);
+  constructor(public http: HttpClient, public service: AdminDeptDashboardService) {
+    const adminData = localStorage.getItem('adminLoginDetails');
+    if (adminData != null) {
+      this.adminUserData = JSON.parse(adminData);
       this.employeeId = this.adminUserData.EmployeeId;
     }
   };
@@ -29,10 +30,11 @@ export class AdminDptDashboardComponent implements OnInit {
     this.GetAdminDeptDashboardRecords();
   };
 
-  
+
   GetAdminDeptDashboardRecords() {
-    this.service.GetAdminDeptDashboard(this.employeeId).subscribe((res:any)=>{
-      this.AdminDptDashboardObj=res[0]
+    this.service.GetAdminDeptDashboard(this.employeeId).subscribe((res: any) => {
+      this.AdminDptDashboardObj = res[0];
+      this.isLoading = false;
     })
   };
 

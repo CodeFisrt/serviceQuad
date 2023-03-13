@@ -1,31 +1,31 @@
 export class deptTicketsClass {
-     RequestId : number;
-     RequestNo :  string ;
-     Details :  string ;
-     EmployeeId : number;
-     State :  string ;
-     CreatedDate : Date;
-     ExpectedEndDate : Date;
-     Severity :  string ;
-     CompletedDate : Date;
-     AssignedUserName :  string ;
-     EmployeeName :  string ;
-     DeptId : number;
-     DeptName : string;
+     RequestId: number;
+     RequestNo: string;
+     Details: string;
+     EmployeeId: number;
+     State: string;
+     CreatedDate: Date;
+     ExpectedEndDate: Date;
+     Severity: string;
+     CompletedDate: Date;
+     AssignedUserName: string;
+     EmployeeName: string;
+     DeptId: number;
+     DeptName: string;
 
-     constructor(){
-    this.RequestId = 0,
-    this.RequestNo =  '' ,
-    this.Details =  '' ,
-    this.EmployeeId = 0,
-    this.State =  '' ,
-    this.CreatedDate = new Date(),
-    this.ExpectedEndDate = new Date(),
-    this.Severity =  '' ,
-    this.CompletedDate = new Date(),
-    this.AssignedUserName =  '' ,
-    this.EmployeeName =  '' ,
-    this.DeptId = 0 ,
-    this.DeptName = ''
+     constructor() {
+          this.RequestId = 0,
+               this.RequestNo = '',
+               this.Details = '',
+               this.EmployeeId = 0,
+               this.State = '',
+               this.CreatedDate = new Date(),
+               this.ExpectedEndDate = new Date(),
+               this.Severity = '',
+               this.CompletedDate = new Date(),
+               this.AssignedUserName = '',
+               this.EmployeeName = '',
+               this.DeptId = 0,
+               this.DeptName = ''
      }
 }

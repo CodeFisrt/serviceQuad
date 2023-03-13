@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class EmpDashboardService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  
-  GetEmpDashboard(id:number):Observable<any> {
-    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetEmpDashboardById?id='+id)
+
+  GetEmpDashboard(id: number): Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetEmpDashboardById?id=' + id)
   }
 }

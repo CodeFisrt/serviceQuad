@@ -3,7 +3,7 @@ export class employeeClass {
     EmployeeName: string;
     ContactNo: string;
     EmailId: string;
-    DeptId : number;
+    DeptId: number;
     UserName: string;
     Password: string;
     ReportsTo: number;
@@ -11,14 +11,14 @@ export class employeeClass {
 
     constructor() {
         this.EmployeeId = 0,
-        this.EmployeeName = '',
-        this.ContactNo = '',
-        this.EmailId = '',
-        this.DeptId = 0,
-        this.UserName = '',
-        this.Password = '',
-        this.ReportsTo = 0,
-        this.Role = ''
+            this.EmployeeName = '',
+            this.ContactNo = '',
+            this.EmailId = '',
+            this.DeptId = 0,
+            this.UserName = '',
+            this.Password = '',
+            this.ReportsTo = 0,
+            this.Role = ''
     }
 
 }

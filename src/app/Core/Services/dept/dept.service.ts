@@ -9,19 +9,19 @@ export class DeptService {
 
   constructor(private http: HttpClient) { }
 
-  getDept():Observable<any> {
+  getDept(): Observable<any> {
     return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetDepartments')
   };
-  createDept(obj:any):Observable<any>{
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/CreateDepartment',obj)
+  createDept(obj: any): Observable<any> {
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/CreateDepartment', obj)
   }
-  editDept(id:number):Observable<any>{
-     return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetDepartmentById?id='+id)
+  editDept(id: number): Observable<any> {
+    return this.http.get('https://akbarapi.funplanetresort.in/api/MyRequest/GetDepartmentById?id=' + id)
   }
-  deleteDept(id:number,obj:any):Observable<any>{
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/DeleteDepartment?id='+id,obj)
+  deleteDept(id: number, obj: any): Observable<any> {
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/DeleteDepartment?id=' + id, obj)
   }
-  updateDept(id:number,obj:any):Observable<any>{
-    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/UpdateDepartment?id='+id,obj)
+  updateDept(id: number, obj: any): Observable<any> {
+    return this.http.post('https://akbarapi.funplanetresort.in/api/MyRequest/UpdateDepartment?id=' + id, obj)
   }
 }

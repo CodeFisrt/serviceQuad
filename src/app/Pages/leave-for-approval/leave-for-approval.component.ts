@@ -10,16 +10,17 @@ import { EmoplyLeavePageService } from 'src/app/Core/Services/empolyLeavePage/em
 })
 export class LeaveForApprovalComponent implements OnInit {
 
-  leaveArry:empolyLeavePageClass[]=[];
-  leaveObj:empolyLeavePageClass= new empolyLeavePageClass();
- leavesData:any
+  leaveArry: empolyLeavePageClass[] = [];
+  leaveObj: empolyLeavePageClass = new empolyLeavePageClass();
+  leavesData: any;
+  public isLoading: boolean = true;
 
- constructor(public http:HttpClient, public service:EmoplyLeavePageService) { 
+  constructor(public http: HttpClient, public service: EmoplyLeavePageService) {
     const localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
       this.leavesData = JSON.parse(localData);
       this.leaveObj.EmployeeId = this.leavesData.EmployeeId;
-    }  
+    }
   }
 
   ngOnInit(): void {
@@ -28,8 +29,9 @@ export class LeaveForApprovalComponent implements OnInit {
 
 
   GetLeavesForApprovalRecords() {
-    this.service.GetAllEmpLeaves(this.leaveObj.EmployeeId).subscribe((res:any)=>{
-      this. leaveArry=res;
+    this.service.GetAllEmpLeaves(this.leaveObj.EmployeeId).subscribe((res: any) => {
+      this.leaveArry = res;
+      this.isLoading = false;
     })
   };
 

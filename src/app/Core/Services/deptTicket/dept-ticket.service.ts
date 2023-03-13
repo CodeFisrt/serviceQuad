@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class DeptTicketService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllDeptTicket(id:number): Observable<any>{
-    return this.http.get("https://akbarapi.funplanetresort.in/api/MyRequest/GetAssignedRequestByUserId?userid="+id)
+  getAllDeptTicket(id: number): Observable<any> {
+    return this.http.get("https://akbarapi.funplanetresort.in/api/MyRequest/GetAssignedRequestByUserId?userid=" + id)
   }
 }

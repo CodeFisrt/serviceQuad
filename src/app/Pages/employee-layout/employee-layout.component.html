@@ -5,8 +5,8 @@
                 <div class="container-fluid">
                     <ul class="navbar-nav">
                         <li>
-                            <img class="nav-item me-5" src="../../../assets/img/Green Modern Fashion Store Logo.png" alt=""
-                                style="width:75px;height:75px">
+                            <img class="nav-item me-5" src="../../../assets/img/Green Modern Fashion Store Logo.png"
+                                alt="" style="width:75px;height:75px">
                         </li>
                         <li class="nav-item me-5 mt-3">
                             <a class="nav-link text-white" routerLink="empDashboard"><strong><i
@@ -19,10 +19,12 @@
                                     Create Request</strong></a>
                         </li>
                         <li class="nav-item me-5 mt-3">
-                            <a class="nav-link text-white" routerLink="empLeaves"><strong><i class="bi bi-person-dash"></i>
-                                Create  Leaves</strong></a>
+                            <a class="nav-link text-white" routerLink="empLeaves"><strong><i
+                                        class="bi bi-person-dash"></i>
+                                    Create Leaves</strong></a>
                         </li>
                     </ul>
+                    <app-loader *ngIf="isLoading"></app-loader>
                 </div>
                 <div>
                     <ul class="navbar-nav">
@@ -32,13 +34,12 @@
                     </ul>
                 </div>
                 <div class="btn btn-sm btn-info text-white logoutbtn" (click)="confirm1()">
-                    <span class="bi bi-box-arrow-right fs-6" icon="pi pi-check" ></span>
-                <span><strong>LogOut</strong></span>
+                    <span class="bi bi-box-arrow-right fs-6" icon="pi pi-check"></span>
+                    <span><strong>LogOut</strong></span>
                 </div>
             </nav>
         </div>
     </div>
 </div>
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-<app-loader *ngIf="isLoading"></app-loader>
 <router-outlet></router-outlet>

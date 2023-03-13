@@ -11,8 +11,8 @@ import { LoginService } from 'src/app/Core/Services/Login/login.service';
 export class AdminDptLayoutComponent implements OnInit {
 
   public isLoading: boolean = true;
-  
-    msgs: Message[] = [];
+
+  msgs: Message[] = [];
 
   constructor(public loginService: LoginService, private confirmationService: ConfirmationService,
     private primengConfig: PrimeNGConfig) { };

@@ -8,12 +8,14 @@ import { DeptTicketService } from 'src/app/Core/Services/deptTicket/dept-ticket.
   styleUrls: ['./department-tickets.component.css']
 })
 export class DepartmentTicketsComponent implements OnInit {
-  deptTicketArray : deptTicketsClass[] = [];
-  deptTicketObj : deptTicketsClass = new deptTicketsClass();
+  deptTicketArray: deptTicketsClass[] = [];
+  deptTicketObj: deptTicketsClass = new deptTicketsClass();
 
-  loggingUserData : any;
-  
-  constructor(private service : DeptTicketService) { 
+  loggingUserData: any;
+
+  public isLoading: boolean = true;
+
+  constructor(private service: DeptTicketService) {
     const localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
       this.loggingUserData = JSON.parse(localData);
@@ -25,9 +27,10 @@ export class DepartmentTicketsComponent implements OnInit {
     this.getAllDeptTicketRecord();
   }
 
-  getAllDeptTicketRecord(){
-    this.service.getAllDeptTicket(this.deptTicketObj.EmployeeId).subscribe((res:any)=>{
-        this.deptTicketArray = res;
+  getAllDeptTicketRecord() {
+    this.service.getAllDeptTicket(this.deptTicketObj.EmployeeId).subscribe((res: any) => {
+      this.deptTicketArray = res;
+      this.isLoading = false;
     })
   }
 }

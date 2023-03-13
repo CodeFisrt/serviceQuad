@@ -7,7 +7,7 @@
             </li>
             <li class="nav-item me-5 mt-3">
                 <a class="nav-link text-white" routerLink="adminDptDashboard"><strong><i class="bi bi-speedometer2"></i>
-                          Dashboard</strong></a>
+                        Dashboard</strong></a>
             </li>
             <li class="nav-item  me-5 mt-3">
                 <a class="nav-link text-white" routerLink="adminDeptTickets"><strong><i class="bi bi-building-fill"></i>
@@ -18,12 +18,15 @@
                         List</strong></a>
             </li>
             <li class="nav-item  me-5 mt-3">
-                <a class="nav-link text-white" routerLink="admindeptLeaves"><strong><i class="bi bi-cart4"></i> Leaves</strong></a>
+                <a class="nav-link text-white" routerLink="admindeptLeaves"><strong><i class="bi bi-cart4"></i>
+                        Leaves</strong></a>
             </li>
             <li class="nav-item  me-5 mt-3">
-                <a class="nav-link text-white" routerLink="adminleaveForApproval"><strong><i class="bi bi-cart4"></i> Leaves for Approval</strong></a>
+                <a class="nav-link text-white" routerLink="adminleaveForApproval"><strong><i class="bi bi-cart4"></i>
+                        Leaves for Approval</strong></a>
             </li>
         </ul>
+        <app-loader *ngIf="isLoading"></app-loader>
     </div>
     <div>
         <ul class="navbar-nav">
@@ -33,10 +36,9 @@
         </ul>
     </div>
     <div class="btn btn-sm btn-info text-white logoutbtn" (click)="confirm1()">
-        <span class="bi bi-box-arrow-right fs-6" icon="pi pi-check" ></span>
+        <span class="bi bi-box-arrow-right fs-6" icon="pi pi-check"></span>
         <span><strong>LogOut</strong></span>
     </div>
 </nav>
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-<app-loader *ngIf="isLoading"></app-loader>
 <router-outlet></router-outlet>
