@@ -25,7 +25,7 @@
                                 <ng-template pTemplate="header">
                                     <tr>
                                         <th class="text-center">Sr.No.</th>
-                                        <th pSortableColumn="EmployeeName">Employee <p-sortIcon
+                                        <th pSortableColumn="EmployeeName">Employee<p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
                                         <th pSortableColumn="ContactNo"> Contact No. <p-sortIcon
                                                 field="ContactNo"></p-sortIcon></th>
@@ -33,7 +33,7 @@
                                         </th>
                                         <th pSortableColumn="UserName">User Name <p-sortIcon
                                                 field="UserName"></p-sortIcon></th>
-                                        <th pSortableColumn="DeptName">Department <p-sortIcon
+                                        <th pSortableColumn="DeptName">Department<p-sortIcon
                                                 field="DeptName"></p-sortIcon></th>
                                         <th pSortableColumn="Role">Role <p-sortIcon field="Role"></p-sortIcon></th>
                                         <th class="text-center">Action</th>
@@ -121,27 +121,38 @@
                                 <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="text">Reports To<span class="text-danger">*</span></label>
-                                        <select name="reportsTo" id="" [(ngModel)]="empObj.EmployeeName"
-                                            class="form-control">
+                                        <select name="reportsTo" id="" [(ngModel)]="empObj.EmployeeName" required
+                                            class="form-control" #reportsTo="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of empArray" [value]="role.EmployeeName">
                                                 {{role.EmployeeName}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="reportsTo.touched">
+                                        <span *ngIf="reportsTo.errors?.['required']">This field is required</span>
+                                    </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="text">Role<span class="text-danger">*</span></label>
-                                        <select name="role" id="" [(ngModel)]="empObj.EmployeeId" class="form-control">
+                                        <select name="role" id="" [(ngModel)]="empObj.EmployeeId" class="form-control" required #role="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of roleArray">{{role}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="role.touched">
+                                            <span *ngIf="role.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
                                         <label>Department<span class="text-danger">*</span></label>
-                                        <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control">
-                                            <option value="" disabled>Select department</option>
+                                        <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control" required #deptName="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of deptArray" [value]="role.DeptId">
                                                 {{getDepName(role.DeptId)}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="deptName.touched">
+                                            <span *ngIf="deptName.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

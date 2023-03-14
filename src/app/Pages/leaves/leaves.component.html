@@ -18,8 +18,8 @@
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th>SrNo</th>
-                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                        <th class="text-center">SrNo</th>
+                                        <th pSortableColumn="EmployeeName">Employee<p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
                                         <th pSortableColumn="FromDate">From Date <p-sortIcon
                                                 field="ContactNo"></p-sortIcon></th>
@@ -37,12 +37,12 @@
                                                 field="Role"></p-sortIcon></th>
                                         <th pSortableColumn="IsApproved">Is Approved <p-sortIcon
                                                 field="Role"></p-sortIcon></th>
-                                        <th pSortableColumn="Action">Action <p-sortIcon field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Action" class="text-center">Action <p-sortIcon field="Role"></p-sortIcon></th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-leave let-sr="rowIndex">
                                     <tr [ngClass]="leave.IsApproved ? 'text-dark' :'text-danger' ">
-                                        <td>{{sr+1}}</td>
+                                        <td class="text-center">{{sr+1}}</td>
                                         <td>{{leave.EmployeeName}}</td>
                                         <td>{{leave.FromDate |date:'dd-MM-yy'}}</td>
                                         <td>{{leave.ToDate |date:'dd-MM-yy'}}</td>
@@ -54,7 +54,7 @@
                                         </td>
                                         <td>{{leave.ApprovedDate |date:'dd-MMM-yy'}}</td>
                                         <td>{{leave.IsApproved ? 'Approved': 'Not Approved'}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <i class="bi bi-pencil-square text-warning fs-5 me-2"></i>
                                             <i class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
@@ -141,8 +141,8 @@
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th>SrNo</th>
-                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                        <th class="text-center">SrNo</th>
+                                        <th pSortableColumn="EmployeeName">Employee<p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
                                         <th pSortableColumn="FromDate">From Date <p-sortIcon
                                                 field="ContactNo"></p-sortIcon></th>
@@ -160,12 +160,12 @@
                                                 field="Role"></p-sortIcon></th>
                                         <th pSortableColumn="IsApproved">Is Approved <p-sortIcon
                                                 field="Role"></p-sortIcon></th>
-                                        <th pSortableColumn="Action">Action <p-sortIcon field="Role"></p-sortIcon></th>
+                                        <th pSortableColumn="Action" class="text-center">Action <p-sortIcon field="Role"></p-sortIcon></th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-data let-sr="rowIndex">
                                     <tr>
-                                        <td>{{sr+1}}</td>
+                                        <td class="text-center">{{sr+1}}</td>
                                         <td>{{data.EmployeeName}}</td>
                                         <td>{{data.FromDate |date:'dd-MM-yy'}}</td>
                                         <td>{{data.ToDate |date:'dd-MM-yy'}}</td>
@@ -177,7 +177,7 @@
                                         </td>
                                         <td>{{data.ApprovedDate |date:'dd-MMM-yy'}}</td>
                                         <td>{{data.IsApproved ? 'Approved': 'Not Approved'}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <i (click)="onEdit(data.LeaveId)" class="bi bi-pencil-square text-warning fs-5 me-2"
                                             data-bs-toggle="modal"
                                            data-bs-target="#exampleModal"></i>
