@@ -24,8 +24,8 @@
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th>Sr.No.</th>
-                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                        <th class="text-center">Sr.No.</th>
+                                        <th pSortableColumn="EmployeeName">Employee <p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
                                         <th pSortableColumn="ContactNo"> Contact No. <p-sortIcon
                                                 field="ContactNo"></p-sortIcon></th>
@@ -33,10 +33,10 @@
                                         </th>
                                         <th pSortableColumn="UserName">User Name <p-sortIcon
                                                 field="UserName"></p-sortIcon></th>
-                                        <th pSortableColumn="DeptName">Dept. Name <p-sortIcon
+                                        <th pSortableColumn="DeptName">Department <p-sortIcon
                                                 field="DeptName"></p-sortIcon></th>
                                         <th pSortableColumn="Role">Role <p-sortIcon field="Role"></p-sortIcon></th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-sr="rowIndex">
@@ -48,10 +48,10 @@
                                         <td>{{item.UserName | titlecase}}</td>
                                         <td>{{item.DeptName | titlecase}}</td>
                                         <td>{{item.Role | titlecase}}</td>
-                                        <td >
+                                        <td class="text-center">
                                             <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             (click)="onEdit(item.EmployeeId)"
-                                            class="bi bi-pencil-square text-warning fs-5 me-3"></i>
+                                            class="bi bi-pencil-square text-warning fs-5 me-2"></i>
                                         <i (click)="onDeleteConfirm(item.EmployeeId)"
                                             class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
@@ -85,7 +85,7 @@
                                             name="empName" [(ngModel)]="empObj.EmployeeName" required
                                             #empName="ngModel">
                                         <div class="text-danger" *ngIf="empName.touched">
-                                            <span *ngIf="empName.errors?.['required']">Employee Name is Required</span>
+                                            <span *ngIf="empName.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -94,8 +94,8 @@
                                             name="cantactNo" [(ngModel)]="empObj.ContactNo" required
                                             #cantactNo="ngModel">
                                         <div class="text-danger" *ngIf="cantactNo.touched" minlength="10">
-                                            <span *ngIf="cantactNo.errors?.['required']">Contact Number is
-                                                Required</span>
+                                            <span *ngIf="cantactNo.errors?.['required']">This field is required
+                                                </span>
                                             <span *ngIf="cantactNo.errors?.['minlength']">Min 10 No. Required</span>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                         <input type="text" placeholder="Email Id" class="form-control" name="emailId"
                                             [(ngModel)]="empObj.EmailId" required #emailId="ngModel">
                                         <div class="text-danger" *ngIf="emailId.touched">
-                                            <span *ngIf="emailId.errors?.['required']">Email Id is Required</span>
+                                            <span *ngIf="emailId.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -114,7 +114,7 @@
                                         <input type="text" placeholder="user Name" class="form-control" name="userName"
                                             [(ngModel)]="empObj.UserName" required #userName="ngModel">
                                         <div class="text-danger" *ngIf="userName.touched">
-                                            <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                                            <span *ngIf="userName.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                 </div>

@@ -41,7 +41,7 @@ export class DepartmentComponent implements OnInit {
 
   onAdd() {
     this.onReset();
-  }
+  };
 
   onConfirmDelte(id: number) {
     this.confirmationService.confirm({
@@ -56,7 +56,7 @@ export class DepartmentComponent implements OnInit {
         this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
       }
     });
-  }
+  };
 
   onSave() {
     this.service.createDept(this.dpetObj).subscribe((res: any) => {
@@ -83,8 +83,8 @@ export class DepartmentComponent implements OnInit {
     });
   } ConfirmationService(arg0: { severity: string; summary: string; detail: any; }) {
     throw new Error('Method not implemented.');
-  }
-  ;
+  };
+  
 
   onDelete(id: number) {
     this.service.deleteDept(id, this.dpetObj).subscribe((res: any) => {

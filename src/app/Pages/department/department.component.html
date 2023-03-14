@@ -24,23 +24,23 @@
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th>Sr.No.</th>
+                                        <th class="text-center">Sr.No.</th>
                                         <th pSortableColumn="DeptName">Department Name<p-sortIcon
                                                 field="DeptName"></p-sortIcon></th>
                                         <th pSortableColumn="DeptHead">Department Head<p-sortIcon
                                                 field="DeptHead"></p-sortIcon></th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-sr="rowIndex">
                                     <tr>
-                                        <td>{{sr+1}}</td>
+                                        <td class="text-center">{{sr+1}}</td>
                                         <td>{{item.DeptName | titlecase}}</td>
                                         <td>{{item.DeptHead | titlecase}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                 (click)="onEdit(item.DeptId)"
-                                                class="bi bi-pencil-square text-warning fs-5 me-3"></i>
+                                                class="bi bi-pencil-square text-warning fs-5 me-2"></i>
                                             <i (click)="onConfirmDelte(item.DeptId)"
                                                 class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
@@ -73,8 +73,8 @@
                                         <input type="text" placeholder="Department Name" class="form-control"
                                             name="deptName" [(ngModel)]="dpetObj.DeptName" required #deptName="ngModel">
                                         <div class="text-danger" *ngIf="deptName.touched">
-                                            <span *ngIf="deptName.errors?.['required']">Department Name is
-                                                Required</span>
+                                            <span *ngIf="deptName.errors?.['required']">This field is required
+                                                </span>
                                         </div>
                                     </div>
                                 </div>
@@ -84,8 +84,8 @@
                                         <input type="text" placeholder="Department Head" class="form-control"
                                             name="deptHead" [(ngModel)]="dpetObj.DeptHead" required #deptHead="ngModel">
                                         <div class="text-danger" *ngIf="deptHead.touched">
-                                            <span *ngIf="deptHead.errors?.['required']">Department Head is
-                                                Required</span>
+                                            <span *ngIf="deptHead.errors?.['required']">This field is required
+                                                </span>
                                         </div>
                                     </div>
                                 </div>
