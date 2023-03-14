@@ -56,7 +56,7 @@
                                             <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             (click)="onEdit(item.RequestId)"
                                             class="bi bi-pencil-square text-warning fs-5 me-2"></i>
-                                        <i (click)="onDelete(item.RequestId)"
+                                        <i (click)="onConfirmDelte(item.RequestId)"
                                             class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
                                     </tr>
@@ -141,4 +141,4 @@
 </div>
 <app-loader *ngIf="isLoading"></app-loader>
 <p-toast></p-toast>
-<p-confirmDialog [style]="{width: '258px',height:'217px'}" [baseZIndex]="10000"></p-confirmDialog>
+<!-- <p-confirmDialog [style]="{width: '258px',height:'217px'}" [baseZIndex]="10000"></p-confirmDialog> -->
