@@ -1,19 +1,21 @@
 <div class="container-fluid">
-    <div class="row mt-2">
-        <div class="col-md-2">
+    <div class="row mt-3">
+        <div class="col-md-3">
             <label for="">Request Number</label>
-            <input type="text" name="" class="form-control" [(ngModel)]="requestListObj.RequestNo"
+            <input type="text" name="" class="form-control" placeholder="Request Number" [(ngModel)]="requestListObj.RequestNo"
                 (blur)="onBlurRequest()">
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <label for="">Department Name</label>
-            <select name="" class="form-control" [(ngModel)]="requestListObj.AssignedTo">
-                <option *ngFor="let dept of deptArray" [value]="dept.DeptId">{{dept.DeptName}}</option>
+            <select  class="form-control" [(ngModel)]="requestListObj.AssignedTo">
+                <option value="">Department Name</option> 
+                 <option *ngFor="let dept of deptArray" [value]="dept.DeptId">{{dept.DeptName}}</option>
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <label for="">Employee Name</label>
-            <select name="" class="form-control" [(ngModel)]="requestListObj.EmployeeId">
+            <select  class="form-control" [(ngModel)]="requestListObj.EmployeeId">
+                <option value="">Employee Name</option>
                 <option *ngFor="let emp of empArray" [value]="emp.EmployeeId">{{emp.EmployeeName}}</option>
             </select>
         </div>

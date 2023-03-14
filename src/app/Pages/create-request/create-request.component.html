@@ -84,30 +84,39 @@
                             <form>
                                 <div class="row">
                                     <div class="col-12">
-                                        <label for="text">Select Department</label>
-                                        <select name="dept" class="form-control" [(ngModel)]="createRequestObj.DeptId">
+                                        <label for="text">Select Department<span class="text-danger">*</span></label>
+                                        <select name="dept" class="form-control" [(ngModel)]="createRequestObj.DeptId" #dept="ngModel" required>
                                             <option *ngFor="let dept of deptArray" [value]="dept.DeptId">
                                                 {{dept.DeptName}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="dept.touched">
+                                            <span *ngIf="dept.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-2">
-                                        <label for="">Select Priority</label>
-                                        <select name="SelectPriority" id="" class="form-control"
-                                            [(ngModel)]="createRequestObj.Severity">
-                                            <option value="">Select Priority</option>
+                                        <label for="">Select Priority<span class="text-danger">*</span></label>
+                                        <select name="SelectPriority" id="" class="form-control" #SelectPriority="ngModel" required
+                                            [(ngModel)]="createRequestObj.Severity" >
+                                            <option value="" disabled>Select Priority</option>
                                             <option value="Low">Low</option>
                                             <option value="Medium">Medium</option>
                                             <option value="High">High</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="SelectPriority.touched">
+                                            <span *ngIf="SelectPriority.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-2">
-                                        <label for="text">Your Request</label>
-                                        <textarea name="request" id="" rows="4" class="form-control"
+                                        <label for="text">Your Request<span class="text-danger">*</span></label>
+                                        <textarea name="request" id="" rows="4" class="form-control" #request="ngModel" required
                                             [(ngModel)]="createRequestObj.RequestDetails"></textarea>
+                                            <div class="text-danger" *ngIf="request.touched">
+                                                <span *ngIf="request.errors?.['required']">This field is required</span>
+                                            </div>
                                     </div>
                                 </div>
                             </form>

@@ -272,7 +272,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label for="">Leave Type <span class="text-danger">*</span></label>
-                                        <select name="LeaveType" id="" class="form-control"
+                                        <select name="LeaveType" id="" class="form-control" #LeaveType="ngModel" required
                                             [(ngModel)]="LeaveObj.LeaveType">
                                             <option value="" disabled>Select Leave Type</option>
                                             <option value="PrivilegeLeave">Privilege Leave</option>
@@ -283,6 +283,9 @@
                                             <option value="PaternityLeave">Paternity Leave</option>
                                             <option value="BereavementLeave">Bereavement Leave</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="LeaveType.touched">
+                                            <span *ngIf="LeaveType.errors?.['required']">This is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
