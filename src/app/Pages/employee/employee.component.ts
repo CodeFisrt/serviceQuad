@@ -55,12 +55,12 @@ export class EmployeeComponent implements OnInit {
     this.service.createEmp(this.empObj).subscribe((res: any) => {
       if (res) {
         this.getAllEmpReco();
-        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
 
@@ -73,13 +73,9 @@ export class EmployeeComponent implements OnInit {
     this.service.editEmp(id).subscribe((res: any) => {
       if (res) {
         this.empObj = res;
-        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-    }, (error: any) => {
-      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
-    });
+    })
   };
 
   onUpdate(id: number) {
@@ -88,12 +84,12 @@ export class EmployeeComponent implements OnInit {
       if (res) {
         this.empObj = res;
         this.getAllEmpReco();
-        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   };
 
@@ -116,12 +112,12 @@ export class EmployeeComponent implements OnInit {
     this.service.deleteEmp(id, this.empObj).subscribe((res: any) => {
       if (res) {
         this.getAllEmpReco();
-        this.MessageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.MessageService.add({ severity: 'error', summary: 'Error', detail: res.message });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
     }, (error: any) => {
-      this.MessageService.add({ severity: 'error', summary: 'Error', detail: error.message });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
     });
   }
 

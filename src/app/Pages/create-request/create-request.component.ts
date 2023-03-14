@@ -95,13 +95,9 @@ export class CreateRequestComponent implements OnInit {
     this.service.editCreateRequest(id).subscribe((res: any) => {
       if (res) {
         this.createRequestObj = res;
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-    }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
-    });
+    })
   };
 
   onUpdate(id: number, obj: any) {
