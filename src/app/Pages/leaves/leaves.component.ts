@@ -88,7 +88,6 @@ export class LeavesComponent implements OnInit {
   }
   onAdd() {
     this.onReset();
-    this.isSave = false;
     this.isSave=true;
   };
   onBlur(){
@@ -96,6 +95,5 @@ export class LeavesComponent implements OnInit {
     const toDateModified = new Date (this.LeaveObj.ToDate);
     const time = (toDateModified.getDay() - fromDateModified.getDay())+1;
     this.LeaveObj.NoOfDays = time;
-
   }
 }
