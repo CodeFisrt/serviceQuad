@@ -1,5 +1,9 @@
 .custom-nav {
-  background-color: blue;
+  background: radial-gradient(
+    circle,
+    rgb(49, 35, 203) 50%,
+    rgba(111, 108, 108, 0.663) 100%);
+
 }
 
 .logoutbtn {

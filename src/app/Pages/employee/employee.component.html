@@ -16,7 +16,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="empArray" [paginator]="true" [rows]="10"
@@ -24,9 +23,9 @@
                                 [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50,75,100,150]"
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
-                                    <tr class="custom-class">
-                                        <th>Sr.No.</th>
-                                        <th pSortableColumn="EmployeeName">Employee Name <p-sortIcon
+                                    <tr>
+                                        <th class="text-center">Sr.No.</th>
+                                        <th pSortableColumn="EmployeeName">Employee<p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
                                         <th pSortableColumn="ContactNo"> Contact No. <p-sortIcon
                                                 field="ContactNo"></p-sortIcon></th>
@@ -34,10 +33,10 @@
                                         </th>
                                         <th pSortableColumn="UserName">User Name <p-sortIcon
                                                 field="UserName"></p-sortIcon></th>
-                                        <th pSortableColumn="DeptName">Dept. Name <p-sortIcon
+                                        <th pSortableColumn="DeptName">Department<p-sortIcon
                                                 field="DeptName"></p-sortIcon></th>
                                         <th pSortableColumn="Role">Role <p-sortIcon field="Role"></p-sortIcon></th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-sr="rowIndex">
@@ -49,10 +48,10 @@
                                         <td>{{item.UserName | titlecase}}</td>
                                         <td>{{item.DeptName | titlecase}}</td>
                                         <td>{{item.Role | titlecase}}</td>
-                                        <td >
+                                        <td class="text-center">
                                             <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             (click)="onEdit(item.EmployeeId)"
-                                            class="bi bi-pencil-square text-warning fs-5 me-3"></i>
+                                            class="bi bi-pencil-square text-warning fs-5 me-2"></i>
                                         <i (click)="onDeleteConfirm(item.EmployeeId)"
                                             class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
@@ -86,7 +85,7 @@
                                             name="empName" [(ngModel)]="empObj.EmployeeName" required
                                             #empName="ngModel">
                                         <div class="text-danger" *ngIf="empName.touched">
-                                            <span *ngIf="empName.errors?.['required']">Employee Name is Required</span>
+                                            <span *ngIf="empName.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -95,8 +94,8 @@
                                             name="cantactNo" [(ngModel)]="empObj.ContactNo" required
                                             #cantactNo="ngModel">
                                         <div class="text-danger" *ngIf="cantactNo.touched" minlength="10">
-                                            <span *ngIf="cantactNo.errors?.['required']">Contact Number is
-                                                Required</span>
+                                            <span *ngIf="cantactNo.errors?.['required']">This field is required
+                                                </span>
                                             <span *ngIf="cantactNo.errors?.['minlength']">Min 10 No. Required</span>
                                         </div>
                                     </div>
@@ -107,7 +106,7 @@
                                         <input type="text" placeholder="Email Id" class="form-control" name="emailId"
                                             [(ngModel)]="empObj.EmailId" required #emailId="ngModel">
                                         <div class="text-danger" *ngIf="emailId.touched">
-                                            <span *ngIf="emailId.errors?.['required']">Email Id is Required</span>
+                                            <span *ngIf="emailId.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -115,34 +114,45 @@
                                         <input type="text" placeholder="user Name" class="form-control" name="userName"
                                             [(ngModel)]="empObj.UserName" required #userName="ngModel">
                                         <div class="text-danger" *ngIf="userName.touched">
-                                            <span *ngIf="userName.errors?.['required']">User Name is Required</span>
+                                            <span *ngIf="userName.errors?.['required']">This field is required</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="text">Reports To<span class="text-danger">*</span></label>
-                                        <select name="reportsTo" id="" [(ngModel)]="empObj.EmployeeName"
-                                            class="form-control">
+                                        <select name="reportsTo" id="" [(ngModel)]="empObj.EmployeeName" required
+                                            class="form-control" #reportsTo="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of empArray" [value]="role.EmployeeName">
                                                 {{role.EmployeeName}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="reportsTo.touched">
+                                        <span *ngIf="reportsTo.errors?.['required']">This field is required</span>
+                                    </div>
                                     </div>
                                     <div class="col-6">
                                         <label for="text">Role<span class="text-danger">*</span></label>
-                                        <select name="role" id="" [(ngModel)]="empObj.EmployeeId" class="form-control">
+                                        <select name="role" id="" [(ngModel)]="empObj.EmployeeId" class="form-control" required #role="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of roleArray">{{role}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="role.touched">
+                                            <span *ngIf="role.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
                                         <label>Department<span class="text-danger">*</span></label>
-                                        <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control">
-                                            <option value="" disabled>Select department</option>
+                                        <select name="deptName" id="" [(ngModel)]="empObj.DeptId" class="form-control" required #deptName="ngModel">
+                                            <option value="" disabled>Default select on dropdown</option>
                                             <option *ngFor="let role of deptArray" [value]="role.DeptId">
                                                 {{getDepName(role.DeptId)}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="deptName.touched">
+                                            <span *ngIf="deptName.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -160,5 +170,6 @@
         </div>
     </div>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>
 <p-toast></p-toast>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-confirmDialog [style]="{width: '304px',height:'225px'}" [baseZIndex]="10000"></p-confirmDialog>

@@ -16,7 +16,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <app-loader *ngIf="isLoading"></app-loader>
                     <div class="row">
                         <div class="col-12">
                             <p-table [value]="createRequestArray" [paginator]="true" [rows]="10"
@@ -25,26 +24,26 @@
                                 styleClass="p-datatable-gridlines p-datatable-sm" [responsive]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th>Sr.No.</th>
+                                        <th class="text-center">Sr.No.</th>
                                         <th pSortableColumn="RequestNo">Request No.<p-sortIcon
                                                 field="RequestNo"></p-sortIcon></th>
-                                        <th pSortableColumn="EmployeeName">Employee Name<p-sortIcon
+                                        <th pSortableColumn="EmployeeName">Employee<p-sortIcon
                                                 field="EmployeeName"></p-sortIcon></th>
-                                        <th pSortableColumn="DeptName">Dept. Name <p-sortIcon field="DeptName"></p-sortIcon>
+                                        <th pSortableColumn="DeptName">Department<p-sortIcon field="DeptName"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="AssignedUserName">Assigned User Name<p-sortIcon
+                                        <th pSortableColumn="AssignedUserName">Assigned User<p-sortIcon
                                                 field="AssignedUserName"></p-sortIcon></th>
                                         <th pSortableColumn="Severity">Severity<p-sortIcon
                                                 field="Severity"></p-sortIcon></th>
                                         <th pSortableColumn="ExpectedEndDate">Expected End Date <p-sortIcon field="ExpectedEndDate"></p-sortIcon></th>
                                         <th pSortableColumn="CompletedDate">CompletedDate <p-sortIcon field="CompletedDate"></p-sortIcon></th>
                                         <th pSortableColumn="State">State <p-sortIcon field="State"></p-sortIcon> </th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-sr="rowIndex">
                                     <tr>
-                                        <td>{{sr+1}}</td>
+                                        <td class="text-center">{{sr+1}}</td>
                                         <td>{{item.RequestNo | allpipe}}</td>
                                         <td>{{item.EmployeeName | titlecase | allpipe}}</td>
                                         <td>{{item.DeptName | titlecase | allpipe}}</td>
@@ -53,11 +52,11 @@
                                         <td>{{item.ExpectedEndDate | date:'dd-MMM-yy' | allpipe}}</td>
                                         <td>{{item.CompletedDate | date:'dd-MMM-yy' | allpipe}}</td>
                                         <td>{{item.State | titlecase| allpipe}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <i data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             (click)="onEdit(item.RequestId)"
                                             class="bi bi-pencil-square text-warning fs-5 me-2"></i>
-                                        <i (click)="onDelete(item.RequestId)"
+                                        <i (click)="onConfirmDelte(item.RequestId)"
                                             class="bi bi-trash-fill text-danger fs-5"> </i>
                                         </td>
                                     </tr>
@@ -85,30 +84,39 @@
                             <form>
                                 <div class="row">
                                     <div class="col-12">
-                                        <label for="text">Select Department</label>
-                                        <select name="dept" class="form-control" [(ngModel)]="createRequestObj.DeptId">
+                                        <label for="text">Select Department<span class="text-danger">*</span></label>
+                                        <select name="dept" class="form-control" [(ngModel)]="createRequestObj.DeptId" #dept="ngModel" required>
                                             <option *ngFor="let dept of deptArray" [value]="dept.DeptId">
                                                 {{dept.DeptName}}</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="dept.touched">
+                                            <span *ngIf="dept.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-2">
-                                        <label for="">Select Priority</label>
-                                        <select name="SelectPriority" id="" class="form-control"
-                                            [(ngModel)]="createRequestObj.Severity">
-                                            <option value="">Select Priority</option>
+                                        <label for="">Select Priority<span class="text-danger">*</span></label>
+                                        <select name="SelectPriority" id="" class="form-control" #SelectPriority="ngModel" required
+                                            [(ngModel)]="createRequestObj.Severity" >
+                                            <option value="" disabled>Select Priority</option>
                                             <option value="Low">Low</option>
                                             <option value="Medium">Medium</option>
                                             <option value="High">High</option>
                                         </select>
+                                        <div class="text-danger" *ngIf="SelectPriority.touched">
+                                            <span *ngIf="SelectPriority.errors?.['required']">This field is required</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-2">
-                                        <label for="text">Your Request</label>
-                                        <textarea name="request" id="" rows="4" class="form-control"
+                                        <label for="text">Your Request<span class="text-danger">*</span></label>
+                                        <textarea name="request" id="" rows="4" class="form-control" #request="ngModel" required
                                             [(ngModel)]="createRequestObj.RequestDetails"></textarea>
+                                            <div class="text-danger" *ngIf="request.touched">
+                                                <span *ngIf="request.errors?.['required']">This field is required</span>
+                                            </div>
                                     </div>
                                 </div>
                             </form>
@@ -131,5 +139,6 @@
         </div>
     </div>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>
 <p-toast></p-toast>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<!-- <p-confirmDialog [style]="{width: '258px',height:'217px'}" [baseZIndex]="10000"></p-confirmDialog> -->

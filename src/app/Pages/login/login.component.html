@@ -10,7 +10,6 @@
                 <label>
                     <h5 class="usarname">User Name <span class="text-danger usarname">*</span></h5>
                 </label><br>
-                <i class="login__icon fas fa-user"></i>
                 <input type="text" name="userName" class="login__input form-control" [(ngModel)]="loginObj.UserName"
                     placeholder="User Name" required #userName="ngModel">
                 <div class="text-danger" *ngIf="userName.touched">
@@ -21,7 +20,6 @@
                 <label>
                     <h5 class="usarname">Password <span class="text-danger usarname">*</span></h5>
                 </label>
-                <i class="login__icon fas fa-lock"></i>
                 <input [type]="changetype?'password':'text'" name="Password" class="login__input"
                     [(ngModel)]="loginObj.Password" placeholder="Password" required #password="ngModel">
                 <div class="iconPassword">

@@ -22,7 +22,7 @@ export class CreateRequestComponent implements OnInit {
   public isLoading: boolean = true;
 
   constructor(private service: CreateRequestService, private deptService: DeptService, private messageService: MessageService,
-    private primengConfig: PrimeNGConfig, private confirmationService: ConfirmationService) {
+    private primengConfig: PrimeNGConfig, private confirmationService1: ConfirmationService) {
     const localData = localStorage.getItem('adminLoginDetails');
     if (localData != null) {
       this.loggingUserData = JSON.parse(localData);
@@ -37,11 +37,6 @@ export class CreateRequestComponent implements OnInit {
     this.getAllCreateEmployee();
   }
 
-  // ngOnInit(): void {
-
-  //   this.getAllDept();
-  //   this.getAllCreateEmployee();
-  // };
 
   getAllCreateEmployee() {
     this.service.getAllRequestByEmployeeId(this.createRequestObj.EmployeeId).subscribe((res: any) => {
@@ -61,6 +56,20 @@ export class CreateRequestComponent implements OnInit {
     })
   };
 
+  onConfirmDelte(id: number) {
+    this.confirmationService1.confirm({
+      message: 'Do tou want to delete?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' }];
+        this.onDelete(id);
+      },
+      reject: () => {
+        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+      }
+    });
+  };
   onSave() {
     this.createRequestObj.EmployeeId = this.loggingUserData.EmployeeId;
     this.service.addCreateRequest(this.createRequestObj).subscribe((res: any) => {
@@ -86,13 +95,9 @@ export class CreateRequestComponent implements OnInit {
     this.service.editCreateRequest(id).subscribe((res: any) => {
       if (res) {
         this.createRequestObj = res;
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: res.message });
       }
-    }, (error: any) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error.message });
-    });
+    })
   };
 
   onUpdate(id: number, obj: any) {
